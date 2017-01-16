@@ -5,6 +5,8 @@
  */
 package br.edu.ifnmg.todeferias.Aplicacao;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -15,6 +17,13 @@ public class usuario  {
     private String nome;
     private String email;
     private Date dataNasc;
+
+    public usuario(int id, String nome, String email, Date dataNasc) {
+        this.id=id;
+        this.nome=nome;
+        this.email=email;
+        this.dataNasc=dataNasc;
+    }
 
     /**
      * @return the id
@@ -39,8 +48,11 @@ public class usuario  {
 
     /**
      * @param nome the nome to set
+     * @throws br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao
      */
-    public void setNome(String nome) {
+    public void setNome(String nome) throws ErroValidacao {
+        if(nome.length() > 250)
+            throw new ErroValidacao("O atributo nome deve ter no máximo 250 caracteres!");
         this.nome = nome;
     }
 
@@ -53,10 +65,26 @@ public class usuario  {
 
     /**
      * @param email
-     * @throws br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao
+     * @return 
      */
+    public static boolean validar(String email)
+    {
+        boolean isEmailIdValid = false;
+        if (email != null && email.length() > 0) {
+            String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(email);
+            if (matcher.matches()) {
+                isEmailIdValid = true;
+            }
+        }
+        return isEmailIdValid;
+    }
+    
     public void setEmail(String email){
+        if(validar(email)){
         this.email=email;
+        }
     }
 
     /**
