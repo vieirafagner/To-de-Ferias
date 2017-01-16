@@ -26,12 +26,13 @@ public class usuario implements Entidade{
     }
 
     public usuario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
      * @return the id
      */
+    @Override
     public int getId() {
         return id;
     }
@@ -39,6 +40,7 @@ public class usuario implements Entidade{
     /**
      * @param id the id to set
      */
+    @Override
     public void setId(int id) {
         this.id = id;
     }

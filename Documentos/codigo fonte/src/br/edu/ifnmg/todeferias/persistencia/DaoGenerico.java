@@ -53,6 +53,7 @@ public abstract class DaoGenerico<T extends Entidade> implements Repositorio<T> 
 
     protected abstract void preencheParametros(PreparedStatement sql, T filtro);
 
+    @Override
     public boolean Salvar(T obj) {
         try {
             if (obj.getId() == 0) {

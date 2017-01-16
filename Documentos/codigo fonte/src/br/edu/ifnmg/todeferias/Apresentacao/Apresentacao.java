@@ -1,9 +1,6 @@
 package br.edu.ifnmg.todeferias.Apresentacao;
 
-import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Aplicacao.usuario;
-import br.edu.ifnmg.todeferias.Aplicacao.usuarioRepositorio;
-import br.edu.ifnmg.todeferias.persistencia.usuarioDao;
 import java.util.Date;
 
 /*
@@ -24,9 +21,11 @@ public class Apresentacao {
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
         
-       usuario u = new usuario(0,"fagner","fagnervieira15gmailcom",new Date());
-        usuarioRepositorio db_usuario= new usuarioDao();
-        db_usuario.Salvar(u);
+        usuario teste = new usuario(0, "cleiton", "keu@gay.com", new Date());
+        
+       // usuario teste = new usuario();
+        //usuarioDao dao = new usuarioDao();
+        //dao.Salvar(teste);
          
     }
     
