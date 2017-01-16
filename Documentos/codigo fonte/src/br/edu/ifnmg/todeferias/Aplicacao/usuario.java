@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author fagner
  */
-public class usuario implements entidade {
+public class usuario  {
     private int id;
     private String nome;
     private String email;
@@ -55,7 +55,7 @@ public class usuario implements entidade {
      * @param email
      * @throws br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao
      */
-    public void setEmail(String email) throws ErroValidacao {
+    public void setEmail(String email){
         this.email=email;
     }
 
