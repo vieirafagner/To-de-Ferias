@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  *
  * @author fagner
  */
-public class usuario  {
+public class usuario implements Entidade{
     private int id;
     private String nome;
     private String email;
