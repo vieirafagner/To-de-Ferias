@@ -9,7 +9,7 @@ package br.edu.ifnmg.todeferias.Aplicacao;
  *
  * @author fagner
  */
-class ErroValidacao extends Exception {
+public class ErroValidacao extends Exception {
     public ErroValidacao(String message) {
         super(message);
     }

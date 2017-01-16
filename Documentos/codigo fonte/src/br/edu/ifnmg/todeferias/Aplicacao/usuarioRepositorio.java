@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.todeferias.persistencia;
+package br.edu.ifnmg.todeferias.Aplicacao;
 
 /**
  *
- * @author cleiton rodrigues
+ * @author fagner
  */
-public class usuariaDao {
-    
+public interface usuarioRepositorio extends Repositorio<usuario> {
+    public usuario Abrir(String nome);
 }
