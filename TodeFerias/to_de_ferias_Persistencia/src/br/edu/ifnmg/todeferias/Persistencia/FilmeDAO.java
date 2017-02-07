@@ -46,9 +46,9 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
                 tmp.setSinopse(resultado.getString(7));
                 
          } catch (SQLException ex) {
-            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ErroValidacao ex) {     
-            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
                 // Retorna o objeto
                 return tmp;

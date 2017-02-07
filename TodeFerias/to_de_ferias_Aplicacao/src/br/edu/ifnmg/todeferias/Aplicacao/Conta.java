@@ -5,21 +5,78 @@
  */
 package br.edu.ifnmg.todeferias.Aplicacao;
 
+import java.util.Objects;
+
 /**
  *
  * @author fagner
  */
 public class Conta implements Entidade {
-    
+
     private int id;
     private String email;
     private int tipoConta;
     private String senha;
     private String nome;
 
-    /**
-     * @return the id
-     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 73 * hash + this.id;
+        hash = 73 * hash + Objects.hashCode(this.email);
+        hash = 73 * hash + this.tipoConta;
+        hash = 73 * hash + Objects.hashCode(this.senha);
+        hash = 73 * hash + Objects.hashCode(this.nome);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Conta other = (Conta) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.tipoConta != other.tipoConta) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta{" + "nome=" + nome + '}';
+    }
+
+    public Conta() {
+
+    }
+
+    public Conta(int id, String email, int tipoConta, String senha, String nome) {
+        this.id = id;
+        this.email = email;
+        this.tipoConta = tipoConta;
+        this.senha = senha;
+        this.nome = nome;
+    }
+
     @Override
     public int getId() {
         return id;
@@ -73,8 +130,9 @@ public class Conta implements Entidade {
      * @throws br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao
      */
     public void setSenha(String senha) throws ErroValidacao {
-        if(senha.length()< 8)
+        if (senha.length() < 8) {
             throw new ErroValidacao("O atributo senha deve ter no mínimo 8 caracteres!");
+        }
         this.senha = senha;
     }
 
@@ -90,11 +148,11 @@ public class Conta implements Entidade {
      * @throws br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao
      */
     public void setNome(String nome) throws ErroValidacao {
-        if(nome.length() > 250)
+        if (nome.length() > 250) {
             throw new ErroValidacao("O atributo nome deve ter no máximo 250 caracteres!");
+        }
         this.nome = nome;
-     
+
     }
 
-   
 }
