@@ -22,14 +22,14 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
 
     
     public ContaDAO() {
-        setConsultaAbrir("select idConta,email,tipoConta,senha,nome f   rom Conta where idConta = ?");
-        setConsultaApagar("DELETE FROM Conta WHERE idConta = ? ");
-        setConsultaInserir("INSERT INTO Conta(idConta,email,tipoConta,senha,nome) VALUES(?,?,?,?,?)");
+        setConsultaAbrir("select id,email,tipoConta,senha,nome f   rom Conta where id = ?");
+        setConsultaApagar("DELETE FROM Conta WHERE id = ? ");
+        setConsultaInserir("INSERT INTO Conta(id,email,tipoConta,senha,nome) VALUES(?,?,?,?,?)");
         setConsultaAlterar("UPDATE Conta SET nome = ?, "
                         + "senha = ?, tipoConta = ? "
-                        + "WHERE idConta = ?");
-        setConsultaBusca("select idConta,email,tipoConta,senha,nome from Conta ");
-        setConsultaUltimoId("select max(idConta) from Conta where nome = ? and email = ? and tipoConta = ?");
+                        + "WHERE id = ?");
+        setConsultaBusca("select id,email,tipoConta,senha,nome from Conta ");
+        setConsultaUltimoId("select max(id) from Conta where nome = ? and email = ? and tipoConta = ?");
     }
     
     @Override
@@ -37,7 +37,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         // Posso os dados do resultado para o objeto
                 Conta tmp = new Conta();
         try {
-            tmp.setIdConta(resultado.getInt(1));
+            tmp.setId(resultado.getInt(1));
         
                 tmp.setEmail(resultado.getString(2));
                 tmp.setTipoConta(resultado.getInt(3));
@@ -62,7 +62,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
             sql.setString(3, obj.getSenha());
             sql.setString(4, obj.getNome());
             
-            if(obj.getIdConta() > 0) sql.setInt(4,obj.getIdConta());
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,7 +79,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select idConta,email,tipoConta,senha,nome "
+            PreparedStatement sql = conn.prepareStatement("select id,email,tipoConta,senha,nome "
                     + "from Conta where nome = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -102,7 +102,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     
     @Override
     protected void preencheFiltros(Conta filtro) {
-        if(filtro.getIdConta() > 0) adicionarFiltro("idConta", "=");
+        if(filtro.getId() > 0) adicionarFiltro("id", "=");
         if(filtro.getEmail() != null) adicionarFiltro("email", " like ");
         if(filtro.getTipoConta() > 0) adicionarFiltro("tipoConta", "=");
         if(filtro.getSenha() != null) adicionarFiltro("senha", " like ");
@@ -114,7 +114,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     protected void preencheParametros(PreparedStatement sql, Conta filtro) {
         try {
             int cont = 1;
-            if(filtro.getIdConta() > 0){ sql.setInt(cont, filtro.getIdConta()); cont++; }
+            if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getEmail() != null ){ sql.setString(cont, filtro.getEmail()); cont++; }
             if(filtro.getTipoConta() > 0 ){ sql.setInt(cont, filtro.getTipoConta()); cont++; }
             if(filtro.getSenha() != null ){ sql.setString(cont, filtro.getSenha()); cont++; }

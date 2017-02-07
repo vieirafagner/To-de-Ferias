@@ -9,26 +9,28 @@ package br.edu.ifnmg.todeferias.Aplicacao;
  *
  * @author fagner
  */
-public class Conta {
+public class Conta implements Entidade {
     
-    private int idConta;
+    private int id;
     private String email;
     private int tipoConta;
     private String senha;
     private String nome;
 
     /**
-     * @return the idConta
+     * @return the id
      */
-    public int getIdConta() {
-        return idConta;
+    @Override
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param idConta the idConta to set
+     * @param id the id to set
      */
-    public void setIdConta(int idConta) {
-        this.idConta = idConta;
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -93,5 +95,6 @@ public class Conta {
         this.nome = nome;
      
     }
+
    
 }
