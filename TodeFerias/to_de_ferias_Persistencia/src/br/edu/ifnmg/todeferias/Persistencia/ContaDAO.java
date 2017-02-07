@@ -22,7 +22,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
 
     
     public ContaDAO() {
-        setConsultaAbrir("select id,email,tipoConta,senha,nome f   rom Conta where id = ?");
+        setConsultaAbrir("select id,email,tipoConta,senha,nome from Conta where id = ?");
         setConsultaApagar("DELETE FROM Conta WHERE id = ? ");
         setConsultaInserir("INSERT INTO Conta(id,email,tipoConta,senha,nome) VALUES(?,?,?,?,?)");
         setConsultaAlterar("UPDATE Conta SET nome = ?, "
