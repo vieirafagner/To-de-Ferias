@@ -27,7 +27,7 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
         setConsultaAlterar("UPDATE Filme SET nome = ?, "
                         + "sinopse = ?, genero = ? "
                         + "WHERE id = ?");
-        setConsultaBusca("select id,diretor,duracao,nome,classificacao,genero,sinopse, from Filme ");
+        setConsultaBusca("select id,diretor,duracao,nome,classificacao,genero,sinopse from Filme ");
         setConsultaUltimoId("select max(id) from Filme where diretor = ? and duracao = ? and nome = ? and classificacao = ? and genero = ? and sinopse = ?");
     }
     
@@ -68,7 +68,7 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
             if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
-            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
