@@ -9,6 +9,6 @@ package br.edu.ifnmg.todeferias.Aplicacao;
  *
  * @author Aluno
  */
-public interface NovelaRepositorio {
+public interface NovelaRepositorio extends Repositorio<Novela> {
      public Novela Abrir(String nome);
 }

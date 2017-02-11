@@ -11,9 +11,12 @@ import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Novela;
+import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.AnimeDAO;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
 import br.edu.ifnmg.todeferias.Persistencia.FilmeDAO;
+import br.edu.ifnmg.todeferias.Persistencia.NovelaDAO;
 import java.sql.SQLException;
 
 /**
@@ -25,6 +28,7 @@ public class todeferiasApresentacao {
        SetConta();
        SetFilme();
        SetAnime();
+       SetNovela();
     }
     public static void SetConta(){
          Conta c = new Conta(0,"fagnervieira15@gmail.com",1,"123","fagner");
@@ -41,5 +45,10 @@ public class todeferiasApresentacao {
         Anime a= new Anime(0,20,"aventuras de goku","dragonball z",5,5);
         AnimeRepositorio bd_anime = new AnimeDAO();
         bd_anime.Salvar(a);
+    }
+    public static void SetNovela(){
+        Novela n = new Novela(0,300,5,"Manoel Carlos","televisa");
+        NovelaRepositorio bd_novela = new NovelaDAO();
+        bd_novela.Salvar(n);
     }
 }

@@ -13,11 +13,24 @@ import java.util.Objects;
  */
 public class Novela implements Entidade {
     private int id;
-    private int qdtCap;
+    private int qtdCap;
     private int classificacao;
-    private String comentario;
     private String diretor;
     private String nome;
+    
+    public Novela(){
+        
+    }
+
+    public Novela(int id, int qtdCap, int classificacao, String diretor, String nome) {
+        this.id = id;
+        this.qtdCap = qtdCap;
+        this.classificacao = classificacao;
+        this.diretor = diretor;
+        this.nome = nome;
+    }
+
+   
 
     /**
      * @return the id
@@ -34,17 +47,15 @@ public class Novela implements Entidade {
     }
 
     /**
-     * @return the qdtCap
+     * @return the qtdCap
      */
-    public int getQdtCap() {
-        return qdtCap;
+    public int getQtdCap() {
+        return qtdCap;
     }
 
-    /**
-     * @param qdtCap the qdtCap to set
-     */
-    public void setQdtCap(int qdtCap) {
-        this.qdtCap = qdtCap;
+    
+    public void setQtdCap(int qtdCap) {
+        this.qtdCap = qtdCap;
     }
 
     /**
@@ -59,20 +70,6 @@ public class Novela implements Entidade {
      */
     public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
-    }
-
-    /**
-     * @return the comentario
-     */
-    public String getComentario() {
-        return comentario;
-    }
-
-    /**
-     * @param comentario the comentario to set
-     */
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
     }
 
     /**
@@ -110,9 +107,8 @@ public class Novela implements Entidade {
     public int hashCode() {
         int hash = 7;
         hash = 17 * hash + this.id;
-        hash = 17 * hash + this.qdtCap;
+        hash = 17 * hash + this.qtdCap;
         hash = 17 * hash + this.classificacao;
-        hash = 17 * hash + Objects.hashCode(this.comentario);
         hash = 17 * hash + Objects.hashCode(this.diretor);
         hash = 17 * hash + Objects.hashCode(this.nome);
         return hash;
@@ -130,13 +126,10 @@ public class Novela implements Entidade {
         if (this.id != other.id) {
             return false;
         }
-        if (this.qdtCap != other.qdtCap) {
+        if (this.qtdCap != other.qtdCap) {
             return false;
         }
         if (this.classificacao != other.classificacao) {
-            return false;
-        }
-        if (!Objects.equals(this.comentario, other.comentario)) {
             return false;
         }
         if (!Objects.equals(this.diretor, other.diretor)) {
@@ -152,5 +145,4 @@ public class Novela implements Entidade {
     public String toString() {
         return "Novela{" + "nome=" + nome + '}';
     }
-    
 }

@@ -22,14 +22,14 @@ import java.util.logging.Logger;
  
 public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio {
         public NovelaDAO() {
-        setConsultaAbrir("select id,qtdCap,classificacao,comentario,diretor,nome from Novela where id = ?");
+        setConsultaAbrir("select id,qtdCap,classificacao,diretor,nome from Novela where id = ?");
         setConsultaApagar("DELETE FROM Novela WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Novela(qtdCap,classificacao,comentario,diretor,nome) VALUES(?,?,?,?,?)");
+        setConsultaInserir("INSERT INTO Novela(qtdCap,classificacao,diretor,nome) VALUES(?,?,?,?)");
         setConsultaAlterar("UPDATE Novela SET nome = ?, "
                         + "Diretor = ?"
                         + "WHERE id = ?");
-        setConsultaBusca("select id,qdtCap,classificacao,comentario,diretor,nome from Novela ");
-        setConsultaUltimoId("select max(id) from Novela where qdtCap = ? and Classificacao = ? and comentario = ? and diretor = ? and nome = ? ");
+        setConsultaBusca("select id,qtdCap,classificacao,diretor,nome from Novela ");
+        setConsultaUltimoId("select max(id) from Novela where qtdCap = ? and Classificacao = ? and diretor = ? and nome = ? ");
     }
    
     @Override
@@ -39,11 +39,10 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
         try {
             tmp.setId(resultado.getInt(1));
         
-                tmp.setQdtCap(resultado.getInt(2));
+                tmp.setQtdCap(resultado.getInt(2));
                 tmp.setClassificacao(resultado.getInt(3));
-                tmp.setComentario(resultado.getString(4));
-                tmp.setDiretor(resultado.getString(5));
-                tmp.setNome(resultado.getString(6));
+                tmp.setDiretor(resultado.getString(4));
+                tmp.setNome(resultado.getString(5));
                 
                 
          } catch (SQLException ex) {
@@ -59,13 +58,12 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
     protected void preencheConsulta(PreparedStatement sql, Novela obj) {
         try {
             // Passa os parâmetros para a consulta SQL
-            sql.setInt(1, obj.getQdtCap());
+            sql.setInt(1, obj.getQtdCap());
             sql.setInt(2, obj.getClassificacao());
-            sql.setString(3, obj.getComentario());
-            sql.setString(4, obj.getDiretor());
-            sql.setString(5, obj.getNome());
+            sql.setString(3, obj.getDiretor());
+            sql.setString(4, obj.getNome());
             
-            if(obj.getId() > 0) sql.setInt(4,obj.getId());
+            if(obj.getId() > 0) sql.setInt(5,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(NovelaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,7 +81,7 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,qtdCap,classificacao,comentario,diretor,nome "
+            PreparedStatement sql = conn.prepareStatement("select id,qtdCap,classificacao,diretor,nome "
                     + "from Novela where nome = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -106,10 +104,7 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
       // id; qdtCap;classificacao;comentario;diretor;nome;     
     @Override
     protected void preencheFiltros(Novela filtro) {
-        if(filtro.getId() > 0) adicionarFiltro("id", "=");
-        if(filtro.getQdtCap() > 0) adicionarFiltro("qtdCap", "=");
-        if(filtro.getClassificacao()> 0) adicionarFiltro("classificacao", "=");
-        if(filtro.getComentario()!= null) adicionarFiltro("comentario", " like ");
+        if(filtro.getId() > 0) adicionarFiltro("id", "=");        
         if(filtro.getDiretor()!= null) adicionarFiltro("diretor", " like ");
         if(filtro.getNome()!= null) adicionarFiltro("nome", " like ");
     
@@ -120,9 +115,9 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
         try {
             int cont = 1;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
-            if(filtro.getQdtCap() > 0){ sql.setInt(cont, filtro.getQdtCap()); cont++; }
+            if(filtro.getQtdCap() > 0){ sql.setInt(cont, filtro.getQtdCap()); cont++; }
             if(filtro.getClassificacao()> 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
-            if(filtro.getComentario()!= null ){ sql.setString(cont, filtro.getComentario()); cont++; }
+         
             if(filtro.getDiretor()!= null ){ sql.setString(cont, filtro.getDiretor()); cont++; }
             if(filtro.getNome()!= null ){ sql.setString(cont, filtro.getNome()); cont++; }
             
