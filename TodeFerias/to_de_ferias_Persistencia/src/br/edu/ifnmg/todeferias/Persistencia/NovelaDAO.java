@@ -24,7 +24,7 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
         public NovelaDAO() {
         setConsultaAbrir("select id,qtdCap,classificacao,comentario,diretor,nome from Novela where id = ?");
         setConsultaApagar("DELETE FROM Novela WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Novela(id,qtdCap,classificacao,comentario,diretor,nome) VALUES(?,?,?,?,?,?)");
+        setConsultaInserir("INSERT INTO Novela(qtdCap,classificacao,comentario,diretor,nome) VALUES(?,?,?,?,?)");
         setConsultaAlterar("UPDATE Novela SET nome = ?, "
                         + "Diretor = ?"
                         + "WHERE id = ?");

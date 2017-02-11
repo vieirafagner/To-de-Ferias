@@ -24,12 +24,12 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     public ContaDAO() {
         setConsultaAbrir("select id,email,tipoConta,senha,nome from Conta where id = ?");
         setConsultaApagar("DELETE FROM Conta WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Conta(id,email,tipoConta,senha,nome) VALUES(?,?,?,?,?)");
+        setConsultaInserir("INSERT INTO Conta(email,tipoConta,senha,nome) VALUES(?,?,?,?)");
         setConsultaAlterar("UPDATE Conta SET nome = ?, "
                         + "senha = ?, tipoConta = ? "
                         + "WHERE id = ?");
         setConsultaBusca("select id,email,tipoConta,senha,nome from Conta ");
-        setConsultaUltimoId("select max(id) from Conta where nome = ? and email = ? and tipoConta = ?");
+        setConsultaUltimoId("select max(id) from Conta where email = ? and tipoConta = ? and senha = ? and nome = ?");
     }
     
     @Override
@@ -62,7 +62,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
             sql.setString(3, obj.getSenha());
             sql.setString(4, obj.getNome());
             
-            if(obj.getId() > 0) sql.setInt(4,obj.getId());
+            if(obj.getId() > 0) sql.setInt(5,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);

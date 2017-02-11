@@ -23,7 +23,7 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
     public SerieDAO() {
         setConsultaAbrir("select id,duracao_ep,genero,nome,classificacao,sinopse,qtd_temp from Serie where id = ?");
         setConsultaApagar("DELETE FROM Serie WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Serie(id,duracao_ep,genero,nome,classificacao,sinopse,qtd_temp) VALUES(?,?,?,?,?,?,?)");
+        setConsultaInserir("INSERT INTO Serie(duracao_ep,genero,nome,classificacao,sinopse,qtd_temp) VALUES(?,?,?,?,?,?)");
         setConsultaAlterar("UPDATE Serie SET nome = ?, "
                         + "sinopse = ?, genero = ? "
                         + "WHERE id = ?");
