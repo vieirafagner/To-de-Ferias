@@ -18,8 +18,20 @@ public class Filme implements Entidade {
     private int classificacao;
     private String genero;
     private String sinopse;
-    private String comentario;
+   
+    public Filme(){
     
+    }
+    public Filme(int id, String diretor, int duracao, String nome, int classificacao, String genero, String sinopse) {
+        this.id = id;
+        this.diretor = diretor;
+        this.duracao = duracao;
+        this.nome = nome;
+        this.classificacao = classificacao;
+        this.genero = genero;
+        this.sinopse = sinopse;
+        
+    }
 
     /**
      * @return the id
@@ -121,19 +133,5 @@ public class Filme implements Entidade {
         this.sinopse = sinopse;
     }
 
-    /**
-     * @return the comentario
-     */
-    public String getComentario() {
-        return comentario;
-    }
-
-    /**
-     * @param comentario the comentario to set
-     */
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
-    
     
 }

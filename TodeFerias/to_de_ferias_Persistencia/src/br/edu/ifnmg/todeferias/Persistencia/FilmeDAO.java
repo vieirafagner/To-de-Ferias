@@ -65,7 +65,7 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
             sql.setString(5, obj.getGenero());
             sql.setString(6, obj.getSinopse());
             
-            if(obj.getId() > 0) sql.setInt(4,obj.getId());
+            if(obj.getId() > 0) sql.setInt(7,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(FilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -107,11 +107,8 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
     protected void preencheFiltros(Filme filtro) {
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
         if(filtro.getDiretor()!= null) adicionarFiltro("diretor", " like ");
-        if(filtro.getDuracao()> 0) adicionarFiltro("duracao", "=");
         if(filtro.getNome() != null) adicionarFiltro("nome", " like ");
-        if(filtro.getClassificacao() > 0) adicionarFiltro("classificacao", "=");
         if(filtro.getGenero() != null) adicionarFiltro("genero", " like ");
-        if(filtro.getSinopse()!= null) adicionarFiltro("sinopse", " like ");
     
     }
 
