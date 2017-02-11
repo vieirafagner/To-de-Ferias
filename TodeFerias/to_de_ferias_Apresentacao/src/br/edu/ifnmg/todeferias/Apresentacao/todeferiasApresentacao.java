@@ -9,14 +9,18 @@ import br.edu.ifnmg.todeferias.Aplicacao.Anime;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
+import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.AnimeDAO;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
+import br.edu.ifnmg.todeferias.Persistencia.DocumentarioDAO;
 import br.edu.ifnmg.todeferias.Persistencia.FilmeDAO;
 import br.edu.ifnmg.todeferias.Persistencia.NovelaDAO;
+import java.sql.Date;
 import java.sql.SQLException;
 
 /**
@@ -29,6 +33,8 @@ public class todeferiasApresentacao {
        SetFilme();
        SetAnime();
        SetNovela();
+       SetDocumentario();
+       
     }
     public static void SetConta(){
          Conta c = new Conta(0,"fagnervieira15@gmail.com",1,"123","fagner");
@@ -51,4 +57,10 @@ public class todeferiasApresentacao {
         NovelaRepositorio bd_novela = new NovelaDAO();
         bd_novela.Salvar(n);
     }
+    public static void SetDocumentario(){
+        Documentario d = new Documentario(0,"febre amarela",5,100,new Date(),"fagner","caus");
+        DocumentarioRepositorio bd_doc = new DocumentarioDAO();
+        bd_doc.Salvar(d);
+    }
+   
 }
