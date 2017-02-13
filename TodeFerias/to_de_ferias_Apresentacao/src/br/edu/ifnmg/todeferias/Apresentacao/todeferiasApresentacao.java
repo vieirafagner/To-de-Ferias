@@ -53,12 +53,12 @@ public class todeferiasApresentacao {
         bd_anime.Salvar(a);
     }
     public static void SetNovela(){
-        Novela n = new Novela(0,300,5,"Manoel Carlos","televisa");
+        Novela n = new Novela(0,300,5,"televisa","Maria do Bairro");
         NovelaRepositorio bd_novela = new NovelaDAO();
         bd_novela.Salvar(n);
     }
     public static void SetDocumentario(){
-        Documentario d = new Documentario(0,"febre amarela",5,100,new Date(),"fagner","caus");
+        Documentario d = new Documentario(0,"febre amarela",5,100,"03/09/1995","fagner","caus");
         DocumentarioRepositorio bd_doc = new DocumentarioDAO();
         bd_doc.Salvar(d);
     }

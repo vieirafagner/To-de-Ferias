@@ -41,7 +41,7 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
                 tmp.setSinopse(resultado.getString(2));
                 tmp.setClassificacao(resultado.getInt(3));
                 tmp.setDuracao(resultado.getInt(4));
-                tmp.setData(resultado.getDate(5));
+                tmp.setData(resultado.getString(5));
                 tmp.setAutor(resultado.getString(6));
                 tmp.setNome(resultado.getString(7));
                 
@@ -60,7 +60,7 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
             sql.setString(1, obj.getSinopse());
             sql.setInt(2, obj.getClassificacao());
             sql.setInt(3, obj.getDuracao());
-            sql.setDate(4, new java.sql.Date(obj.getData().getTime()));
+            sql.setString(4,obj.getData());
             sql.setString(5, obj.getAutor());
              sql.setString(6, obj.getNome());
             

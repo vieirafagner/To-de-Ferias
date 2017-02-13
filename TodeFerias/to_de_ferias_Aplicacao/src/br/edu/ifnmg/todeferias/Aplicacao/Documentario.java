@@ -18,15 +18,15 @@ public class Documentario implements Entidade {
     private String sinopse;
     private int classificacao;
     private int duracao;
-    private Date data;
+    private String data;
     private String autor;
     private String nome;
 
     public Documentario() {
-            this.id=0;
+        this.id=0;
     }
 
-    public Documentario(int id, String sinopse, int classificacao, int duracao, Date data, String autor, String nome) {
+    public Documentario(int id, String sinopse, int classificacao, int duracao, String data, String autor, String nome) {
         this.id = id;
         this.sinopse = sinopse;
         this.classificacao = classificacao;
@@ -117,11 +117,11 @@ public class Documentario implements Entidade {
         this.duracao = duracao;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
