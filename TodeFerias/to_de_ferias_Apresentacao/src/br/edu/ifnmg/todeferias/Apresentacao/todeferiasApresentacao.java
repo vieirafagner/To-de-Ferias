@@ -15,11 +15,14 @@ import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Administrador;
+import br.edu.ifnmg.todeferias.Aplicacao.AdministradorRepositorio       ;
 import br.edu.ifnmg.todeferias.Persistencia.AnimeDAO;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
 import br.edu.ifnmg.todeferias.Persistencia.DocumentarioDAO;
 import br.edu.ifnmg.todeferias.Persistencia.FilmeDAO;
 import br.edu.ifnmg.todeferias.Persistencia.NovelaDAO;
+import br.edu.ifnmg.todeferias.Persistencia.AdministradorDAO;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -34,7 +37,7 @@ public class todeferiasApresentacao {
        SetAnime();
        SetNovela();
        SetDocumentario();
-       
+       SetAdministrador();
     }
     public static void SetConta(){
          Conta c = new Conta(0,"fagnervieira15@gmail.com",1,"123","fagner");
@@ -61,6 +64,12 @@ public class todeferiasApresentacao {
         Documentario d = new Documentario(0,"febre amarela",5,100,"03/09/1995","fagner","caus");
         DocumentarioRepositorio bd_doc = new DocumentarioDAO();
         bd_doc.Salvar(d);
+    }
+    
+    public static void SetAdministrador(){
+        Administrador a = new Administrador(0,"04/02/1996","omanoeltavares@ecurso.com","123","fagner");
+        AdministradorRepositorio bd_doc = new AdministradorDAO();
+        bd_doc.Salvar(a);
     }
    
 }
