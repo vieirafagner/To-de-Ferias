@@ -32,11 +32,11 @@ import java.sql.SQLException;
  */
 public class todeferiasApresentacao {
     public static void main(String [] args) throws ClassNotFoundException, SQLException{
-       SetConta();
-       SetFilme();
-       SetAnime();
-       SetNovela();
-       SetDocumentario();
+       //SetConta();
+       //SetFilme();
+       //SetAnime();
+       //SetNovela();
+       //SetDocumentario();
        SetAdministrador();
     }
     public static void SetConta(){
@@ -67,7 +67,7 @@ public class todeferiasApresentacao {
     }
     
     public static void SetAdministrador(){
-        Administrador a = new Administrador(0,"04/02/1996","omanoeltavares@ecurso.com","123","fagner");
+        Administrador a = new Administrador(0,"04/02/1996","fagnervieira15@gmail.com","3631","fagner");
         AdministradorRepositorio bd_doc = new AdministradorDAO();
         bd_doc.Salvar(a);
     }

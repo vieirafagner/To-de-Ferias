@@ -29,6 +29,28 @@ public class AdministradorDAO extends DAOGenerico<Administrador> implements Admi
         setConsultaBusca("select id,dataNasc,email,senha,nome from Administrador ");
         setConsultaUltimoId("select max(id) from Administrador where dataNasc = ? and email = ? and senha = ? and nome = ?");
     }
+     
+     
+     public boolean checkLogin(String email, String senha) throws SQLException{
+         PreparedStatement stat = null;
+         ResultSet rs = null;
+         boolean check = false;
+         try{
+             stat=conn.prepareStatement("SELECT * FROM Administrador WHERE email = ? and senha = ?");
+             stat.setString(1, email);
+             stat.setString(2, senha);
+              rs = stat.executeQuery();
+              
+              if(rs.next()){
+                  check=true;
+              }
+         }catch (SQLException ex) {
+            Logger.getLogger(AdministradorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+         return check;
+        
+         
+     }
     
     @Override
     protected Administrador preencheObjeto(ResultSet resultado) {
