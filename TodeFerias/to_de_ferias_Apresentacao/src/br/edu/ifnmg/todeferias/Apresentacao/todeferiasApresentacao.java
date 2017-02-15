@@ -67,7 +67,7 @@ public class todeferiasApresentacao {
     }
     
     public static void SetAdministrador(){
-        Administrador a = new Administrador(0,"04/02/1996","fagnervieira15@gmail.com","3631","fagner");
+        Administrador a = new Administrador(0,"04/02/1996","teste","teste","fagner");
         AdministradorRepositorio bd_doc = new AdministradorDAO();
         bd_doc.Salvar(a);
     }

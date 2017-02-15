@@ -19,6 +19,19 @@ public class Conta implements Entidade {
     private String senha;
     private String nome;
 
+    public Conta() {
+
+        this.id = 0;
+    }
+
+    public Conta(int id, String email, int tipoConta, String senha, String nome) {
+        this.id = id;
+        this.email = email;
+        this.tipoConta = tipoConta;
+        this.senha = senha;
+        this.nome = nome;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -63,18 +76,6 @@ public class Conta implements Entidade {
     @Override
     public String toString() {
         return "Conta{" + "nome=" + nome + '}';
-    }
-
-    public Conta() {
-
-    }
-
-    public Conta(int id, String email, int tipoConta, String senha, String nome) {
-        this.id = id;
-        this.email = email;
-        this.tipoConta = tipoConta;
-        this.senha = senha;
-        this.nome = nome;
     }
 
     @Override
