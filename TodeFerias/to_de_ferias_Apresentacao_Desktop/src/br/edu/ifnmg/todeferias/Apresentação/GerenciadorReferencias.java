@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package to_de_ferias_Apresentacao;
+package br.edu.ifnmg.todeferias.Apresentação;
+
 
 import br.edu.ifnmg.todeferias.Aplicacao.AdministradorRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
@@ -27,7 +28,9 @@ import br.edu.ifnmg.todeferias.Persistencia.SerieDAO;
  * @author fagner
  */
 public class GerenciadorReferencias {
- 
+ public static void main(String [] args){
+     
+ }
     private static ContaRepositorio daoConta;
 
     public static ContaRepositorio getConta() {
@@ -90,5 +93,5 @@ public class GerenciadorReferencias {
         if(daoSerie  == null)
             daoSerie = new SerieDAO();
         return daoSerie;
-    }
+    }    
 }
