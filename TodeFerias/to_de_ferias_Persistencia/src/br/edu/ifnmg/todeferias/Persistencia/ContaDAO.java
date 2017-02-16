@@ -85,7 +85,6 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         try {
             // Passa os parâmetros para a consulta SQL
             sql.setString(1, obj.getEmail());
-            //sql.setInt(2, obj.getTipoConta());
             sql.setString(2, obj.getSenha());
             sql.setString(3, obj.getNome());
             
@@ -133,7 +132,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         if(filtro.getEmail() != null) adicionarFiltro("email", " like ");
         //if(filtro.getTipoConta() > 0) adicionarFiltro("tipoConta", "=");
         if(filtro.getSenha() != null) adicionarFiltro("senha", " like ");
-        if(filtro.getNome() != null) adicionarFiltro("nome", " like ");
+        if(filtro.getNome() != null) adicionarFiltro("nome", "like");
     
     }
 

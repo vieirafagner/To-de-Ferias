@@ -29,11 +29,21 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        ItmListarUsuarios = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("File");
+        jMenu1.setText("Arquivo");
+
+        ItmListarUsuarios.setText("Listar Usuários");
+        ItmListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItmListarUsuariosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ItmListarUsuarios);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -54,6 +64,13 @@ public class TelaMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ItmListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItmListarUsuariosActionPerformed
+         TelaContaListagem lista = new TelaContaListagem();
+         this.add(lista);
+         this.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ItmListarUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,6 +108,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ItmListarUsuarios;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
