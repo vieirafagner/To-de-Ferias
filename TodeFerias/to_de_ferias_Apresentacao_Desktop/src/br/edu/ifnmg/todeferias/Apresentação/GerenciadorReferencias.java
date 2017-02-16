@@ -28,9 +28,7 @@ import br.edu.ifnmg.todeferias.Persistencia.SerieDAO;
  * @author fagner
  */
 public class GerenciadorReferencias {
- public static void main(String [] args){
-     
- }
+ 
     private static ContaRepositorio daoConta;
 
     public static ContaRepositorio getConta() {

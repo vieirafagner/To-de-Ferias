@@ -15,7 +15,7 @@ public class Conta implements Entidade {
 
     private int id;
     private String email;
-    private int tipoConta;
+    //private int tipoConta;
     private String senha;
     private String nome;
 
@@ -24,10 +24,10 @@ public class Conta implements Entidade {
         this.id = 0;
     }
 
-    public Conta(int id, String email, int tipoConta, String senha, String nome) {
+    public Conta(int id, String email,String senha, String nome) {
         this.id = id;
         this.email = email;
-        this.tipoConta = tipoConta;
+       // this.tipoConta = tipoConta;
         this.senha = senha;
         this.nome = nome;
     }
@@ -37,7 +37,7 @@ public class Conta implements Entidade {
         int hash = 7;
         hash = 73 * hash + this.id;
         hash = 73 * hash + Objects.hashCode(this.email);
-        hash = 73 * hash + this.tipoConta;
+        //hash = 73 * hash + this.tipoConta;
         hash = 73 * hash + Objects.hashCode(this.senha);
         hash = 73 * hash + Objects.hashCode(this.nome);
         return hash;
@@ -58,9 +58,9 @@ public class Conta implements Entidade {
         if (this.id != other.id) {
             return false;
         }
-        if (this.tipoConta != other.tipoConta) {
-            return false;
-        }
+        //if (this.tipoConta != other.tipoConta) {
+        //    return false;
+        //}
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
@@ -108,16 +108,16 @@ public class Conta implements Entidade {
     /**
      * @return the tipoConta
      */
-    public int getTipoConta() {
-        return tipoConta;
-    }
+    //public int getTipoConta() {
+    //    return tipoConta;
+    //}
 
     /**
      * @param tipoConta the tipoConta to set
      */
-    public void setTipoConta(int tipoConta) {
+    /*public void setTipoConta(int tipoConta) {
         this.tipoConta = tipoConta;
-    }
+    }*/
 
     /**
      * @return the senha
@@ -149,8 +149,8 @@ public class Conta implements Entidade {
      * @throws br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao
      */
     public void setNome(String nome) throws ErroValidacao {
-        if (nome.length() > 250) {
-            throw new ErroValidacao("O atributo nome deve ter no máximo 250 caracteres!");
+        if (nome.length() > 25) {
+            throw new ErroValidacao("O atributo nome deve ter no máximo 25 caracteres!");
         }
         this.nome = nome;
 

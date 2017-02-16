@@ -22,14 +22,14 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
 
     
     public ContaDAO() {
-        setConsultaAbrir("select id,email,tipoConta,senha,nome from Conta where id = ?");
+        setConsultaAbrir("select id,email,senha,nome from Conta where id = ?");
         setConsultaApagar("DELETE FROM Conta WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Conta(email,tipoConta,senha,nome) VALUES(?,?,?,?)");
+        setConsultaInserir("INSERT INTO Conta(email,senha,nome) VALUES(?,?,?)");
         setConsultaAlterar("UPDATE Conta SET nome = ?, "
-                        + "senha = ?, tipoConta = ? "
+                        + "senha = ?"
                         + "WHERE id = ?");
-        setConsultaBusca("select id,email,tipoConta,senha,nome from Conta ");
-        setConsultaUltimoId("select max(id) from Conta where email = ? and tipoConta = ? and senha = ? and nome = ?");
+        setConsultaBusca("select id,email,senha,nome from Conta ");
+        setConsultaUltimoId("select max(id) from Conta where email = ? and senha = ? and nome = ?");
     }
     
     @Override
@@ -40,9 +40,8 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
             tmp.setId(resultado.getInt(1));
         
                 tmp.setEmail(resultado.getString(2));
-                tmp.setTipoConta(resultado.getInt(3));
-                tmp.setSenha(resultado.getString(4));
-                tmp.setNome(resultado.getString(5));
+                tmp.setSenha(resultado.getString(3));
+                tmp.setNome(resultado.getString(4));
                 
          } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,11 +57,11 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         try {
             // Passa os parâmetros para a consulta SQL
             sql.setString(1, obj.getEmail());
-            sql.setInt(2, obj.getTipoConta());
-            sql.setString(3, obj.getSenha());
-            sql.setString(4, obj.getNome());
+            //sql.setInt(2, obj.getTipoConta());
+            sql.setString(2, obj.getSenha());
+            sql.setString(3, obj.getNome());
             
-            if(obj.getId() > 0) sql.setInt(5,obj.getId());
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,7 +78,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,email,tipoConta,senha,nome "
+            PreparedStatement sql = conn.prepareStatement("select id,email,senha,nome "
                     + "from Conta where nome = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -104,7 +103,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     protected void preencheFiltros(Conta filtro) {
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
         if(filtro.getEmail() != null) adicionarFiltro("email", " like ");
-        if(filtro.getTipoConta() > 0) adicionarFiltro("tipoConta", "=");
+        //if(filtro.getTipoConta() > 0) adicionarFiltro("tipoConta", "=");
         if(filtro.getSenha() != null) adicionarFiltro("senha", " like ");
         if(filtro.getNome() != null) adicionarFiltro("nome", " like ");
     
@@ -116,7 +115,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
             int cont = 1;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getEmail() != null ){ sql.setString(cont, filtro.getEmail()); cont++; }
-            if(filtro.getTipoConta() > 0 ){ sql.setInt(cont, filtro.getTipoConta()); cont++; }
+           // if(filtro.getTipoConta() > 0 ){ sql.setInt(cont, filtro.getTipoConta()); cont++; }
             if(filtro.getSenha() != null ){ sql.setString(cont, filtro.getSenha()); cont++; }
             if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()); cont++; }
             

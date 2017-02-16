@@ -40,7 +40,7 @@ public class todeferiasApresentacao {
        SetAdministrador();
     }
     public static void SetConta(){
-         Conta c = new Conta(0,"fagnervieira15@gmail.com",1,"123","fagner");
+         Conta c = new Conta(0,"fagnervieira15@gmail.com","123","fagner");
         ContaRepositorio bd_conta = new ContaDAO();
         bd_conta.Salvar(c);
     }
