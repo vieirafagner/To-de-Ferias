@@ -145,6 +145,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaCadastroConta cadastro = new TelaCadastroConta();
         
         cadastro.setVisible(true);
+        this.dispose();
          
     }//GEN-LAST:event_btnCadastroActionPerformed
 

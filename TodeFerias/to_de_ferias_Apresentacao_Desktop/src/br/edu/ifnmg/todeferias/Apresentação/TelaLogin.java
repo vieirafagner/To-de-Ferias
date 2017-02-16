@@ -71,6 +71,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
         btnSair.setForeground(new java.awt.Color(0, 102, 102));
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,6 +141,12 @@ public class TelaLogin extends javax.swing.JFrame {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        new TelaPrincipal().setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
