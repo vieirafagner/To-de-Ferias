@@ -199,7 +199,7 @@ public class TelaCadastroConta extends javax.swing.JFrame {
         if(!email.equals(""))
             entidade.setEmail(email);
         
-        String senha = txtSenha.getText().trim();
+        String senha = new String (txtSenha.getPassword());
         if(!senha.equals(""))
             entidade.setSenha(senha);
         

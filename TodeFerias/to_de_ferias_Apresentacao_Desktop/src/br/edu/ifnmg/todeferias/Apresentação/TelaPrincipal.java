@@ -54,6 +54,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Já sou cadastrado");
 
         jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 51));
@@ -142,6 +147,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadastro.setVisible(true);
          
     }//GEN-LAST:event_btnCadastroActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new TelaLogin().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

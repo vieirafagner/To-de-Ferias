@@ -7,7 +7,9 @@ package br.edu.ifnmg.todeferias.Persistencia;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Entidade;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +21,6 @@ import java.util.logging.Logger;
  * @author fagner
  */
 public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
-
     
     public ContaDAO() {
         setConsultaAbrir("select id,email,senha,nome from Conta where id = ?");
@@ -31,6 +32,33 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         setConsultaBusca("select id,email,senha,nome from Conta ");
         setConsultaUltimoId("select max(id) from Conta where email = ? and senha = ? and nome = ?");
     }
+    
+    /**
+     *
+     * @param email
+     * @param senha
+     * @return
+     */
+     public boolean checkLogin(String email, String senha) throws SQLException{
+         PreparedStatement stat = null;
+         ResultSet rs = null;
+         boolean check = false;
+         try{
+             stat=conn.prepareStatement("SELECT * FROM Conta WHERE email = ? and senha = ?");
+             stat.setString(1, email);
+             stat.setString(2, senha);
+              rs = stat.executeQuery();
+              
+              if(rs.next()){
+                  check=true;
+              }
+         }catch (SQLException ex) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+         return check;
+        
+         
+     }
     
     @Override
     protected Conta preencheObjeto(ResultSet resultado) {
