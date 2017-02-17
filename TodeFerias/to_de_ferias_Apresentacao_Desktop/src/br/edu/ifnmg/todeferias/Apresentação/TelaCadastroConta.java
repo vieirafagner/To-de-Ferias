@@ -183,7 +183,7 @@ public class TelaCadastroConta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-       this.dispose();
+       new TelaPrincipal().setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void preencheCampos(){

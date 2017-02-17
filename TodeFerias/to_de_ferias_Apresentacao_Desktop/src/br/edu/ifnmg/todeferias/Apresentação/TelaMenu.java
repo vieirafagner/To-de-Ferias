@@ -27,6 +27,9 @@ public class TelaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jPopupMenu3 = new javax.swing.JPopupMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ItmListarUsuarios = new javax.swing.JMenuItem();
@@ -34,7 +37,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Arquivo");
+        jMenu1.setText("Gerenciar");
 
         ItmListarUsuarios.setText("Listar Usuários");
         ItmListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -46,7 +49,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Relatórios");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -66,10 +69,10 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ItmListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItmListarUsuariosActionPerformed
-         TelaContaListagem lista = new TelaContaListagem();
-         this.add(lista);
-         this.setVisible(true);
-        this.dispose();
+        TelaContaListagem lista = new TelaContaListagem();
+        this.add(lista);
+        this.setVisible(true);
+
     }//GEN-LAST:event_ItmListarUsuariosActionPerformed
 
     /**
@@ -112,5 +115,8 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu jPopupMenu3;
     // End of variables declaration//GEN-END:variables
 }

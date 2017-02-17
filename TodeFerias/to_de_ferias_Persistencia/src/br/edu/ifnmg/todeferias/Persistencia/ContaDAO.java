@@ -129,10 +129,10 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     @Override
     protected void preencheFiltros(Conta filtro) {
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
-        if(filtro.getEmail() != null) adicionarFiltro("email", " like ");
+      //  if(filtro.getEmail() != null) adicionarFiltro("email", "=");
         //if(filtro.getTipoConta() > 0) adicionarFiltro("tipoConta", "=");
-        if(filtro.getSenha() != null) adicionarFiltro("senha", " like ");
-        if(filtro.getNome() != null) adicionarFiltro("nome", "like");
+        //if(filtro.getSenha() != null) adicionarFiltro("senha", "=");
+        if(filtro.getNome() != null) adicionarFiltro("nome", "=");
     
     }
 
@@ -144,8 +144,8 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
             if(filtro.getEmail() != null ){ sql.setString(cont, filtro.getEmail()); cont++; }
            // if(filtro.getTipoConta() > 0 ){ sql.setInt(cont, filtro.getTipoConta()); cont++; }
             if(filtro.getSenha() != null ){ sql.setString(cont, filtro.getSenha()); cont++; }
-            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()); cont++; }
-            
+            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
+           
         
         } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);

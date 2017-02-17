@@ -29,27 +29,25 @@ public class TelaContaListagem extends javax.swing.JInternalFrame {
         
         List<Conta> busca = dao.Buscar(null);
         
-        preencheTabela(busca);
+      //  preencheTabela(busca);
     }
     private void preencheTabela(List<Conta> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
         modelo.addColumn("Nome");
-        modelo.addColumn("Email");
         
         for(Conta c : lista){
             Vector linha = new Vector();
             linha.add(c.getId());
             linha.add(c.getNome());
-            linha.add(c.getEmail());
             modelo.addRow(linha);
         }
         
         tblBusca.setModel(modelo);
     }
     
-    public void buscar(String nome, String email){
-        Conta filtro = new Conta(0, nome, email, null);
+    public void buscar(String nome){
+        Conta filtro = new Conta(0, null, null, nome);
         
         List<Conta> busca = dao.Buscar(filtro);
         
@@ -83,7 +81,7 @@ public class TelaContaListagem extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Email"
+                "Id", "Nome"
             }
         ));
         jScrollPane1.setViewportView(tblBusca);
@@ -118,7 +116,7 @@ public class TelaContaListagem extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
-        // TODO add your handling code here:
+          buscar( txtBusca.getText() );
     }//GEN-LAST:event_btnBuscaActionPerformed
 
 
