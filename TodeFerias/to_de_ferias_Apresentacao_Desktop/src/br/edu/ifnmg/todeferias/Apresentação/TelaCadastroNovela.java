@@ -56,6 +56,12 @@ public class TelaCadastroNovela extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Diretor");
 
         txtDiretor.addActionListener(new java.awt.event.ActionListener() {
@@ -258,6 +264,10 @@ public class TelaCadastroNovela extends javax.swing.JFrame {
     private void txtQtdCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtdCapActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQtdCapActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     
     /**

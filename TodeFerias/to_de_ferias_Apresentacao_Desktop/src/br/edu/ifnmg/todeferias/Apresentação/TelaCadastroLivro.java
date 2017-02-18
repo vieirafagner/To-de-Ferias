@@ -22,6 +22,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
      */
     public TelaCadastroLivro() {
         initComponents();
+        dao = GerenciadorReferencias.getLivro();
     }
 
     /**
