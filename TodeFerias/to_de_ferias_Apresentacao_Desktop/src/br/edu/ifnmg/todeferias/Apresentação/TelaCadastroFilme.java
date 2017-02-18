@@ -66,6 +66,12 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Nome");
 
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("Diretor");
 
@@ -77,6 +83,12 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("Duração");
+
+        txtDuracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDuracaoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setText("Classificação");
@@ -127,6 +139,12 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel8.setText("Sinopse");
+
+        txtSinopse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSinopseActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -305,6 +323,18 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
             entidade.setClassificacao(classificacao4);
     }//GEN-LAST:event_btnClassificacao4ActionPerformed
 
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtDuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDuracaoActionPerformed
+
+    private void txtSinopseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSinopseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSinopseActionPerformed
+
     public void recuperaCampos() throws ErroValidacao{
         String nome = txtNome.getText().trim();
         if(!nome.equals(""))
@@ -317,6 +347,7 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         Integer duracao = Integer.parseInt(txtDuracao.getText());
         if(!duracao.equals(""))
             entidade.setDuracao(duracao);
+        
         String genero = txtGenero.getText().trim();
         if(!genero.equals(""))
             entidade.setGenero(genero);
