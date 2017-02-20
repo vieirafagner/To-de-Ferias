@@ -5,25 +5,29 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
-import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
-import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Anime;
+import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 
 /**
  *
- * @author cleiton rodrigues
+ * @author fagner
  */
-public class TelaCadastroDocumentario extends javax.swing.JFrame {
-       Documentario entidade = new Documentario();
-       DocumentarioRepositorio dao; 
+public class TelaCadastroAnime extends javax.swing.JFrame {
+
+     Anime entidade = new Anime();
+    AnimeRepositorio dao;
+    
+    
     /**
-     * Creates new form TelaCadastroDocumentarios
+     * Creates new form TelaCadastroAnime
      */
-    public TelaCadastroDocumentario() {
+    public TelaCadastroAnime() {
         initComponents();
-        dao = GerenciadorReferencias.getDocumentario();
+         dao = GerenciadorReferencias.getAnime();
     }
 
     /**
@@ -35,56 +39,55 @@ public class TelaCadastroDocumentario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtAutor = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtData = new javax.swing.JTextField();
+        txtDuracao_ep = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtDuracao = new javax.swing.JTextField();
-        btnClassificacao1 = new javax.swing.JRadioButton();
+        txtQtd_temp = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        txtSinopse = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        btnClassificacao1 = new javax.swing.JRadioButton();
         btnClassificacao2 = new javax.swing.JRadioButton();
         btnClassificacao3 = new javax.swing.JRadioButton();
         btnClassificacao4 = new javax.swing.JRadioButton();
         btnClassificacao5 = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
-        txtSinopse = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel9.setText("Cadastro de Documentários");
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setText("Cadastro de Animes");
 
-        jLabel1.setText("Nome");
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setText("Nome");
 
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setText("Duração do Episódio");
+
+        txtDuracao_ep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
+                txtDuracao_epActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Autor");
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setText("Quantidade de Temporadas");
 
-        txtAutor.addActionListener(new java.awt.event.ActionListener() {
+        txtQtd_temp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAutorActionPerformed(evt);
+                txtQtd_tempActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Data");
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setText("Sinopse");
 
-        jLabel4.setText("Duração");
-
-        txtDuracao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDuracaoActionPerformed(evt);
-            }
-        });
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setText("Classificação");
 
         btnClassificacao1.setText("1");
         btnClassificacao1.addActionListener(new java.awt.event.ActionListener() {
@@ -92,8 +95,6 @@ public class TelaCadastroDocumentario extends javax.swing.JFrame {
                 btnClassificacao1ActionPerformed(evt);
             }
         });
-
-        jLabel5.setText("Classificação");
 
         btnClassificacao2.setText("2");
         btnClassificacao2.addActionListener(new java.awt.event.ActionListener() {
@@ -123,8 +124,6 @@ public class TelaCadastroDocumentario extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Sinopse");
-
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,107 +143,113 @@ public class TelaCadastroDocumentario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDuracao_ep, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtQtd_temp, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(btnClassificacao1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnClassificacao2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(2, 2, 2)
                         .addComponent(btnClassificacao3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnClassificacao4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnClassificacao5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(4, 4, 4)
                                 .addComponent(btnSalvar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancelar))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAutor)
+                                .addComponent(btnCancelar))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtData)
-                                        .addComponent(txtDuracao, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(txtSinopse, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(40, 40, 40))
+                                .addComponent(btnClassificacao4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnClassificacao5)))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDuracao_ep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClassificacao1)
+                    .addComponent(jLabel4)
+                    .addComponent(txtQtd_temp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
+                    .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(btnClassificacao1)
                     .addComponent(btnClassificacao2)
                     .addComponent(btnClassificacao3)
                     .addComponent(btnClassificacao4)
                     .addComponent(btnClassificacao5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSalvar))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+    private void txtDuracao_epActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracao_epActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
+    }//GEN-LAST:event_txtDuracao_epActionPerformed
 
-    private void txtAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutorActionPerformed
+    private void txtQtd_tempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtd_tempActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAutorActionPerformed
+    }//GEN-LAST:event_txtQtd_tempActionPerformed
 
-    private void btnClassificacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao1ActionPerformed
-        Integer classificacao = Integer.parseInt(btnClassificacao1.getText());
-        if(!classificacao.equals(""))
-            entidade.setClassificacao(classificacao);
-    }//GEN-LAST:event_btnClassificacao1ActionPerformed
+    private void btnClassificacao4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao4ActionPerformed
+       Integer classificacao4 = Integer.parseInt(btnClassificacao4.getText());
+        if(!classificacao4.equals(""))
+            entidade.setClassificacao(classificacao4);
+    }//GEN-LAST:event_btnClassificacao4ActionPerformed
+
+    private void btnClassificacao5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao5ActionPerformed
+         Integer classificacao5 = Integer.parseInt(btnClassificacao5.getText());
+        if(!classificacao5.equals(""))
+            entidade.setClassificacao(classificacao5);
+    }//GEN-LAST:event_btnClassificacao5ActionPerformed
 
     private void btnClassificacao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao2ActionPerformed
         Integer classificacao2 = Integer.parseInt(btnClassificacao2.getText());
@@ -258,26 +263,20 @@ public class TelaCadastroDocumentario extends javax.swing.JFrame {
             entidade.setClassificacao(classificacao3);
     }//GEN-LAST:event_btnClassificacao3ActionPerformed
 
-    private void btnClassificacao4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao4ActionPerformed
-        Integer classificacao4 = Integer.parseInt(btnClassificacao4.getText());
-        if(!classificacao4.equals(""))
-            entidade.setClassificacao(classificacao4);
-    }//GEN-LAST:event_btnClassificacao4ActionPerformed
-
-    private void btnClassificacao5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao5ActionPerformed
-        Integer classificacao5 = Integer.parseInt(btnClassificacao5.getText());
-        if(!classificacao5.equals(""))
-            entidade.setClassificacao(classificacao5);
-    }//GEN-LAST:event_btnClassificacao5ActionPerformed
-
-    private void txtDuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDuracaoActionPerformed
+    private void btnClassificacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao1ActionPerformed
+        Integer classificacao = Integer.parseInt(btnClassificacao1.getText());
+        if(!classificacao.equals(""))
+            entidade.setClassificacao(classificacao);
+    }//GEN-LAST:event_btnClassificacao1ActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+         if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
             
-            this.recuperaCampos();
+             try {
+                 this.recuperaCampos();
+             } catch (ErroValidacao ex) {
+                 Logger.getLogger(TelaCadastroAnime.class.getName()).log(Level.SEVERE, null, ex);
+             }
             
             if(dao.Salvar(entidade))
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
@@ -290,9 +289,27 @@ public class TelaCadastroDocumentario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();
+       this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+     public void recuperaCampos() throws ErroValidacao{
+        String nome = txtNome.getText().trim();
+        if(!nome.equals(""))
+            entidade.setNome(nome);
+      
+        Integer duracao_ep = Integer.parseInt(txtDuracao_ep.getText());
+        if(!duracao_ep.equals(""))
+            entidade.setDuracao_ep(duracao_ep);
+        
+        Integer qtd_temp = Integer.parseInt(txtQtd_temp.getText());
+        if(!qtd_temp.equals(""))
+            entidade.setQtd_temp(qtd_temp);
+        
+        String sinopse = txtSinopse.getText().trim();
+        if(!sinopse.equals(""))
+            entidade.setSinopse(sinopse);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -310,21 +327,20 @@ public class TelaCadastroDocumentario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroDocumentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroAnime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroDocumentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroAnime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroDocumentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroAnime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroDocumentario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroAnime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroDocumentario().setVisible(true);
+                new TelaCadastroAnime().setVisible(true);
             }
         });
     }
@@ -343,34 +359,9 @@ public class TelaCadastroDocumentario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtAutor;
-    private javax.swing.JTextField txtData;
-    private javax.swing.JTextField txtDuracao;
+    private javax.swing.JTextField txtDuracao_ep;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtQtd_temp;
     private javax.swing.JTextField txtSinopse;
     // End of variables declaration//GEN-END:variables
-
-    private void recuperaCampos() {
-        String sinopse = txtSinopse.getText().trim();
-        if(!sinopse.equals(""))
-            entidade.setSinopse(sinopse);
-        
-        Integer duracao = Integer.parseInt(txtDuracao.getText());
-        if(!duracao.equals(""))
-            entidade.setDuracao(duracao);
-        
-        String data = txtData.getText().trim();
-        if(!data.equals(""))
-            entidade.setData(data);
-        
-        String autor = txtAutor.getText().trim();
-        if(!autor.equals(""))
-            entidade.setAutor(autor);
-        
-        String nome = txtNome.getText().trim();
-        if(!nome.equals(""))
-            entidade.setNome(nome);
-        
-    }
 }
