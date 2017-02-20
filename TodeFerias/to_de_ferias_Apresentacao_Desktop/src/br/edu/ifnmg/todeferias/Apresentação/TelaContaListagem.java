@@ -22,7 +22,7 @@ public class TelaContaListagem extends javax.swing.JInternalFrame {
      */
     ContaRepositorio dao = GerenciadorReferencias.getConta();
     
-    TelaCadastroConta cadastrar;
+   
     
     public TelaContaListagem() {
         initComponents();

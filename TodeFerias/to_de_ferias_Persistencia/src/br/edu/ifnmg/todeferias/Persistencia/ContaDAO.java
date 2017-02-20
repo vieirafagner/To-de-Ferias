@@ -128,6 +128,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     
     @Override
     protected void preencheFiltros(Conta filtro) {
+        if(filtro==null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
       //  if(filtro.getEmail() != null) adicionarFiltro("email", "=");
         //if(filtro.getTipoConta() > 0) adicionarFiltro("tipoConta", "=");
@@ -140,6 +141,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     protected void preencheParametros(PreparedStatement sql, Conta filtro) {
         try {
             int cont = 1;
+            if(filtro == null) return;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getEmail() != null ){ sql.setString(cont, filtro.getEmail()); cont++; }
            // if(filtro.getTipoConta() > 0 ){ sql.setInt(cont, filtro.getTipoConta()); cont++; }
