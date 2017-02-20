@@ -39,9 +39,10 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        mnuListFilme = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        mnuListNovela = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
@@ -68,7 +69,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenu4.setText("Midias");
 
-        jMenu5.setText("Filme");
+        jMenu5.setText("Filmes");
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu5ActionPerformed(evt);
@@ -83,15 +84,29 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenu5.add(menuCadastrar);
 
-        jMenuItem8.setText("Listar");
-        jMenu5.add(jMenuItem8);
+        mnuListFilme.setText("Listar");
+        mnuListFilme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListFilmeActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mnuListFilme);
 
         jMenuItem9.setText("Excluir");
         jMenu5.add(jMenuItem9);
 
         jMenu4.add(jMenu5);
 
-        jMenu6.setText("jMenu6");
+        jMenu6.setText("Novelas");
+
+        mnuListNovela.setText("Listar");
+        mnuListNovela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListNovelaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(mnuListNovela);
+
         jMenu4.add(jMenu6);
 
         jMenu7.setText("jMenu7");
@@ -144,6 +159,14 @@ public class TelaMenu extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jMenu5ActionPerformed
 
+    private void mnuListFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListFilmeActionPerformed
+        new TelaListagemFilmes().setVisible(true);
+    }//GEN-LAST:event_mnuListFilmeActionPerformed
+
+    private void mnuListNovelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListNovelaActionPerformed
+       new TelaListagemNovelas().setVisible(true);
+    }//GEN-LAST:event_mnuListNovelaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -190,12 +213,13 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JPopupMenu jPopupMenu4;
     private javax.swing.JMenuItem menuCadastrar;
+    private javax.swing.JMenuItem mnuListFilme;
+    private javax.swing.JMenuItem mnuListNovela;
     // End of variables declaration//GEN-END:variables
 }

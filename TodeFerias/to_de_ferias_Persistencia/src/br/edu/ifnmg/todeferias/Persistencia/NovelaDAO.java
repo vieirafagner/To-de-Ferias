@@ -104,6 +104,7 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
       // id; qdtCap;classificacao;comentario;diretor;nome;     
     @Override
     protected void preencheFiltros(Novela filtro) {
+        if(filtro == null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");        
         if(filtro.getDiretor()!= null) adicionarFiltro("diretor", " like ");
         if(filtro.getNome()!= null) adicionarFiltro("nome", " like ");
@@ -114,12 +115,13 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
     protected void preencheParametros(PreparedStatement sql, Novela filtro) {
         try {
             int cont = 1;
+            if(filtro == null) return;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getQtdCap() > 0){ sql.setInt(cont, filtro.getQtdCap()); cont++; }
             if(filtro.getClassificacao()> 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
          
             if(filtro.getDiretor()!= null ){ sql.setString(cont, filtro.getDiretor()); cont++; }
-            if(filtro.getNome()!= null ){ sql.setString(cont, filtro.getNome()); cont++; }
+            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
             
             
         

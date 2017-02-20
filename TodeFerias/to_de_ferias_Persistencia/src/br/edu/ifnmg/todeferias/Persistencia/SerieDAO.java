@@ -104,6 +104,7 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
     
     @Override
     protected void preencheFiltros(Serie filtro) {
+        if(filtro == null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
         if(filtro.getDuracao_ep() > 0) adicionarFiltro("duracao_ep", "=");
         if(filtro.getGenero() != null) adicionarFiltro("genero", " like ");
@@ -120,7 +121,7 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getDuracao_ep() > 0 ){ sql.setInt(cont, filtro.getDuracao_ep()); cont++; }
             if(filtro.getGenero()!= null ){ sql.setString(cont, filtro.getGenero()); cont++; }
-            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()); cont++; }
+            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
             if(filtro.getClassificacao() > 0){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
             if(filtro.getSinopse()!= null ){ sql.setString(cont, filtro.getSinopse()); cont++; }
             if(filtro.getQtd_temp() > 0 ){ sql.setInt(cont, filtro.getQtd_temp()); cont++; }
