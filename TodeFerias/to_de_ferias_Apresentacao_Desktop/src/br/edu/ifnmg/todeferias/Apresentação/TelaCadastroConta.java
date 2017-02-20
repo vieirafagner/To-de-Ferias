@@ -162,7 +162,7 @@ public class TelaCadastroConta extends javax.swing.JFrame {
         try {
               if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
             
-                this.recuperaCampos();
+                preencheObjeto();
                 
                 if(dao.Salvar(entidade))
                     JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
@@ -180,7 +180,7 @@ public class TelaCadastroConta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-       new TelaPrincipal().setVisible(true);
+       new TelaMenu().setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /*private void preencheCampos(){

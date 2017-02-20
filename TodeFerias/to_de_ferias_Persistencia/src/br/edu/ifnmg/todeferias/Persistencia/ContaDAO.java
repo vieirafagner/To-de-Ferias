@@ -130,10 +130,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     protected void preencheFiltros(Conta filtro) {
         if(filtro==null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
-      //  if(filtro.getEmail() != null) adicionarFiltro("email", "=");
-        //if(filtro.getTipoConta() > 0) adicionarFiltro("tipoConta", "=");
-        //if(filtro.getSenha() != null) adicionarFiltro("senha", "=");
-        if(filtro.getNome() != null) adicionarFiltro("nome", "=");
+        if(filtro.getNome() != null) adicionarFiltro("nome", "like");
     
     }
 
