@@ -297,8 +297,12 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
         } catch (ErroValidacao ex) {
             System.out.println(ex);
         }
+        
+        //entidade.setNome("");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    
+    
     private void btnClassificacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao1ActionPerformed
         Integer classificacao = Integer.parseInt(btnClassificacao1.getText());
         if(!classificacao.equals(""))

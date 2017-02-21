@@ -7,9 +7,7 @@ package br.edu.ifnmg.todeferias.Persistencia;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
-import br.edu.ifnmg.todeferias.Aplicacao.Entidade;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,23 +37,29 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
      * @param senha
      * @return
      */
-     public boolean checkLogin(String email, String senha) throws SQLException{
+     public Conta checkLogin(String email, String senha) throws SQLException, ErroValidacao{
          PreparedStatement stat = null;
          ResultSet rs = null;
-         boolean check = false;
+         Conta usuario = null;
          try{
-             stat=conn.prepareStatement("SELECT * FROM Conta WHERE email = ? and senha = ?");
+             stat=conn.prepareStatement("SELECT * FROM Conta WHERE email = ? and senha = ? and status = 1");
              stat.setString(1, email);
              stat.setString(2, senha);
               rs = stat.executeQuery();
               
+              //rs.i
               if(rs.next()){
-                  check=true;
+                  usuario = new Conta();
+                  usuario.setId(rs.getInt(1));
+                  usuario.setEmail(rs.getString(2));
+                  usuario.setSenha(rs.getString(3));
+                  usuario.setNome(rs.getString(4));
+                  usuario.setStatus(rs.getBoolean(5));
               }
          }catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
         } 
-         return check;
+         return usuario;
         
          
      }

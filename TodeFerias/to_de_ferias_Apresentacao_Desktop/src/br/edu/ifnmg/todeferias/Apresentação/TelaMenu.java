@@ -5,17 +5,35 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author fagner
  */
 public class TelaMenu extends javax.swing.JFrame {
 
+    public Conta usuario;
     /**
      * Creates new form TelaMenu
      */
-    public TelaMenu() {
+    public TelaMenu(Conta usuario) {
         initComponents();
+        this.usuario = usuario;
+        
+        System.out.println(usuario);
+        
+        
+        if(this.usuario.getId() != 1){
+            btnPerfil.setVisible(false);
+        }
+        
+        
+    }
+
+    private TelaMenu() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -32,7 +50,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jPopupMenu3 = new javax.swing.JPopupMenu();
         jPopupMenu4 = new javax.swing.JPopupMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jButton1 = new javax.swing.JButton();
+        btnPerfil = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ItmListarUsuarios = new javax.swing.JMenuItem();
@@ -50,10 +68,10 @@ public class TelaMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Perfil ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPerfil.setText("Perfil ");
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPerfilActionPerformed(evt);
             }
         });
 
@@ -127,23 +145,24 @@ public class TelaMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(314, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnPerfil)
                 .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(btnPerfil)
                 .addContainerGap(245, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void ItmListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItmListarUsuariosActionPerformed
         new TelaListagemContas().setVisible(true);
@@ -204,7 +223,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ItmListarUsuarios;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnPerfil;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;

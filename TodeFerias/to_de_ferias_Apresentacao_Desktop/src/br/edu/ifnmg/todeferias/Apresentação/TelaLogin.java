@@ -5,6 +5,8 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -42,6 +44,7 @@ public class TelaLogin extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 102));
@@ -122,6 +125,7 @@ public class TelaLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
@@ -131,15 +135,22 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         ContaDAO dao = new ContaDAO();
         try {
-            if(dao.checkLogin(txtEmail.getText(),txtSenha.getText())){
-                new TelaMenu().setVisible(true);
+            Conta tmp = dao.checkLogin(txtEmail.getText(),txtSenha.getText());
+            if(tmp !=null){
+                new TelaMenu(tmp).setVisible(true);
+               // new TelaMenu(entidadeAdministrador);
+               this.dispose();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Email ou senha incorretos");
             }
         } catch (SQLException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ErroValidacao ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

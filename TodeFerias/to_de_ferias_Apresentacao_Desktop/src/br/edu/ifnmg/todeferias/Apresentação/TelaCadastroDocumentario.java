@@ -7,7 +7,6 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
-import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import javax.swing.JOptionPane;
 
 

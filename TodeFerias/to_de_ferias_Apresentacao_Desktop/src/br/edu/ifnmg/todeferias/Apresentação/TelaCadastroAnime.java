@@ -39,6 +39,7 @@ public class TelaCadastroAnime extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroupClassificacao = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -89,6 +90,7 @@ public class TelaCadastroAnime extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setText("Classificação");
 
+        btnGroupClassificacao.add(btnClassificacao1);
         btnClassificacao1.setText("1");
         btnClassificacao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +98,7 @@ public class TelaCadastroAnime extends javax.swing.JFrame {
             }
         });
 
+        btnGroupClassificacao.add(btnClassificacao2);
         btnClassificacao2.setText("2");
         btnClassificacao2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +106,7 @@ public class TelaCadastroAnime extends javax.swing.JFrame {
             }
         });
 
+        btnGroupClassificacao.add(btnClassificacao3);
         btnClassificacao3.setText("3");
         btnClassificacao3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +114,7 @@ public class TelaCadastroAnime extends javax.swing.JFrame {
             }
         });
 
+        btnGroupClassificacao.add(btnClassificacao4);
         btnClassificacao4.setText("4");
         btnClassificacao4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +122,7 @@ public class TelaCadastroAnime extends javax.swing.JFrame {
             }
         });
 
+        btnGroupClassificacao.add(btnClassificacao5);
         btnClassificacao5.setText("5");
         btnClassificacao5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,13 +270,21 @@ public class TelaCadastroAnime extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClassificacao3ActionPerformed
 
     private void btnClassificacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao1ActionPerformed
+        
+        
         Integer classificacao = Integer.parseInt(btnClassificacao1.getText());
         if(!classificacao.equals(""))
             entidade.setClassificacao(classificacao);
     }//GEN-LAST:event_btnClassificacao1ActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-         if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+       
+       // JOptionPane.showMessageDialog(this, btnClassificacao1.getLabel());
+       
+       // JOptionPane.showMessageDialog(this, btnGroupClassificacao.getSelection().;
+                
+                
+        if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
             
              try {
                  this.recuperaCampos();
@@ -352,6 +366,7 @@ public class TelaCadastroAnime extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnClassificacao3;
     private javax.swing.JRadioButton btnClassificacao4;
     private javax.swing.JRadioButton btnClassificacao5;
+    private javax.swing.ButtonGroup btnGroupClassificacao;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
