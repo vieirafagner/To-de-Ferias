@@ -6,6 +6,7 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +16,8 @@ import javax.swing.JOptionPane;
 public class TelaMenu extends javax.swing.JFrame {
 
     public Conta usuario;
+    TelaCadastroConta editar;
+    ContaRepositorio dao = GerenciadorReferencias.getConta();
     /**
      * Creates new form TelaMenu
      */
@@ -25,8 +28,8 @@ public class TelaMenu extends javax.swing.JFrame {
         System.out.println(usuario);
         
         
-        if(this.usuario.getId() != 1){
-            btnPerfil.setVisible(false);
+        if(this.usuario.getStatus() != 1){
+            btnPerfil.setVisible(true);
         }
         
         
@@ -161,7 +164,8 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        // TODO add your handling code here:
+       
+        editarCliente(usuario.getId());
     }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void ItmListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItmListarUsuariosActionPerformed
@@ -186,6 +190,21 @@ public class TelaMenu extends javax.swing.JFrame {
        new TelaListagemNovelas().setVisible(true);
     }//GEN-LAST:event_mnuListNovelaActionPerformed
 
+     public void editarCliente(int id){
+        Conta entidade;
+     
+            entidade = dao.Abrir(id);
+        
+        editar = new TelaCadastroConta();
+        
+        editar.setEntidade(entidade);
+        
+       // editar.setListagem(this);
+        
+        this.add(editar);
+        editar.setVisible(true);
+        this.setVisible(false);
+    }
     /**
      * @param args the command line arguments
      */

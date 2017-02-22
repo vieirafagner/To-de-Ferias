@@ -138,6 +138,7 @@ public class TelaLogin extends javax.swing.JFrame {
             Conta tmp = dao.checkLogin(txtEmail.getText(),txtSenha.getText());
             if(tmp !=null){
                 new TelaMenu(tmp).setVisible(true);
+                
                // new TelaMenu(entidadeAdministrador);
                this.dispose();
             }

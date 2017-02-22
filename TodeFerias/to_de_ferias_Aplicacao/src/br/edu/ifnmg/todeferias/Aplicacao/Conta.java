@@ -17,37 +17,40 @@ public class Conta implements Entidade {
 
     private int id;
     private String email;
+    private String senha;
+    private String nome;
+    private int status;
 
-    public Boolean getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
     //private int tipoConta;
-    private String senha;
-    private String nome;
+   
     private LinkedList<Anime> animes;
     private LinkedList<Filme> filmes;
     private LinkedList<Serie> series;
     private LinkedList<Livro> livros;
     private LinkedList<Novela> novelas;
     private LinkedList<Documentario> documentarios;
-    private Boolean status;
+    
 
     public Conta() {
 
         this.id = 0;
-        this.status = true;
+        this.status = 2;
     }
 
-    public Conta(int id, String email,String senha, String nome) {
+    public Conta(int id, String email,String senha, String nome,int status) {
         this.id = id;
         this.email = email;
        // this.tipoConta = tipoConta;
         this.senha = senha;
         this.nome = nome;
+        this.status=status;
     }
     
     public void addAnime(Anime anime){

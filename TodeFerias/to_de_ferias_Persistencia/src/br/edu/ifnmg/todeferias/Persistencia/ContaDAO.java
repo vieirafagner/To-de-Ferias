@@ -21,14 +21,14 @@ import java.util.logging.Logger;
 public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     
     public ContaDAO() {
-        setConsultaAbrir("select id,email,senha,nome from Conta where id = ?");
+        setConsultaAbrir("select id,email,senha,nome,status from Conta where id = ?");
         setConsultaApagar("DELETE FROM Conta WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Conta(email,senha,nome) VALUES(?,?,?)");
+        setConsultaInserir("INSERT INTO Conta(email,senha,nome,status) VALUES(?,?,?,?)");
         setConsultaAlterar("UPDATE Conta SET nome = ?, "
                         + "senha = ?"
                         + "WHERE id = ?");
-        setConsultaBusca("select id,email,senha,nome from Conta ");
-        setConsultaUltimoId("select max(id) from Conta where email = ? and senha = ? and nome = ?");
+        setConsultaBusca("select id,email,senha,nome,status from Conta ");
+        setConsultaUltimoId("select max(id) from Conta where email = ? and senha = ? and nome = ? and status = ?");
     }
     
     /**
@@ -42,7 +42,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
          ResultSet rs = null;
          Conta usuario = null;
          try{
-             stat=conn.prepareStatement("SELECT * FROM Conta WHERE email = ? and senha = ? and status = 1");
+             stat=conn.prepareStatement("SELECT * FROM Conta WHERE email = ? and senha = ?");
              stat.setString(1, email);
              stat.setString(2, senha);
               rs = stat.executeQuery();
@@ -54,7 +54,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
                   usuario.setEmail(rs.getString(2));
                   usuario.setSenha(rs.getString(3));
                   usuario.setNome(rs.getString(4));
-                  usuario.setStatus(rs.getBoolean(5));
+                  usuario.setStatus(rs.getInt(5));
               }
          }catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -74,6 +74,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
                 tmp.setEmail(resultado.getString(2));
                 tmp.setSenha(resultado.getString(3));
                 tmp.setNome(resultado.getString(4));
+                tmp.setStatus(resultado.getInt(5));
                 
          } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -91,8 +92,10 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
             sql.setString(1, obj.getEmail());
             sql.setString(2, obj.getSenha());
             sql.setString(3, obj.getNome());
+             sql.setInt(4, obj.getStatus());
             
-            if(obj.getId() > 0) sql.setInt(4,obj.getId());
+            
+            if(obj.getId() > 0) sql.setInt(5,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,7 +112,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,email,senha,nome "
+            PreparedStatement sql = conn.prepareStatement("select id,email,senha,nome,status "
                     + "from Conta where nome = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -145,9 +148,9 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
             if(filtro == null) return;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getEmail() != null ){ sql.setString(cont, filtro.getEmail()); cont++; }
-           // if(filtro.getTipoConta() > 0 ){ sql.setInt(cont, filtro.getTipoConta()); cont++; }
             if(filtro.getSenha() != null ){ sql.setString(cont, filtro.getSenha()); cont++; }
             if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
+            if(filtro.getStatus()> 0 ){ sql.setInt(cont, filtro.getStatus()); cont++; }
            
         
         } catch (SQLException ex) {

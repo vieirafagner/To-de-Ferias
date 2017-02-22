@@ -5,11 +5,14 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+
 /**
  *
  * @author fagner
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+    Conta usuario = new Conta();
 
     /**
      * Creates new form TelaPrincipal
@@ -147,6 +150,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+        
         new TelaCadastroConta(usuario).setVisible(true);
          
     }//GEN-LAST:event_btnCadastroActionPerformed

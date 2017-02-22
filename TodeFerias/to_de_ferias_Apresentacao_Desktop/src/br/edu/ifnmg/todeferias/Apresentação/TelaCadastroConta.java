@@ -29,6 +29,10 @@ public class TelaCadastroConta extends javax.swing.JFrame {
         this.usuario = usuario;
     }
 
+    TelaCadastroConta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +52,8 @@ public class TelaCadastroConta extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        btn = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +89,10 @@ public class TelaCadastroConta extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setText("Cadastro de Contas");
 
+        btn.setText("Editar");
+
+        btnExcluir.setText("Excluir");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,8 +102,12 @@ public class TelaCadastroConta extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnSalvar)
+                            .addComponent(btnExcluir)
                             .addGap(18, 18, 18)
+                            .addComponent(btn)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnSalvar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnCancelar))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -133,7 +147,9 @@ public class TelaCadastroConta extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCancelar)
+                    .addComponent(btn)
+                    .addComponent(btnExcluir))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -183,13 +199,24 @@ public class TelaCadastroConta extends javax.swing.JFrame {
        new TelaMenu(usuario).setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    /*private void preencheCampos(){
-        lblCodigo.setText(  Integer.toString( entidade.getId() ) );
+    
+    public Conta getEntidade() {
+        return entidade;
+    }
+
+    public void setEntidade(Conta entidade) {
+        this.entidade = entidade;
+        preencheCampos();
+    }
+
+    private void preencheCampos(){
+        //lblCodigo.setText(  Integer.toString( entidade.getId() ) );
         txtNome.setText( entidade.getNome() );
         txtEmail.setText( entidade.getEmail());
-        txtSenha.setText(entidade.getSenha());
-       
-    }*/
+        txtSenha.setText( entidade.getSenha());
+        
+        
+    }
     
     public void recuperaCampos() throws ErroValidacao{
         String email = txtEmail.getText().trim();
@@ -203,6 +230,7 @@ public class TelaCadastroConta extends javax.swing.JFrame {
         String nome = txtEmail.getText().trim();
         if(!nome.equals(""))
             entidade.setNome(nome);
+           
     }
     
     private void preencheObjeto() throws ErroValidacao {
@@ -211,13 +239,12 @@ public class TelaCadastroConta extends javax.swing.JFrame {
         entidade.setSenha(txtSenha.getText());
         
     }
-    /**
-     * @param args the command line arguments
-     */
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
