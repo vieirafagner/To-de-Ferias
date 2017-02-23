@@ -236,7 +236,7 @@ public class TelaCadastroConta extends javax.swing.JFrame {
     private void preencheObjeto() throws ErroValidacao {
         entidade.setNome( txtNome.getText()  );
         entidade.setEmail( txtEmail.getText() );
-        entidade.setSenha(txtSenha.getText());
+        entidade.setSenha(txtSenha.getText() );
         
     }
   

@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class TelaMenu extends javax.swing.JFrame {
 
     public Conta usuario;
-    TelaCadastroConta editar;
+    TelaCadastrarConta editar;
     ContaRepositorio dao = GerenciadorReferencias.getConta();
     /**
      * Creates new form TelaMenu
@@ -193,7 +193,7 @@ public class TelaMenu extends javax.swing.JFrame {
      
         entidade = dao.Abrir(id);
         
-        new TelaCadastroConta(entidade).setVisible(true);
+        editar = new TelaCadastrarConta();
         
         editar.setEntidade(entidade);
         
@@ -201,7 +201,7 @@ public class TelaMenu extends javax.swing.JFrame {
         
         this.add(editar);
         editar.setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(true);
     }
     /**
      * @param args the command line arguments

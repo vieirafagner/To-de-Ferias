@@ -151,7 +151,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         
-        new TelaCadastroConta(usuario).setVisible(true);
+        TelaCadastrarConta tela = new TelaCadastrarConta();
+        this.add(tela);
+        tela.setVisible(true);
          
     }//GEN-LAST:event_btnCadastroActionPerformed
 

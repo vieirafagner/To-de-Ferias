@@ -25,7 +25,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         setConsultaApagar("DELETE FROM Conta WHERE id = ? ");
         setConsultaInserir("INSERT INTO Conta(email,senha,nome,status) VALUES(?,?,?,?)");
         setConsultaAlterar("UPDATE Conta SET nome = ?, "
-                        + "senha = ?"
+                        + "senha = ?, email=?"
                         + "WHERE id = ?");
         setConsultaBusca("select id,email,senha,nome,status from Conta ");
         setConsultaUltimoId("select max(id) from Conta where email = ? and senha = ? and nome = ? and status = ?");
@@ -89,13 +89,13 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     protected void preencheConsulta(PreparedStatement sql, Conta obj) {
         try {
             // Passa os parâmetros para a consulta SQL
-            sql.setString(1, obj.getEmail());
+            sql.setString(3, obj.getEmail());
             sql.setString(2, obj.getSenha());
-            sql.setString(3, obj.getNome());
-             sql.setInt(4, obj.getStatus());
+            sql.setString(1, obj.getNome());
+             //sql.setInt(4, obj.getStatus());
             
             
-            if(obj.getId() > 0) sql.setInt(5,obj.getId());
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
