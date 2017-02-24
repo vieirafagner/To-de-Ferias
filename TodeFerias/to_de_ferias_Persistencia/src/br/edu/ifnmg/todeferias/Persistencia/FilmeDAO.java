@@ -24,8 +24,8 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
         setConsultaAbrir("select id,diretor,duracao,nome,classificacao,genero,sinopse from Filme where id = ?");
         setConsultaApagar("DELETE FROM Filme WHERE id = ? ");
         setConsultaInserir("INSERT INTO Filme(diretor,duracao,nome,classificacao,genero,sinopse) VALUES(?,?,?,?,?,?)");
-        setConsultaAlterar("UPDATE Filme SET nome = ?, "
-                        + "sinopse = ?, genero = ? "
+        setConsultaAlterar("UPDATE Filme SET diretor = ?, duracao = ?, nome = ?, classificacao = ?, genero = ?,"
+                        + "sinopse = ?"
                         + "WHERE id = ?");
         setConsultaBusca("select id,diretor,duracao,nome,classificacao,genero,sinopse from Filme ");
         setConsultaUltimoId("select max(id) from Filme where diretor = ? and duracao = ? and nome = ? and classificacao = ? and genero = ? and sinopse = ?");

@@ -44,7 +44,6 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
         btnSalvar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
 
         jLabel1.setText("Nome");
@@ -57,13 +56,6 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
-            }
-        });
-
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
             }
         });
 
@@ -99,9 +91,7 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
                 .addComponent(btnExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar)
-                .addGap(63, 63, 63))
+                .addGap(130, 130, 130))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,10 +108,9 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnEditar)
                     .addComponent(btnExcluir))
                 .addGap(31, 31, 31))
         );
@@ -135,8 +124,10 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
             
                 preencheObjeto();
                 
-                if(dao.Salvar(entidade))
+                if(dao.Salvar(entidade)){
                     JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                this.dispose();
+                }
                 else
                     JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
             
@@ -148,10 +139,6 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarActionPerformed
-
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
        if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
 
@@ -159,6 +146,7 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Conta(0, "", "","", 0);
                 preencheCampos();
+                this.dispose();
             }
             else
                 JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
@@ -184,29 +172,14 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         
         
     }
-    
-    public void recuperaCampos() throws ErroValidacao{
-        String email = txtEmail.getText().trim();
-        if(!email.equals(""))
-            entidade.setEmail(email);
-        
-        String senha = new String (txtSenha.getPassword());
-        if(!senha.equals(""))
-            entidade.setSenha(senha);
-        
-        String nome = txtEmail.getText().trim();
-        if(!nome.equals(""))
-            entidade.setNome(nome);
-           
-    }
     private void preencheObjeto() throws ErroValidacao {
-        entidade.setNome( txtNome.getText()  );
+        entidade.setNome( txtNome.getText());
         entidade.setEmail( txtEmail.getText() );
         entidade.setSenha(txtSenha.getText());
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;

@@ -138,7 +138,9 @@ public class TelaListagemContas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-      new TelaCadastroConta(usuario).setVisible(true);
+      TelaCadastrarConta tela = new TelaCadastrarConta();
+      this.add(tela);
+      tela.setVisible(true);
     }//GEN-LAST:event_btnNovoActionPerformed
 
 

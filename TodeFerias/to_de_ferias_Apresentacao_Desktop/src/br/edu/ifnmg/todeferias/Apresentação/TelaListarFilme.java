@@ -20,7 +20,7 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
 
     FilmeRepositorio dao = GerenciadorReferencias.getFilme();
     TelaCadastroFilme editar;
-    Filme filme;
+ 
     
     public TelaListarFilme() {
        initComponents();
@@ -148,7 +148,7 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
         
-        editarCliente(filme.getId());
+        editarCliente(id);
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     public void editarCliente(int id){
@@ -160,7 +160,7 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
         
         editar.setEntidade(entidade);
         
-       // editar.setListagem(this);
+        editar.setListagem(this);
         
         this.getParent().add(editar);
         editar.setVisible(true);

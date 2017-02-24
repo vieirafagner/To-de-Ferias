@@ -20,7 +20,7 @@ public class TelaCadastroFilme extends javax.swing.JInternalFrame {
 
     Filme entidade = new Filme();
     FilmeRepositorio dao;
-   // Filme filme = new Filme();
+    TelaListarFilme listagem;
     
     public TelaCadastroFilme() {
         initComponents();
@@ -247,6 +247,14 @@ public class TelaCadastroFilme extends javax.swing.JInternalFrame {
     public void setEntidade(Filme entidade) {
         this.entidade = entidade;
         preencheCampos();
+    }
+    
+    public TelaListarFilme getListagem() {
+        return listagem;
+    }
+
+    public void setListagem(TelaListarFilme listagem) {
+        this.listagem = listagem;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
