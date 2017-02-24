@@ -8,23 +8,24 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author fagner
  */
-public class TelaCadastroFilme extends javax.swing.JFrame {
+public class TelaCadastroFilme extends javax.swing.JInternalFrame {
 
-     Filme entidade = new Filme();
+    Filme entidade = new Filme();
     FilmeRepositorio dao;
+   // Filme filme = new Filme();
     
-    /**
-     * Creates new form TelaCadastroFilme
-     */
     public TelaCadastroFilme() {
         initComponents();
         dao = GerenciadorReferencias.getFilme();
+        //this.filme = filme;
     }
 
     /**
@@ -36,115 +37,48 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         txtDiretor = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         txtDuracao = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        btnClassificacao1 = new javax.swing.JRadioButton();
-        btnClassificacao2 = new javax.swing.JRadioButton();
-        btnClassificacao3 = new javax.swing.JRadioButton();
-        btnClassificacao4 = new javax.swing.JRadioButton();
-        btnClassificacao5 = new javax.swing.JRadioButton();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        bxClassificacao = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         txtGenero = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        txtSinopse = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtSinopse = new javax.swing.JTextArea();
         btnSalvar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1.setText("Nome");
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setText("IdFilme");
+        jLabel2.setText("Diretor");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setText("Nome");
+        jLabel3.setText("Duração");
 
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
+        jLabel4.setText("Classificação");
+
+        bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        bxClassificacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
+                bxClassificacaoActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel4.setText("Diretor");
+        jLabel5.setText("Gênero");
 
-        txtDiretor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDiretorActionPerformed(evt);
-            }
-        });
+        jLabel6.setText("Sinopse");
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel5.setText("Duração");
-
-        txtDuracao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDuracaoActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel6.setText("Classificação");
-
-        btnClassificacao1.setText("1");
-        btnClassificacao1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClassificacao1ActionPerformed(evt);
-            }
-        });
-
-        btnClassificacao2.setText("2");
-        btnClassificacao2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClassificacao2ActionPerformed(evt);
-            }
-        });
-
-        btnClassificacao3.setText("3");
-        btnClassificacao3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClassificacao3ActionPerformed(evt);
-            }
-        });
-
-        btnClassificacao4.setText("4");
-        btnClassificacao4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClassificacao4ActionPerformed(evt);
-            }
-        });
-
-        btnClassificacao5.setText("5");
-        btnClassificacao5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClassificacao5ActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel7.setText("Gênero");
-
-        txtGenero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGeneroActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel8.setText("Sinopse");
-
-        txtSinopse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSinopseActionPerformed(evt);
-            }
-        });
+        txtSinopse.setColumns(20);
+        txtSinopse.setRows(5);
+        jScrollPane1.setViewportView(txtSinopse);
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,263 +87,175 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel9.setText("Cadastro de Filmes");
+        jButton3.setText("Excluir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Tela de cadastro de filmes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtGenero)
-                        .addGap(49, 49, 49))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtDuracao)
-                        .addGap(250, 250, 250))
-                    .addComponent(txtSinopse)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalvar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
                             .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnClassificacao1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnClassificacao2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnClassificacao3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnClassificacao4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnClassificacao5))
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 35, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(51, 51, 51))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jLabel9)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtDiretor)
+                            .addComponent(txtNome)
+                            .addComponent(txtDuracao)
+                            .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGenero)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 134, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(141, 141, 141))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(btnClassificacao1)
-                    .addComponent(btnClassificacao2)
-                    .addComponent(btnClassificacao3)
-                    .addComponent(btnClassificacao4)
-                    .addComponent(btnClassificacao5))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(jButton2))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(btnEditar)
+                    .addComponent(jButton3))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiretorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDiretorActionPerformed
-
-    private void txtGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGeneroActionPerformed
-
-    private void btnClassificacao5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao5ActionPerformed
-        Integer classificacao5 = Integer.parseInt(btnClassificacao5.getText());
-        if(!classificacao5.equals(""))
-            entidade.setClassificacao(classificacao5);
-    }//GEN-LAST:event_btnClassificacao5ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        try {
-              if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+        if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
             
-                this.recuperaCampos();
-                
-                if(dao.Salvar(entidade))
-                    JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
-                else
-                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
-            
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
+            try {
+                preencheObjeto();
+            } catch (ErroValidacao ex) {
+                Logger.getLogger(TelaCadastroFilme.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (ErroValidacao ex) {
-            System.out.println(ex);
+            
+            if(dao.Salvar(entidade)){
+                JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                this.dispose();
+            } 
+            else
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
+            
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
         }
-        
-        //entidade.setNome("");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    
-    
-    private void btnClassificacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao1ActionPerformed
-        Integer classificacao = Integer.parseInt(btnClassificacao1.getText());
-        if(!classificacao.equals(""))
-            entidade.setClassificacao(classificacao);
-    }//GEN-LAST:event_btnClassificacao1ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+            if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
 
-    private void btnClassificacao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao2ActionPerformed
-        Integer classificacao2 = Integer.parseInt(btnClassificacao2.getText());
-        if(!classificacao2.equals(""))
-            entidade.setClassificacao(classificacao2);
-    }//GEN-LAST:event_btnClassificacao2ActionPerformed
-
-    private void btnClassificacao3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao3ActionPerformed
-         Integer classificacao3 = Integer.parseInt(btnClassificacao3.getText());
-        if(!classificacao3.equals(""))
-            entidade.setClassificacao(classificacao3);
-    }//GEN-LAST:event_btnClassificacao3ActionPerformed
-
-    private void btnClassificacao4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificacao4ActionPerformed
-        Integer classificacao4 = Integer.parseInt(btnClassificacao4.getText());
-        if(!classificacao4.equals(""))
-            entidade.setClassificacao(classificacao4);
-    }//GEN-LAST:event_btnClassificacao4ActionPerformed
-
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void txtDuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDuracaoActionPerformed
-
-    private void txtSinopseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSinopseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSinopseActionPerformed
-
-    public void recuperaCampos() throws ErroValidacao{
-        String nome = txtNome.getText().trim();
-        if(!nome.equals(""))
-            entidade.setNome(nome);
-        
-        String diretor = txtDiretor.getText().trim();
-        if(!diretor.equals(""))
-            entidade.setDiretor(diretor);
-        
-        Integer duracao = Integer.parseInt(txtDuracao.getText());
-        if(!duracao.equals(""))
-            entidade.setDuracao(duracao);
-        
-        String genero = txtGenero.getText().trim();
-        if(!genero.equals(""))
-            entidade.setGenero(genero);
-        
-        String sinopse = txtSinopse.getText().trim();
-        if(!sinopse.equals(""))
-            entidade.setSinopse(sinopse);
-    }
-    
-    /*private void preencheObjeto() throws ErroValidacao {
-        entidade.setNome( txtNome.getText()  );
-        entidade.setEmail( txtEmail.getText() );
-        entidade.setSenha(txtSenha.getText());
-        
-    }*/
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+            if(dao.Apagar(entidade)){
+                JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                entidade = new Filme(0,"",0,"", 0, "", "");
+                preencheCampos();
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            else
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastroFilme().setVisible(true);
-            }
-        });
+    private void bxClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxClassificacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bxClassificacaoActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void preencheObjeto() throws ErroValidacao {
+        
+        entidade.setNome( txtNome.getText()  );
+        entidade.setDiretor(txtDiretor.getText() );
+        entidade.setDuracao( Integer.parseInt(txtDuracao.getText()));
+        entidade.setClassificacao(bxClassificacao.getSelectedIndex());
+        entidade.setGenero(txtGenero.getText());
+        entidade.setSinopse( txtSinopse.getText());
+    }
+    private void preencheCampos(){
+ 
+        txtNome.setText( entidade.getNome() );
+        txtDiretor.setText( entidade.getDiretor());
+        txtDuracao.setText( Integer.toString(entidade.getDuracao()));
+        bxClassificacao.setSelectedItem( entidade.getClassificacao());
+        txtGenero.setText(entidade.getGenero());
+        txtSinopse.setText(entidade.getSinopse());    
+    }
+    public Filme getEntidade() {
+        return entidade;
+    }
+    public void setEntidade(Filme entidade) {
+        this.entidade = entidade;
+        preencheCampos();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton btnClassificacao1;
-    private javax.swing.JRadioButton btnClassificacao2;
-    private javax.swing.JRadioButton btnClassificacao3;
-    private javax.swing.JRadioButton btnClassificacao4;
-    private javax.swing.JRadioButton btnClassificacao5;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox<String> bxClassificacao;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -417,12 +263,11 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtDiretor;
     private javax.swing.JTextField txtDuracao;
     private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSinopse;
+    private javax.swing.JTextArea txtSinopse;
     // End of variables declaration//GEN-END:variables
 }

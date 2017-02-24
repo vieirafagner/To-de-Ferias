@@ -20,7 +20,7 @@ public class Filme implements Entidade {
     private String sinopse;
    
     public Filme(){
-    
+        this.id=0;
     }
     public Filme(int id, String diretor, int duracao, String nome, int classificacao, String genero, String sinopse) {
         this.id = id;

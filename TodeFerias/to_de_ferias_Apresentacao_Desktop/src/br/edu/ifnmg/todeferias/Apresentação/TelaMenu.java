@@ -173,7 +173,9 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_ItmListarUsuariosActionPerformed
 
     private void menuCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarActionPerformed
-      
+      TelaCadastroFilme tela = new TelaCadastroFilme();
+      this.add(tela);
+      tela.setVisible(true);
     }//GEN-LAST:event_menuCadastrarActionPerformed
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
@@ -181,7 +183,9 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu5ActionPerformed
 
     private void mnuListFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListFilmeActionPerformed
-        new TelaListagemFilmes().setVisible(true);
+      TelaListarFilme tela = new TelaListarFilme();
+      this.add(tela);
+      tela.setVisible(true);
     }//GEN-LAST:event_mnuListFilmeActionPerformed
 
     private void mnuListNovelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListNovelaActionPerformed

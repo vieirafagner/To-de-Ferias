@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class TelaListagemFilmes extends javax.swing.JFrame {
 
     FilmeRepositorio dao = GerenciadorReferencias.getFilme();
+    TelaCadastroFilme editar;
+    Filme filme;
     /**
      * Creates new form TelaListagemFilmes
      */
@@ -64,6 +66,8 @@ private void preencheTabela(List<Filme> lista){
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBusca = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,10 +102,24 @@ private void preencheTabela(List<Filme> lista){
                 return types [columnIndex];
             }
         });
+        tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBuscaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBusca);
         if (tblBusca.getColumnModel().getColumnCount() > 0) {
             tblBusca.getColumnModel().getColumn(1).setResizable(false);
         }
+
+        jButton1.setText("Excluir");
+
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,8 +131,14 @@ private void preencheTabela(List<Filme> lista){
                 .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 77, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEditar)
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +149,11 @@ private void preencheTabela(List<Filme> lista){
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnEditar))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,6 +166,18 @@ private void preencheTabela(List<Filme> lista){
     private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscaActionPerformed
+
+    private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
+        int selecionada = tblBusca.getSelectedRow();
+        
+        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
+        
+        editarCliente(filme.getId());
+    }//GEN-LAST:event_tblBuscaMouseClicked
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,10 +213,26 @@ private void preencheTabela(List<Filme> lista){
             }
         });
     }
-
+    public void editarCliente(int id){
+        Filme entidade;
+        
+        entidade = dao.Abrir(id);
+        
+        editar = new TelaCadastroFilme();
+        
+        editar.setEntidade(entidade);
+        
+       // editar.setListagem(this);
+        
+        this.getParent().add(editar);
+        editar.setVisible(true);
+        this.setVisible(true);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblBusca;
     private javax.swing.JTextField txtBusca;
