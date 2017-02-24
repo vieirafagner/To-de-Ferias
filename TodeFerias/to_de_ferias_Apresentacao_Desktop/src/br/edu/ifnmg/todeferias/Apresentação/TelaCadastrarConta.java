@@ -45,6 +45,7 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         txtSenha = new javax.swing.JPasswordField();
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         jLabel1.setText("Nome");
 
@@ -63,6 +64,13 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -88,10 +96,12 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
                 .addContainerGap(94, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar)
-                .addGap(51, 51, 51))
+                .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,10 +118,11 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnEditar))
+                    .addComponent(btnEditar)
+                    .addComponent(btnExcluir))
                 .addGap(31, 31, 31))
         );
 
@@ -140,6 +151,22 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+       if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+
+            if(dao.Apagar(entidade)){
+                JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                entidade = new Conta(0, "", "","", 0);
+                preencheCampos();
+            }
+            else
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
  public Conta getEntidade() {
         return entidade;
     }
@@ -180,6 +207,7 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
