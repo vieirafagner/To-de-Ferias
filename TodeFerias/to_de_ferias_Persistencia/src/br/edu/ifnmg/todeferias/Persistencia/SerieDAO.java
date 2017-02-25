@@ -64,7 +64,7 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
             sql.setString(5, obj.getSinopse());
             sql.setInt(6, obj.getQtd_temp());
             
-            if(obj.getId() > 0) sql.setInt(4,obj.getId());
+            if(obj.getId() > 0) sql.setInt(7,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -114,6 +114,7 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
     protected void preencheParametros(PreparedStatement sql, Serie filtro) {
         try {
             int cont = 1;
+            if(filtro==null) return;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getDuracao_ep() > 0 ){ sql.setInt(cont, filtro.getDuracao_ep()); cont++; }
             if(filtro.getGenero()!= null ){ sql.setString(cont, filtro.getGenero()); cont++; }

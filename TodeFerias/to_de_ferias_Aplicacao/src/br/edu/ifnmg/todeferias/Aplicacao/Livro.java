@@ -106,9 +106,6 @@ public class Livro implements Entidade {
         return qtd_pag;
     }
 
-    /**
-     * @param qtd_pag the qtd_pag to set
-     */
     public void setQtd_pag(int qtd_pag) {
         this.qtd_pag = qtd_pag;
     }

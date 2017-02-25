@@ -23,11 +23,11 @@ public class LivroDAO  extends DAOGenerico<Livro> implements LivroRepositorio {
         setConsultaAbrir("select id,titulo,classificacao,resumo,autor,qtd_pag from Livro where id = ?");
         setConsultaApagar("DELETE FROM Livro WHERE id = ? ");
         setConsultaInserir("INSERT INTO Livro(titulo,classificacao,resumo,autor,qtd_pag) VALUES(?,?,?,?,?)");
-        setConsultaAlterar("UPDATE Livro SET titulo = ?, classificacao = ?, resumo = ?, autor = ? "
+        setConsultaAlterar("UPDATE Livro SET titulo = ?, classificacao = ?, resumo = ?, autor = ?,"
                         + "qtd_pag = ?"
                         + "WHERE id = ?");
         setConsultaBusca("select id,titulo,classificacao,resumo,autor,qtd_pag, from Livro ");
-        setConsultaUltimoId("select max(id) from Livro where titulo = ? and classificacao = ? and resumo = ? and autor = ? qtd_pag = ?");
+        setConsultaUltimoId("select max(id) from Livro where titulo = ? and classificacao = ? and resumo = ? and autor = ? and qtd_pag = ?");
     }
     
     @Override
