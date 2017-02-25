@@ -24,8 +24,8 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
         setConsultaAbrir("select id,duracao_ep,genero,nome,classificacao,sinopse,qtd_temp from Serie where id = ?");
         setConsultaApagar("DELETE FROM Serie WHERE id = ? ");
         setConsultaInserir("INSERT INTO Serie(duracao_ep,genero,nome,classificacao,sinopse,qtd_temp) VALUES(?,?,?,?,?,?)");
-        setConsultaAlterar("UPDATE Serie SET nome = ?, "
-                        + "sinopse = ?, genero = ? "
+        setConsultaAlterar("UPDATE Serie SET duracao_ep = ?,genero = ?,nome = ?, classificacao = ?, "
+                        + "sinopse = ?, qtd_temp = ? "
                         + "WHERE id = ?");
         setConsultaBusca("select id,duracao_ep,genero,nome,classificacao,sinopse,qtd_temp, from Serie ");
         setConsultaUltimoId("select max(id) from Serie where duracao_ep = ? and genero = ? and nome = ? and classificacao = ? and sinopse = ? and qtd_temp");
@@ -106,12 +106,8 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
     protected void preencheFiltros(Serie filtro) {
         if(filtro == null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
-        if(filtro.getDuracao_ep() > 0) adicionarFiltro("duracao_ep", "=");
-        if(filtro.getGenero() != null) adicionarFiltro("genero", " like ");
         if(filtro.getNome() != null) adicionarFiltro("nome", " like ");
-        if(filtro.getClassificacao() > 0) adicionarFiltro("classificacao", "=");
-        if(filtro.getSinopse()!= null) adicionarFiltro("sinopse", " like ");
-        if(filtro.getQtd_temp() > 0) adicionarFiltro("qtd_temp", "=");
+
     }
 
     @Override

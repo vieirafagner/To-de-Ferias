@@ -6,7 +6,6 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 
-import br.edu.ifnmg.todeferias.Aplicacao.AdministradorRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
@@ -14,7 +13,6 @@ import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.SerieRepositorio;
-import br.edu.ifnmg.todeferias.Persistencia.AdministradorDAO;
 import br.edu.ifnmg.todeferias.Persistencia.AnimeDAO;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
 import br.edu.ifnmg.todeferias.Persistencia.DocumentarioDAO;
@@ -36,15 +34,6 @@ public class GerenciadorReferencias {
             daoConta = new ContaDAO();
         return daoConta;
     }
-    
-    private static AdministradorRepositorio daoAdministrador;
-
-    public static AdministradorRepositorio getAministrador() {
-        if(daoAdministrador == null)
-            daoAdministrador = new AdministradorDAO();
-        return daoAdministrador;
-    }
-    
     private static AnimeRepositorio daoAnime;
 
     public static AnimeRepositorio getAnime() {

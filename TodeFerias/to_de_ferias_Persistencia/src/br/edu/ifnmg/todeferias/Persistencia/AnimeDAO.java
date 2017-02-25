@@ -25,8 +25,8 @@ public class AnimeDAO extends DAOGenerico<Anime> implements AnimeRepositorio {
         setConsultaAbrir("select id,duracao_ep,sinopse,nome,qtd_temp,classificacao from Anime where id = ?");
         setConsultaApagar("DELETE FROM Anime WHERE id = ? ");
         setConsultaInserir("INSERT INTO Anime(duracao_ep,sinopse,nome,qtd_temp,classificacao) VALUES(?,?,?,?,?)");
-        setConsultaAlterar("UPDATE Anime SET nome = ?, "
-                        + "qtd_temp "
+        setConsultaAlterar("UPDATE Anime SET duracao_ep = ?, sinopse = ?, nome = ?, "
+                        + "qtd_temp = ?, classificacao = ? "
                         + "WHERE id = ?");
         setConsultaBusca("select id,duracao_ep,sinopse,nome,qtd_temp,classificacao from Anime ");
         setConsultaUltimoId("select max(id) from Anime where duracao_ep = ? and sinopse = ? and nome = ? and qtd_temp = ? and classificacao = ?");
@@ -75,6 +75,7 @@ public class AnimeDAO extends DAOGenerico<Anime> implements AnimeRepositorio {
      * @return
      */
     @Override
+    
     public Anime Abrir(String nome) {
         try {
             
@@ -102,6 +103,7 @@ public class AnimeDAO extends DAOGenerico<Anime> implements AnimeRepositorio {
     
     @Override
     protected void preencheFiltros(Anime filtro) {
+        if(filtro == null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");  
         if(filtro.getNome() != null) adicionarFiltro("nome", " like ");
     
@@ -111,10 +113,11 @@ public class AnimeDAO extends DAOGenerico<Anime> implements AnimeRepositorio {
     protected void preencheParametros(PreparedStatement sql, Anime filtro) {
         try {
             int cont = 1;
+            if(filtro == null) return;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getDuracao_ep() > 0 ){ sql.setInt(cont, filtro.getDuracao_ep()); cont++; }
             if(filtro.getSinopse() != null ){ sql.setString(cont, filtro.getSinopse()); cont++; }
-            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()); cont++; }
+            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
             if(filtro.getQtd_temp() > 0 ){ sql.setInt(cont, filtro.getQtd_temp()); cont++; }
             if(filtro.getClassificacao() > 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
             
