@@ -26,7 +26,7 @@ public class LivroDAO  extends DAOGenerico<Livro> implements LivroRepositorio {
         setConsultaAlterar("UPDATE Livro SET titulo = ?, classificacao = ?, resumo = ?, autor = ?,"
                         + "qtd_pag = ?"
                         + "WHERE id = ?");
-        setConsultaBusca("select id,titulo,classificacao,resumo,autor,qtd_pag, from Livro ");
+        setConsultaBusca("select id,titulo,classificacao,resumo,autor,qtd_pag from Livro ");
         setConsultaUltimoId("select max(id) from Livro where titulo = ? and classificacao = ? and resumo = ? and autor = ? and qtd_pag = ?");
     }
     
