@@ -1,52 +1,50 @@
-package br.edu.ifnmg.todeferias.Apresentação;
-
-import br.edu.ifnmg.todeferias.Aplicacao.Filme;
-import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
-import java.util.List;
-import java.util.Vector;
-import javax.swing.table.DefaultTableModel;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package br.edu.ifnmg.todeferias.Apresentação;
+
+import br.edu.ifnmg.todeferias.Aplicacao.Novela;
+import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author fagner
  */
-public class TelaListarFilme extends javax.swing.JInternalFrame {
+public class TelaListarNovelas extends javax.swing.JInternalFrame {
 
-    FilmeRepositorio dao = GerenciadorReferencias.getFilme();
-    TelaCadastroFilme editar;
- 
-    
-    public TelaListarFilme() {
-       initComponents();
-       List<Filme> busca = dao.Buscar(null);
+    NovelaRepositorio dao = GerenciadorReferencias.getNovela();
+    TelaCadastrarNovela editar;
+    public TelaListarNovelas() {
+        initComponents();
+        List<Novela> busca = dao.Buscar(null);
         
         preencheTabela(busca);
     }
-    private void preencheTabela(List<Filme> lista){
+    
+     private void preencheTabela(List<Novela> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
         modelo.addColumn("Nome");
         
-        for(Filme f : lista){
+        for(Novela n : lista){
             Vector linha = new Vector();
-            linha.add(f.getId());
-            linha.add(f.getNome());
+            linha.add(n.getId());
+            linha.add(n.getNome());
             modelo.addRow(linha);
         }
         
         tblBusca.setModel(modelo);
     }
-
-    public void buscar(String nome){
-        Filme filtro = new Filme(0, null,0,nome,0,null,null);
+     
+     public void buscar(String nome){
+        Novela filtro = new Novela(0,0,0,null,nome);
         
-        List<Filme> busca = dao.Buscar(filtro);
+        List<Novela> busca = dao.Buscar(filtro);
         
         preencheTabela(busca);
         
@@ -61,23 +59,11 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        txtBusca = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        txtBusca = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBusca = new javax.swing.JTable();
-        btnFechar = new javax.swing.JButton();
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jButton1 = new javax.swing.JButton();
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,10 +95,10 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblBusca);
 
-        btnFechar.setText("Fechar");
-        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Fechar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFecharActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -121,42 +107,39 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnFechar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscar))
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFechar)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        buscar( txtBusca.getText() );
+         buscar( txtBusca.getText() );
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
@@ -167,16 +150,16 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
         editarCliente(id);
     }//GEN-LAST:event_tblBuscaMouseClicked
 
-    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnFecharActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void editarCliente(int id){
-        Filme entidade;
+        Novela entidade;
         
         entidade = dao.Abrir(id);
         
-        editar = new TelaCadastroFilme();
+        editar = new TelaCadastrarNovela();
         
         editar.setEntidade(entidade);
         
@@ -189,8 +172,7 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnFechar;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblBusca;
     private javax.swing.JTextField txtBusca;

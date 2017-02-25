@@ -87,6 +87,14 @@
                     <Property name="text" type="java.lang.String" value="Novelas"/>
                   </Properties>
                   <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="mnuCadastrarNovela">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuCadastrarNovelaActionPerformed"/>
+                      </Events>
+                    </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="mnuListNovela">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Listar"/>

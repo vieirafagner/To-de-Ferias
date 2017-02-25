@@ -61,6 +61,7 @@ public class TelaMenu extends javax.swing.JFrame {
         mnuListFilme = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        mnuCadastrarNovela = new javax.swing.JMenuItem();
         mnuListNovela = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -117,6 +118,14 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenu4.add(jMenu5);
 
         jMenu6.setText("Novelas");
+
+        mnuCadastrarNovela.setText("Cadastrar");
+        mnuCadastrarNovela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastrarNovelaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(mnuCadastrarNovela);
 
         mnuListNovela.setText("Listar");
         mnuListNovela.addActionListener(new java.awt.event.ActionListener() {
@@ -189,8 +198,16 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuListFilmeActionPerformed
 
     private void mnuListNovelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListNovelaActionPerformed
-       new TelaListagemNovelas().setVisible(true);
+       TelaListarNovelas tela = new TelaListarNovelas();
+       this.add(tela);
+       tela.setVisible(true);
     }//GEN-LAST:event_mnuListNovelaActionPerformed
+
+    private void mnuCadastrarNovelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarNovelaActionPerformed
+        TelaCadastrarNovela tela = new TelaCadastrarNovela();
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuCadastrarNovelaActionPerformed
 
      public void editarCliente(int id){
         Conta entidade;
@@ -229,6 +246,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JPopupMenu jPopupMenu4;
     private javax.swing.JMenuItem menuCadastrar;
+    private javax.swing.JMenuItem mnuCadastrarNovela;
     private javax.swing.JMenuItem mnuListFilme;
     private javax.swing.JMenuItem mnuListNovela;
     // End of variables declaration//GEN-END:variables
