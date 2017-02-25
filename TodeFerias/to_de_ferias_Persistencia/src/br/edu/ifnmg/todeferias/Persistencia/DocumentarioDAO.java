@@ -7,7 +7,6 @@ package br.edu.ifnmg.todeferias.Persistencia;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
-import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,11 +23,11 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
         setConsultaAbrir("select id,sinopse,classificacao,duracao,data,autor,nome from Documentario where id = ?");
         setConsultaApagar("DELETE FROM Documentario WHERE id = ? ");
         setConsultaInserir("INSERT INTO Documentario(sinopse,classificacao,duracao,data,autor,nome) VALUES(?,?,?,?,?,?)");
-        setConsultaAlterar("UPDATE Documentario SET nome = ?, "
-                        + "Diretor = ?"
+        setConsultaAlterar("UPDATE Documentario SET sinopse = ?,classificacao = ?, duracao = ?, data = ?, autor = ?,"
+                        + "nome = ?"
                         + "WHERE id = ?");
         setConsultaBusca("select sinopse,classificacao,duracao,data,autor,nome from Documentario ");
-        setConsultaUltimoId("select max(id) from Documentario where sinopse = ? and Classificacao = ? and duracao = ? and data = ? and autor = ? and nome = ? ");
+        setConsultaUltimoId("select max(id) from Documentario where sinopse = ? and classificacao = ? and duracao = ? and data = ? and autor = ? and nome = ? ");
     }
    
     @Override
@@ -36,7 +35,7 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
         // Posso os dados do resultado para o objeto
                 Documentario tmp = new Documentario();
         try {
-            tmp.setId(resultado.getInt(1));
+                tmp.setId(resultado.getInt(1));
         
                 tmp.setSinopse(resultado.getString(2));
                 tmp.setClassificacao(resultado.getInt(3));
@@ -106,8 +105,8 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
       // id; qdtCap;classificacao;comentario;diretor;nome;     
     @Override
     protected void preencheFiltros(Documentario filtro) {
+        if(filtro ==null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");        
-        if(filtro.getAutor()!= null) adicionarFiltro("autor", " like ");
         if(filtro.getNome()!= null) adicionarFiltro("nome", " like ");
     
     }
@@ -116,12 +115,13 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
     protected void preencheParametros(PreparedStatement sql, Documentario filtro) {
         try {
             int cont = 1;
+            if(filtro == null) return;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getSinopse() != null){ sql.setString(cont, filtro.getSinopse()); cont++; }
             if(filtro.getClassificacao()> 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
             if(filtro.getDuracao() > 0){ sql.setInt(cont, filtro.getDuracao()); cont++; }
             if(filtro.getAutor()!= null ){ sql.setString(cont, filtro.getAutor()); cont++; }
-            if(filtro.getNome()!= null ){ sql.setString(cont, filtro.getNome()); cont++; }
+            if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
             
             
         

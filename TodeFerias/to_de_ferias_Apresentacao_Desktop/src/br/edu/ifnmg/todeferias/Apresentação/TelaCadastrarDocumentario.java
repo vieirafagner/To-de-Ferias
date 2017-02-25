@@ -20,6 +20,7 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
     
     Documentario entidade = new Documentario();
     DocumentarioRepositorio dao; 
+    TelaListarDocumentarios listagem;
     /**
      * Creates new form TelaCadastrarDocumentario
      */
@@ -242,5 +243,29 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
         entidade.setDuracao(Integer.parseInt(txtDuracao.getText()));
         entidade.setClassificacao(bxClassificacao.getSelectedIndex());
         entidade.setSinopse( txtSinopse.getText());
+    }
+    
+    private void preencheCampos(){
+        txtNome.setText(entidade.getNome());
+        txtAutor.setText( entidade.getAutor());
+        txtData.setText(entidade.getData());   
+        txtDuracao.setText(Integer.toString(entidade.getDuracao()));
+        bxClassificacao.setSelectedItem( entidade.getClassificacao());
+        txtSinopse.setText(entidade.getSinopse());    
+    }
+    public Documentario getEntidade() {
+        return entidade;
+    }
+    public void setEntidade(Documentario entidade) {
+        this.entidade = entidade;
+        preencheCampos();
+    }
+    
+    public TelaListarDocumentarios getListagem() {
+        return listagem;
+    }
+
+    public void setListagem(TelaListarDocumentarios listagem) {
+        this.listagem = listagem;
     }
 }

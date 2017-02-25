@@ -5,7 +5,6 @@
  */
 package br.edu.ifnmg.todeferias.Aplicacao;
 
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -85,10 +84,12 @@ public class Documentario implements Entidade {
         return true;
     }
 
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }

@@ -196,6 +196,11 @@ public class TelaMenu extends javax.swing.JFrame {
         mnuDocumentario.add(jMenuItem1);
 
         jMenuItem2.setText("Listar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         mnuDocumentario.add(jMenuItem2);
 
         mnuMidias.add(mnuDocumentario);
@@ -298,6 +303,12 @@ public class TelaMenu extends javax.swing.JFrame {
         this.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        TelaListarDocumentarios tela = new TelaListarDocumentarios();
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
      public void editarCliente(int id){
         Conta entidade;
