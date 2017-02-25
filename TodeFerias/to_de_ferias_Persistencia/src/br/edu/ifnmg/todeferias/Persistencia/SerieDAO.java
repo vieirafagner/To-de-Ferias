@@ -27,8 +27,8 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
         setConsultaAlterar("UPDATE Serie SET duracao_ep = ?,genero = ?,nome = ?, classificacao = ?, "
                         + "sinopse = ?, qtd_temp = ? "
                         + "WHERE id = ?");
-        setConsultaBusca("select id,duracao_ep,genero,nome,classificacao,sinopse,qtd_temp, from Serie ");
-        setConsultaUltimoId("select max(id) from Serie where duracao_ep = ? and genero = ? and nome = ? and classificacao = ? and sinopse = ? and qtd_temp");
+        setConsultaBusca("select id,duracao_ep,genero,nome,classificacao,sinopse,qtd_temp from Serie ");
+        setConsultaUltimoId("select max(id) from Serie where duracao_ep = ? and genero = ? and nome = ? and classificacao = ? and sinopse = ? and qtd_temp = ?");
     }
     
     @Override

@@ -18,6 +18,21 @@ public class Serie implements Entidade {
         private int classificacao;
         private String sinopse;
         private int qtd_temp;
+            
+        public Serie(){
+            this.id=0;
+        }
+        
+        
+    public Serie(int id, int duracao_ep, String genero, String nome, int classificacao, String sinopse, int qtd_temp) {
+        this.id = id;
+        this.duracao_ep = duracao_ep;
+        this.genero = genero;
+        this.nome = nome;
+        this.classificacao = classificacao;
+        this.sinopse = sinopse;
+        this.qtd_temp = qtd_temp;
+    }
 
     /**
      * @return the id
