@@ -5,9 +5,9 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
-import br.edu.ifnmg.todeferias.Aplicacao.Anime;
-import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
+import br.edu.ifnmg.todeferias.Aplicacao.Livro;
+import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -16,15 +16,15 @@ import javax.swing.JOptionPane;
  *
  * @author fagner
  */
-public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
+public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
 
-        Anime entidade = new Anime();
-        AnimeRepositorio dao;
-        TelaListarAnimes listagem;
-        
-    public TelaCadastrarAnime() {
+    Livro entidade = new Livro();
+    LivroRepositorio dao;
+    TelaListarLivros listagem;
+   
+    public TelaCadastrarLivros() {
         initComponents();
-        dao = GerenciadorReferencias.getAnime();
+        dao = GerenciadorReferencias.getLivro();
     }
 
     /**
@@ -38,42 +38,37 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtDuracao_ep = new javax.swing.JTextField();
+        txtAutor = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtQtd_temp = new javax.swing.JTextField();
-        bxClassificacao = new javax.swing.JComboBox<>();
+        txtQtd_pag = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        bxClassificacao = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        txtSinopse = new javax.swing.JTextField();
+        txtResumo = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setText("Tela de Cadastro de Animes");
+        jLabel1.setText("Tela de Cadastro de Livros");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel2.setText("Nome");
+        jLabel2.setText("Título");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel3.setText("Duração do episódio");
+        jLabel3.setText("Autor");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel4.setText("Quantidade de Temporadas");
-
-        bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-        bxClassificacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bxClassificacaoActionPerformed(evt);
-            }
-        });
+        jLabel4.setText("Número de Páginas");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel5.setText("Classificação");
 
+        bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel6.setText("Sinopse");
+        jLabel6.setText("Resumo");
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,72 +89,70 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(111, 111, 111)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTitulo))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDuracao_ep, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtQtd_temp, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtQtd_pag, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSinopse)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(txtResumo)))
+                        .addContainerGap(83, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSalvar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExcluir)
-                .addGap(22, 22, 22))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(114, 114, 114))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnSalvar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnExcluir)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtDuracao_ep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtQtd_temp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtQtd_pag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 63, Short.MAX_VALUE))
+                            .addComponent(txtResumo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 61, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,17 +164,13 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bxClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxClassificacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bxClassificacaoActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-       if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+        if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
             
             try {
                 preencheObjeto();
             } catch (ErroValidacao ex) {
-                Logger.getLogger(TelaCadastrarAnime.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TelaCadastrarLivros.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             if(dao.Salvar(entidade)){
@@ -197,11 +186,11 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+       if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
 
             if(dao.Apagar(entidade)){
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
-                entidade = new Anime(0,0,"","", 0,0);
+                entidade = new Livro(0,"",0,"", "",0);
                 preencheCampos();
                 this.dispose();
             }
@@ -212,37 +201,34 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
-
-         private void preencheObjeto() throws ErroValidacao {
+  private void preencheObjeto() throws ErroValidacao {
         
-        entidade.setNome( txtNome.getText()  );
-        entidade.setDuracao_ep( Integer.parseInt(txtDuracao_ep.getText()));
-        entidade.setQtd_temp(Integer.parseInt(txtQtd_temp.getText()));
+        entidade.setTitulo(txtTitulo.getText()  );
+        entidade.setAutor(txtAutor.getText());
+        entidade.setQtd_pag(Integer.parseInt(txtQtd_pag.getText()));
         entidade.setClassificacao(bxClassificacao.getSelectedIndex());
-        entidade.setSinopse( txtSinopse.getText());
+        entidade.setResumo(txtResumo.getText());
     }
-         
-          private void preencheCampos(){
- 
-        txtNome.setText( entidade.getNome() );
-        txtDuracao_ep.setText( Integer.toString(entidade.getDuracao_ep()));
-        txtQtd_temp.setText(Integer.toString(entidade.getQtd_temp()));
+  private void preencheCampos(){
+        txtTitulo.setText(entidade.getTitulo());
+        txtAutor.setText( entidade.getAutor());
+        txtQtd_pag.setText(Integer.toString(entidade.getQtd_pag()));
         bxClassificacao.setSelectedItem( entidade.getClassificacao());
-        txtSinopse.setText(entidade.getSinopse());    
+        txtResumo.setText(entidade.getResumo());    
     }
-    public Anime getEntidade() {
+  public Livro getEntidade() {
         return entidade;
     }
-    public void setEntidade(Anime entidade) {
+    public void setEntidade(Livro entidade) {
         this.entidade = entidade;
         preencheCampos();
     }
     
-    public TelaListarAnimes getListagem() {
+    public TelaListarLivros getListagem() {
         return listagem;
     }
 
-    public void setListagem(TelaListarAnimes listagem) {
+    public void setListagem(TelaListarLivros listagem) {
         this.listagem = listagem;
     }
 
@@ -256,9 +242,9 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtDuracao_ep;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtQtd_temp;
-    private javax.swing.JTextField txtSinopse;
+    private javax.swing.JTextField txtAutor;
+    private javax.swing.JTextField txtQtd_pag;
+    private javax.swing.JTextField txtResumo;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

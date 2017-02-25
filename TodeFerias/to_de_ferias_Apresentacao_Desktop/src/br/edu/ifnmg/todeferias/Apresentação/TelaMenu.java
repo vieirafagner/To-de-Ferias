@@ -55,17 +55,20 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ItmListarUsuarios = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        mnuMidias = new javax.swing.JMenu();
+        mnuFilmes = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenuItem();
         mnuListFilme = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        mnuExcluirFilmes = new javax.swing.JMenuItem();
+        mnuNovelas = new javax.swing.JMenu();
         mnuCadastrarNovela = new javax.swing.JMenuItem();
         mnuListNovela = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuAnime = new javax.swing.JMenu();
+        mnuCadastrarAnime = new javax.swing.JMenuItem();
+        mnuListarAnime = new javax.swing.JMenuItem();
+        mnuLivros = new javax.swing.JMenu();
+        mnuCadastrarLivro = new javax.swing.JMenuItem();
+        mnuListarLivro = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jMenuItem7.setText("jMenuItem7");
@@ -89,12 +92,12 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenu1.add(ItmListarUsuarios);
 
-        jMenu4.setText("Midias");
+        mnuMidias.setText("Midias");
 
-        jMenu5.setText("Filmes");
-        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+        mnuFilmes.setText("Filmes");
+        mnuFilmes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu5ActionPerformed(evt);
+                mnuFilmesActionPerformed(evt);
             }
         });
 
@@ -104,7 +107,7 @@ public class TelaMenu extends javax.swing.JFrame {
                 menuCadastrarActionPerformed(evt);
             }
         });
-        jMenu5.add(menuCadastrar);
+        mnuFilmes.add(menuCadastrar);
 
         mnuListFilme.setText("Listar");
         mnuListFilme.addActionListener(new java.awt.event.ActionListener() {
@@ -112,14 +115,14 @@ public class TelaMenu extends javax.swing.JFrame {
                 mnuListFilmeActionPerformed(evt);
             }
         });
-        jMenu5.add(mnuListFilme);
+        mnuFilmes.add(mnuListFilme);
 
-        jMenuItem9.setText("Excluir");
-        jMenu5.add(jMenuItem9);
+        mnuExcluirFilmes.setText("Excluir");
+        mnuFilmes.add(mnuExcluirFilmes);
 
-        jMenu4.add(jMenu5);
+        mnuMidias.add(mnuFilmes);
 
-        jMenu6.setText("Novelas");
+        mnuNovelas.setText("Novelas");
 
         mnuCadastrarNovela.setText("Cadastrar");
         mnuCadastrarNovela.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +130,7 @@ public class TelaMenu extends javax.swing.JFrame {
                 mnuCadastrarNovelaActionPerformed(evt);
             }
         });
-        jMenu6.add(mnuCadastrarNovela);
+        mnuNovelas.add(mnuCadastrarNovela);
 
         mnuListNovela.setText("Listar");
         mnuListNovela.addActionListener(new java.awt.event.ActionListener() {
@@ -135,31 +138,51 @@ public class TelaMenu extends javax.swing.JFrame {
                 mnuListNovelaActionPerformed(evt);
             }
         });
-        jMenu6.add(mnuListNovela);
+        mnuNovelas.add(mnuListNovela);
 
-        jMenu4.add(jMenu6);
+        mnuMidias.add(mnuNovelas);
 
-        jMenu7.setText("Animes");
+        mnuAnime.setText("Animes");
 
-        jMenuItem1.setText("Cadastrar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnuCadastrarAnime.setText("Cadastrar");
+        mnuCadastrarAnime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mnuCadastrarAnimeActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem1);
+        mnuAnime.add(mnuCadastrarAnime);
 
-        jMenuItem2.setText("Listar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        mnuListarAnime.setText("Listar");
+        mnuListarAnime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                mnuListarAnimeActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem2);
+        mnuAnime.add(mnuListarAnime);
 
-        jMenu4.add(jMenu7);
+        mnuMidias.add(mnuAnime);
 
-        jMenu1.add(jMenu4);
+        mnuLivros.setText("Livros");
+
+        mnuCadastrarLivro.setText("Cadastrar");
+        mnuCadastrarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastrarLivroActionPerformed(evt);
+            }
+        });
+        mnuLivros.add(mnuCadastrarLivro);
+
+        mnuListarLivro.setText("Listar");
+        mnuListarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListarLivroActionPerformed(evt);
+            }
+        });
+        mnuLivros.add(mnuListarLivro);
+
+        mnuMidias.add(mnuLivros);
+
+        jMenu1.add(mnuMidias);
 
         jMenuBar1.add(jMenu1);
 
@@ -206,9 +229,9 @@ public class TelaMenu extends javax.swing.JFrame {
       tela.setVisible(true);
     }//GEN-LAST:event_menuCadastrarActionPerformed
 
-    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+    private void mnuFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFilmesActionPerformed
        
-    }//GEN-LAST:event_jMenu5ActionPerformed
+    }//GEN-LAST:event_mnuFilmesActionPerformed
 
     private void mnuListFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListFilmeActionPerformed
       TelaListarFilme tela = new TelaListarFilme();
@@ -228,17 +251,29 @@ public class TelaMenu extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_mnuCadastrarNovelaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mnuCadastrarAnimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarAnimeActionPerformed
         TelaCadastrarAnime tela = new TelaCadastrarAnime();
         this.add(tela);
         tela.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mnuCadastrarAnimeActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void mnuListarAnimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListarAnimeActionPerformed
        TelaListarAnimes tela = new TelaListarAnimes();
        this.add(tela);
        tela.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_mnuListarAnimeActionPerformed
+
+    private void mnuCadastrarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarLivroActionPerformed
+        TelaCadastrarLivros tela = new TelaCadastrarLivros();
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuCadastrarLivroActionPerformed
+
+    private void mnuListarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListarLivroActionPerformed
+       TelaListarLivros tela = new TelaListarLivros();
+       this.add(tela);
+       tela.setVisible(true);
+    }//GEN-LAST:event_mnuListarLivroActionPerformed
 
      public void editarCliente(int id){
         Conta entidade;
@@ -265,22 +300,25 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnPerfil;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JPopupMenu jPopupMenu4;
     private javax.swing.JMenuItem menuCadastrar;
+    private javax.swing.JMenu mnuAnime;
+    private javax.swing.JMenuItem mnuCadastrarAnime;
+    private javax.swing.JMenuItem mnuCadastrarLivro;
     private javax.swing.JMenuItem mnuCadastrarNovela;
+    private javax.swing.JMenuItem mnuExcluirFilmes;
+    private javax.swing.JMenu mnuFilmes;
     private javax.swing.JMenuItem mnuListFilme;
     private javax.swing.JMenuItem mnuListNovela;
+    private javax.swing.JMenuItem mnuListarAnime;
+    private javax.swing.JMenuItem mnuListarLivro;
+    private javax.swing.JMenu mnuLivros;
+    private javax.swing.JMenu mnuMidias;
+    private javax.swing.JMenu mnuNovelas;
     // End of variables declaration//GEN-END:variables
 }

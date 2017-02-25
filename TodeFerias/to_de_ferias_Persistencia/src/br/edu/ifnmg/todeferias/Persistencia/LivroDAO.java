@@ -5,7 +5,6 @@
  */
 package br.edu.ifnmg.todeferias.Persistencia;
 
-import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Aplicacao.Livro;
 import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
 import java.sql.PreparedStatement;
@@ -24,8 +23,8 @@ public class LivroDAO  extends DAOGenerico<Livro> implements LivroRepositorio {
         setConsultaAbrir("select id,titulo,classificacao,resumo,autor,qtd_pag from Livro where id = ?");
         setConsultaApagar("DELETE FROM Livro WHERE id = ? ");
         setConsultaInserir("INSERT INTO Livro(titulo,classificacao,resumo,autor,qtd_pag) VALUES(?,?,?,?,?)");
-        setConsultaAlterar("UPDATE Livro SET titulo = ?, "
-                        + "resumo = ?"
+        setConsultaAlterar("UPDATE Livro SET titulo = ?, classificacao = ?, resumo = ?, autor = ? "
+                        + "qtd_pag = ?"
                         + "WHERE id = ?");
         setConsultaBusca("select id,titulo,classificacao,resumo,autor,qtd_pag, from Livro ");
         setConsultaUltimoId("select max(id) from Livro where titulo = ? and classificacao = ? and resumo = ? and autor = ? qtd_pag = ?");
@@ -60,7 +59,7 @@ public class LivroDAO  extends DAOGenerico<Livro> implements LivroRepositorio {
             sql.setString(4, obj.getAutor());
             sql.setInt(5, obj.getQtd_pag());
             
-            if(obj.getId() > 0) sql.setInt(4,obj.getId());
+            if(obj.getId() > 0) sql.setInt(6,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(LivroDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,7 +72,7 @@ public class LivroDAO  extends DAOGenerico<Livro> implements LivroRepositorio {
      * @return
      */
     @Override
-    public Livro Abrir(String nome) {
+    public Livro Abrir(String titulo) {
         try {
             
             // Crio a consulta sql
@@ -81,7 +80,7 @@ public class LivroDAO  extends DAOGenerico<Livro> implements LivroRepositorio {
                     + "from Livro where titulo = ?");
             
             // Passo os parâmentros para a consulta sql
-            sql.setString(1, nome);
+            sql.setString(1,titulo );
             
             // Executo a consulta sql e pego os resultados
             ResultSet resultado = sql.executeQuery();
@@ -100,12 +99,10 @@ public class LivroDAO  extends DAOGenerico<Livro> implements LivroRepositorio {
     
     @Override
     protected void preencheFiltros(Livro filtro) {
+        if(filtro == null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
         if(filtro.getTitulo()!= null) adicionarFiltro("titulo", " like ");
-        if(filtro.getClassificacao() > 0) adicionarFiltro("classificacao", "=");
-        if(filtro.getResumo()!= null) adicionarFiltro("resumo", " like ");
-        if(filtro.getAutor()!= null) adicionarFiltro("autor", " like ");
-        if(filtro.getQtd_pag() > 0) adicionarFiltro("qtd_pag", "");
+        
     
     }
 
@@ -113,8 +110,9 @@ public class LivroDAO  extends DAOGenerico<Livro> implements LivroRepositorio {
     protected void preencheParametros(PreparedStatement sql, Livro filtro) {
         try {
             int cont = 1;
+            if(filtro == null) return;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
-            if(filtro.getTitulo()!= null ){ sql.setString(cont, filtro.getTitulo()); cont++; }
+            if(filtro.getTitulo()!= null ){ sql.setString(cont, filtro.getTitulo()+ "%"); cont++; }
              if(filtro.getClassificacao() > 0){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
             if(filtro.getResumo()!= null ){ sql.setString(cont, filtro.getResumo()); cont++; }
             if(filtro.getAutor()!= null ){ sql.setString(cont, filtro.getAutor()); cont++; }

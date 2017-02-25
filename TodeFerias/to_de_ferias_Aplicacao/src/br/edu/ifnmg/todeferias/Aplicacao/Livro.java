@@ -19,7 +19,7 @@ public class Livro implements Entidade {
     private int qtd_pag;
 
     public Livro(){
-        
+        this.id=0;
     }
     public Livro(int id, String titulo,int classificacao,String resumo,String autor, int qtd_pag){
         this.id=id;

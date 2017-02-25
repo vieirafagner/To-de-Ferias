@@ -46,17 +46,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItmListarUsuariosActionPerformed"/>
               </Events>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="jMenu4">
+            <Menu class="javax.swing.JMenu" name="mnuMidias">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Midias"/>
               </Properties>
               <SubComponents>
-                <Menu class="javax.swing.JMenu" name="jMenu5">
+                <Menu class="javax.swing.JMenu" name="mnuFilmes">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Filmes"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu5ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuFilmesActionPerformed"/>
                   </Events>
                   <SubComponents>
                     <MenuItem class="javax.swing.JMenuItem" name="menuCadastrar">
@@ -75,14 +75,14 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuListFilmeActionPerformed"/>
                       </Events>
                     </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+                    <MenuItem class="javax.swing.JMenuItem" name="mnuExcluirFilmes">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Excluir"/>
                       </Properties>
                     </MenuItem>
                   </SubComponents>
                 </Menu>
-                <Menu class="javax.swing.JMenu" name="jMenu6">
+                <Menu class="javax.swing.JMenu" name="mnuNovelas">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Novelas"/>
                   </Properties>
@@ -105,25 +105,48 @@
                     </MenuItem>
                   </SubComponents>
                 </Menu>
-                <Menu class="javax.swing.JMenu" name="jMenu7">
+                <Menu class="javax.swing.JMenu" name="mnuAnime">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Animes"/>
                   </Properties>
                   <SubComponents>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                    <MenuItem class="javax.swing.JMenuItem" name="mnuCadastrarAnime">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cadastrar"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuCadastrarAnimeActionPerformed"/>
                       </Events>
                     </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                    <MenuItem class="javax.swing.JMenuItem" name="mnuListarAnime">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Listar"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuListarAnimeActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+                <Menu class="javax.swing.JMenu" name="mnuLivros">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Livros"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="mnuCadastrarLivro">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuCadastrarLivroActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="mnuListarLivro">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Listar"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuListarLivroActionPerformed"/>
                       </Events>
                     </MenuItem>
                   </SubComponents>
