@@ -69,6 +69,9 @@ public class TelaMenu extends javax.swing.JFrame {
         mnuLivros = new javax.swing.JMenu();
         mnuCadastrarLivro = new javax.swing.JMenuItem();
         mnuListarLivro = new javax.swing.JMenuItem();
+        mnuDocumentario = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jMenuItem7.setText("jMenuItem7");
@@ -182,6 +185,21 @@ public class TelaMenu extends javax.swing.JFrame {
 
         mnuMidias.add(mnuLivros);
 
+        mnuDocumentario.setText("Documentário");
+
+        jMenuItem1.setText("Cadastrar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnuDocumentario.add(jMenuItem1);
+
+        jMenuItem2.setText("Listar");
+        mnuDocumentario.add(jMenuItem2);
+
+        mnuMidias.add(mnuDocumentario);
+
         jMenu1.add(mnuMidias);
 
         jMenuBar1.add(jMenu1);
@@ -275,6 +293,12 @@ public class TelaMenu extends javax.swing.JFrame {
        tela.setVisible(true);
     }//GEN-LAST:event_mnuListarLivroActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaCadastrarDocumentario tela = new TelaCadastrarDocumentario();
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
      public void editarCliente(int id){
         Conta entidade;
      
@@ -301,6 +325,8 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
@@ -311,6 +337,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCadastrarAnime;
     private javax.swing.JMenuItem mnuCadastrarLivro;
     private javax.swing.JMenuItem mnuCadastrarNovela;
+    private javax.swing.JMenu mnuDocumentario;
     private javax.swing.JMenuItem mnuExcluirFilmes;
     private javax.swing.JMenu mnuFilmes;
     private javax.swing.JMenuItem mnuListFilme;
