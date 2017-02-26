@@ -59,12 +59,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuFilmesActionPerformed"/>
                   </Events>
                   <SubComponents>
-                    <MenuItem class="javax.swing.JMenuItem" name="menuCadastrar">
+                    <MenuItem class="javax.swing.JMenuItem" name="menuCadastrarFilme">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cadastrar"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCadastrarActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCadastrarFilmeActionPerformed"/>
                       </Events>
                     </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="mnuListFilme">
@@ -74,11 +74,6 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuListFilmeActionPerformed"/>
                       </Events>
-                    </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="mnuExcluirFilmes">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Excluir"/>
-                      </Properties>
                     </MenuItem>
                   </SubComponents>
                 </Menu>
@@ -156,12 +151,12 @@
                     <Property name="text" type="java.lang.String" value="Document&#xe1;rio"/>
                   </Properties>
                   <SubComponents>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                    <MenuItem class="javax.swing.JMenuItem" name="mnuCadastrarDocumentario">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cadastrar"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuCadastrarDocumentarioActionPerformed"/>
                       </Events>
                     </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
@@ -179,12 +174,12 @@
                     <Property name="text" type="java.lang.String" value="S&#xe9;rie"/>
                   </Properties>
                   <SubComponents>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+                    <MenuItem class="javax.swing.JMenuItem" name="menuCadastrarSerie">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cadastrar"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCadastrarSerieActionPerformed"/>
                       </Events>
                     </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">

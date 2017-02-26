@@ -11,6 +11,7 @@ import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -137,9 +138,10 @@ public class TelaLogin extends javax.swing.JFrame {
         try {
             Conta tmp = dao.checkLogin(txtEmail.getText(),txtSenha.getText());
             if(tmp !=null){
+                
                 new TelaMenu(tmp).setVisible(true);
                 
-               // new TelaMenu(entidadeAdministrador);
+               
                this.dispose();
             }
             else{

@@ -69,6 +69,8 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
         tblBusca = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
+        setMaximizable(true);
+
         btnNovo.setText("Novo");
 
         btnBuscar.setText("Buscar");
@@ -151,8 +153,9 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
         int selecionada = tblBusca.getSelectedRow();
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
-        
+        this.dispose();
         editarDocumentario(id);
+        
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
