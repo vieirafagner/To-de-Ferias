@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class Documentario implements Entidade {
 
-    private int id;
+    private Integer id;
     private String sinopse;
     private int classificacao;
     private int duracao;

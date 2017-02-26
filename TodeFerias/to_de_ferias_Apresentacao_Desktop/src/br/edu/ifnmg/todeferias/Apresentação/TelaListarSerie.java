@@ -26,6 +26,7 @@ public class TelaListarSerie extends javax.swing.JInternalFrame {
     public TelaListarSerie() {
         initComponents();
           List<Serie> busca = dao.Buscar(null);
+          preencheTabela(busca);
     }
 
   private void preencheTabela(List<Serie> lista){
@@ -70,7 +71,15 @@ public class TelaListarSerie extends javax.swing.JInternalFrame {
             new String [] {
                 "Id", "Nome"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblBuscaMouseClicked(evt);

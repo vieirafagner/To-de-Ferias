@@ -46,9 +46,9 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
                 tmp.setQtd_temp(resultado.getInt(7));
                 
          } catch (SQLException ex) {
-            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SerieDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ErroValidacao ex) {     
-            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SerieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
                 // Retorna o objeto
                 return tmp;
@@ -67,7 +67,7 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
             if(obj.getId() > 0) sql.setInt(7,obj.getId());
             
         } catch (SQLException ex) {
-            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SerieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

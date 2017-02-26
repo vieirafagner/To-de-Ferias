@@ -26,7 +26,7 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
         setConsultaAlterar("UPDATE Documentario SET sinopse = ?,classificacao = ?, duracao = ?, data = ?, autor = ?,"
                         + "nome = ?"
                         + "WHERE id = ?");
-        setConsultaBusca("select sinopse,classificacao,duracao,data,autor,nome from Documentario ");
+        setConsultaBusca("select id,sinopse,classificacao,duracao,data,autor,nome from Documentario ");
         setConsultaUltimoId("select max(id) from Documentario where sinopse = ? and classificacao = ? and duracao = ? and data = ? and autor = ? and nome = ? ");
     }
    
