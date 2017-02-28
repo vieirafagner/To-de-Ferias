@@ -38,8 +38,6 @@ public class TelaMenu extends javax.swing.JFrame {
             mnuCadastrarDocumentario.setEnabled(false);
             ItmListarUsuarios.setVisible(false);
         }
-        
-        
     }
 
     
@@ -262,7 +260,10 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-
+/*
+        NewJFrame aa = new NewJFrame();
+        aa.setVisible(rootPaneCheckingEnabled);
+        */
         editarCliente(usuario.getId());
     }//GEN-LAST:event_btnPerfilActionPerformed
 
@@ -276,6 +277,9 @@ public class TelaMenu extends javax.swing.JFrame {
       TelaCadastroFilme tela = new TelaCadastroFilme();
       this.add(tela);
       tela.setVisible(true);
+      
+      
+      
     }//GEN-LAST:event_menuCadastrarFilmeActionPerformed
 
     private void mnuFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFilmesActionPerformed
@@ -283,7 +287,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuFilmesActionPerformed
 
     private void mnuListFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListFilmeActionPerformed
-      TelaListarFilme tela = new TelaListarFilme();
+      TelaListarFilme tela = new TelaListarFilme(this.usuario);
       this.add(tela);
       tela.setVisible(true);
     }//GEN-LAST:event_mnuListFilmeActionPerformed

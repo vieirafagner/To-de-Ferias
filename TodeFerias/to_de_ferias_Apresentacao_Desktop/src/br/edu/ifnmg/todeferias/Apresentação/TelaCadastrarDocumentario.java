@@ -204,8 +204,10 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
                 Logger.getLogger(TelaCadastrarDocumentario.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            if(dao.Salvar(entidade))
+            if(dao.Salvar(entidade)){
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                this.dispose();
+            }
             else
                 JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
             

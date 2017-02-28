@@ -1,7 +1,11 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.ContaFilmeDAO;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -22,9 +26,16 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
     TelaCadastroFilme editar;
  
     
-    public TelaListarFilme() {
+    public TelaListarFilme(Conta usuario) {
        initComponents();
        List<Filme> busca = dao.Buscar(null);
+       
+       usuario.addFilme(busca.get(0));
+       ContaFilmeDAO dao = new ContaFilmeDAO();
+       ContaFilme tmp = new ContaFilme(usuario);
+       dao.Salvar(tmp);
+       
+        
         
         preencheTabela(busca);
     }

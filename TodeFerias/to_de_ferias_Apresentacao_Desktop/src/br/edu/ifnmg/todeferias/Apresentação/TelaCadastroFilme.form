@@ -39,9 +39,9 @@
                   <Component id="txtDiretor" max="32767" attributes="0"/>
                   <Component id="txtNome" max="32767" attributes="0"/>
                   <Component id="txtDuracao" alignment="0" max="32767" attributes="0"/>
-                  <Component id="bxClassificacao" min="-2" max="-2" attributes="0"/>
                   <Component id="txtGenero" alignment="0" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" pref="294" max="32767" attributes="0"/>
+                  <Component id="bxClassificacao" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -102,7 +102,7 @@
                   <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

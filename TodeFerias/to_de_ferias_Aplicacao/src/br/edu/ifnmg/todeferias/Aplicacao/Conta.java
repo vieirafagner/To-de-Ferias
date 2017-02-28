@@ -27,7 +27,7 @@ public class Conta implements Entidade {
     public void setStatus(int status) {
         this.status = status;
     }
-    //private int tipoConta;
+   
    
     private LinkedList<Anime> animes;
     private LinkedList<Filme> filmes;
@@ -41,15 +41,16 @@ public class Conta implements Entidade {
 
         this.id = 0;
         this.status = 2;
+        this.filmes = new LinkedList<>();
     }
 
     public Conta(int id, String email,String senha, String nome,int status) {
         this.id = id;
         this.email = email;
-       // this.tipoConta = tipoConta;
         this.senha = senha;
         this.nome = nome;
         this.status=status;
+        this.filmes = new LinkedList<>();
     }
     
     public void addAnime(Anime anime){
@@ -70,7 +71,7 @@ public class Conta implements Entidade {
     public void addDocumentarios(Documentario documentario){
         documentarios.add(documentario);
     }
-    
+        
     public void removeAnimes(Anime anime){
         animes.remove(anime);
     }
@@ -134,6 +135,11 @@ public class Conta implements Entidade {
 
     public void setDocumentarios(LinkedList<Documentario> documentarios) {
         this.documentarios = documentarios;
+    }
+    
+    
+    public void addFilme(Filme filme){
+        this.filmes.add(filme);
     }
     
     @Override
