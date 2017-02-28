@@ -21,14 +21,13 @@ import java.util.logging.Logger;
 public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
         
     public FilmeDAO() {
-        setConsultaAbrir("select id,diretor,duracao,nome,classificacao,genero,sinopse from Filme where id = ?");
-        setConsultaApagar("DELETE FROM Filme WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Filme(diretor,duracao,nome,classificacao,genero,sinopse) VALUES(?,?,?,?,?,?)");
-        setConsultaAlterar("UPDATE Filme SET diretor = ?, duracao = ?, nome = ?, classificacao = ?, genero = ?,"
-                        + "sinopse = ?"
-                        + "WHERE id = ?");
-        setConsultaBusca("select id,diretor,duracao,nome,classificacao,genero,sinopse from Filme ");
-        setConsultaUltimoId("select max(id) from Filme where diretor = ? and duracao = ? and nome = ? and classificacao = ? and genero = ? and sinopse = ?");
+        setConsultaAbrir("select id,diretor,duracao,nome,genero,sinopse from Filme where id = ? and status = 1");
+        setConsultaApagar("UPDATE Filme set status = 0 WHERE id = ? ");
+        setConsultaInserir("INSERT INTO Filme(diretor,duracao,nome,genero,sinopse,status) VALUES(?,?,?,?,?,?)");
+        setConsultaAlterar("UPDATE Filme SET diretor = ?, duracao = ?, nome = ?, genero = ?,"
+                        + "sinopse = ? WHERE id = ?");
+        setConsultaBusca("select id,diretor,duracao,nome,genero,sinopse from Filme where status = 1 ");
+        setConsultaUltimoId("select max(id) from Filme where diretor = ? and duracao = ? and nome = ? and genero = ? and sinopse = ? and status = ?");
     }
     
     @Override
@@ -41,9 +40,10 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
                 tmp.setDiretor(resultado.getString(2));
                 tmp.setDuracao(resultado.getInt(3));
                 tmp.setNome(resultado.getString(4));
-                tmp.setClassificacao(resultado.getInt(5));
-                tmp.setGenero(resultado.getString(6));
-                tmp.setSinopse(resultado.getString(7));
+                //tmp.setClassificacao(resultado.getInt(5));
+                tmp.setGenero(resultado.getString(5));
+                tmp.setSinopse(resultado.getString(6));
+                
             
                 
          } catch (SQLException ex) {
@@ -62,11 +62,12 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
             sql.setString(1, obj.getDiretor());
             sql.setInt(2, obj.getDuracao());
             sql.setString(3, obj.getNome());
-            sql.setInt(4, obj.getClassificacao());
-            sql.setString(5, obj.getGenero());
-            sql.setString(6, obj.getSinopse());
+            //sql.setInt(4, obj.getClassificacao());
+            sql.setString(4, obj.getGenero());
+            sql.setString(5, obj.getSinopse());
+            sql.setInt(6, 1);
             
-            if(obj.getId() > 0) sql.setInt(7,obj.getId());
+            if(obj.getId() > 0)  sql.setInt(7,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(FilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,7 +84,7 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,diretor,duracao,nome,classificacao,genero,sinopse "
+            PreparedStatement sql = conn.prepareStatement("select id,diretor,duracao,nome,genero,sinopse "
                     + "from Filme where nome = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -123,7 +124,7 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
             if(filtro.getDiretor() != null ){ sql.setString(cont, filtro.getDiretor()); cont++; }
             if(filtro.getDuracao()> 0 ){ sql.setInt(cont, filtro.getDuracao()); cont++; }
             if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
-            if(filtro.getClassificacao() > 0){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
+            //if(filtro.getClassificacao() > 0){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
             if(filtro.getGenero()!= null ){ sql.setString(cont, filtro.getGenero()); cont++; }
             if(filtro.getSinopse()!= null ){ sql.setString(cont, filtro.getSinopse()); cont++; }
             

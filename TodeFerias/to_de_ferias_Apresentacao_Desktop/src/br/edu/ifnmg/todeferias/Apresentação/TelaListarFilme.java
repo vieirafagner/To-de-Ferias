@@ -1,11 +1,8 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
-import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
-import br.edu.ifnmg.todeferias.Persistencia.ContaFilmeDAO;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -24,17 +21,26 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
 
     FilmeRepositorio dao = GerenciadorReferencias.getFilme();
     TelaCadastroFilme editar;
- 
+    TelaClassicacaoFilme Classificar;
+    Conta usuario;
     
     public TelaListarFilme(Conta usuario) {
        initComponents();
        List<Filme> busca = dao.Buscar(null);
        
+       this.usuario = usuario;
+       
+       
+       
+       
+       /*
+       
+       codigo q funfa
        usuario.addFilme(busca.get(0));
        ContaFilmeDAO dao = new ContaFilmeDAO();
        ContaFilme tmp = new ContaFilme(usuario);
        dao.Salvar(tmp);
-       
+       */
         
         
         preencheTabela(busca);
@@ -177,9 +183,19 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
     private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
         int selecionada = tblBusca.getSelectedRow();
         
-        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
+        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
         
-        editarFilme(id);
+        if(usuario.getStatus()!=1){
+            ClassificarFilme(id);
+        }
+        else{
+            editarFilme(id);
+            
+            this.dispose();
+        }
+    
+            
+            
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
@@ -199,6 +215,22 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
         
         this.getParent().add(editar);
         editar.setVisible(true);
+        this.setVisible(true);
+    }
+    
+        public void ClassificarFilme(int id){
+        Filme entidade;
+        
+        entidade = dao.Abrir(id);
+        
+        Classificar = new TelaClassicacaoFilme(usuario);
+        
+        Classificar.setEntidade(entidade);
+        
+        Classificar.setListagem(this);
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
         this.setVisible(true);
     }
 
