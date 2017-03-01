@@ -67,7 +67,7 @@ public class FilmeDAO  extends DAOGenerico<Filme> implements FilmeRepositorio {
             sql.setString(5, obj.getSinopse());
             sql.setInt(6, 1);
             
-            if(obj.getId() > 0)  sql.setInt(7,obj.getId());
+            if(obj.getId() > 0)  sql.setInt(6,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(FilmeDAO.class.getName()).log(Level.SEVERE, null, ex);

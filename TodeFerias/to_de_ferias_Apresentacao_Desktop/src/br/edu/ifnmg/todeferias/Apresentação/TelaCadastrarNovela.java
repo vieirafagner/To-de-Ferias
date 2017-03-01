@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
@@ -20,6 +21,7 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
         Novela entidade = new Novela();
         NovelaRepositorio dao;
         TelaListarNovelas listagem;
+        Conta  usuario;
         
     /**
      * Creates new form TelaCadastrarNovela
@@ -43,8 +45,6 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
         txtNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtDiretor = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        bxClassificacao = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         txtQtd_cap = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
@@ -71,11 +71,6 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel4.setText("Classificação");
-
-        bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel5.setText("Nº de Capitulos");
 
@@ -98,6 +93,12 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExcluir)
+                .addGap(49, 49, 49))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(109, 109, 109)
@@ -115,21 +116,10 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtQtd_cap, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(119, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExcluir)
-                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,19 +134,15 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtQtd_cap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnExcluir))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,6 +184,7 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Novela(0,0,0,"","");
                 preencheCampos();
+                
                 this.dispose();
             }
             else
@@ -211,14 +198,14 @@ private void preencheObjeto() throws ErroValidacao {
         
         entidade.setNome( txtNome.getText()  );
         entidade.setDiretor(txtDiretor.getText() );
-        entidade.setClassificacao(bxClassificacao.getSelectedIndex());
+        //entidade.setClassificacao(bxClassificacao.getSelectedIndex());
         entidade.setQtdCap(Integer.parseInt(txtQtd_cap.getText()));
     }
 private void preencheCampos(){
  
         txtNome.setText( entidade.getNome() );
         txtDiretor.setText( entidade.getDiretor());
-        bxClassificacao.setSelectedItem( entidade.getClassificacao());
+        //bxClassificacao.setSelectedItem( entidade.getClassificacao());
        txtQtd_cap.setText( Integer.toString(entidade.getQtdCap()));
     }
 
@@ -241,11 +228,9 @@ private void preencheCampos(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> bxClassificacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtDiretor;
     private javax.swing.JTextField txtNome;

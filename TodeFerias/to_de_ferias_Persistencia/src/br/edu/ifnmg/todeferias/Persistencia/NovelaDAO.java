@@ -22,14 +22,14 @@ import java.util.logging.Logger;
  
 public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio {
         public NovelaDAO() {
-        setConsultaAbrir("select id,qtdCap,classificacao,diretor,nome from Novela where id = ?");
-        setConsultaApagar("DELETE FROM Novela WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Novela(qtdCap,classificacao,diretor,nome) VALUES(?,?,?,?)");
-        setConsultaAlterar("UPDATE Novela SET qtdCap = ?, classificacao = ?, diretor = ?, "
+        setConsultaAbrir("select id,qtdCap,diretor,nome from Novela where id = ? and status = 1");
+        setConsultaApagar("UPDATE Novela set status = 0 WHERE id = ? ");
+        setConsultaInserir("INSERT INTO Novela(qtdCap,diretor,nome,status) VALUES(?,?,?,?)");
+        setConsultaAlterar("UPDATE Novela SET qtdCap = ?, diretor = ?, "
                         + "nome = ?"
                         + "WHERE id = ?");
-        setConsultaBusca("select id,qtdCap,classificacao,diretor,nome from Novela ");
-        setConsultaUltimoId("select max(id) from Novela where qtdCap = ? and Classificacao = ? and diretor = ? and nome = ? ");
+        setConsultaBusca("select id,qtdCap,diretor,nome from Novela where status = 1 ");
+        setConsultaUltimoId("select max(id) from Novela where qtdCap = ? and diretor = ? and nome = ? and status = ? ");
     }
    
     @Override
@@ -40,9 +40,9 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
             tmp.setId(resultado.getInt(1));
         
                 tmp.setQtdCap(resultado.getInt(2));
-                tmp.setClassificacao(resultado.getInt(3));
-                tmp.setDiretor(resultado.getString(4));
-                tmp.setNome(resultado.getString(5));
+               // tmp.setClassificacao(resultado.getInt(3));
+                tmp.setDiretor(resultado.getString(3));
+                tmp.setNome(resultado.getString(4));
                 
                 
          } catch (SQLException ex) {
@@ -59,11 +59,12 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
         try {
             // Passa os parâmetros para a consulta SQL
             sql.setInt(1, obj.getQtdCap());
-            sql.setInt(2, obj.getClassificacao());
-            sql.setString(3, obj.getDiretor());
-            sql.setString(4, obj.getNome());
+            //sql.setInt(2, obj.getClassificacao());
+            sql.setString(2, obj.getDiretor());
+            sql.setString(3, obj.getNome());
+            sql.setInt(4, 1);
             
-            if(obj.getId() > 0) sql.setInt(5,obj.getId());
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(NovelaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -81,7 +82,7 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,qtdCap,classificacao,diretor,nome "
+            PreparedStatement sql = conn.prepareStatement("select id,qtdCap,diretor,nome "
                     + "from Novela where nome = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -118,7 +119,7 @@ public class NovelaDAO  extends DAOGenerico<Novela> implements NovelaRepositorio
             if(filtro == null) return;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getQtdCap() > 0){ sql.setInt(cont, filtro.getQtdCap()); cont++; }
-            if(filtro.getClassificacao()> 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
+            //if(filtro.getClassificacao()> 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
          
             if(filtro.getDiretor()!= null ){ sql.setString(cont, filtro.getDiretor()); cont++; }
             if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }

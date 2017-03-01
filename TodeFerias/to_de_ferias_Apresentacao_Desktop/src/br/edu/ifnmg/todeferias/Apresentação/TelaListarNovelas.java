@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
 import java.util.List;
@@ -19,12 +20,15 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
 
     NovelaRepositorio dao = GerenciadorReferencias.getNovela();
     TelaCadastrarNovela editar;
+    Conta usuario;
     public TelaListarNovelas() {
         initComponents();
         List<Novela> busca = dao.Buscar(null);
-        
+        this.usuario=usuario;
         preencheTabela(busca);
     }
+
+    
     
      private void preencheTabela(List<Novela> lista){
         DefaultTableModel modelo = new DefaultTableModel();
@@ -147,14 +151,15 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
         
-        editarCliente(id);
+        editarNovela(id);
+        this.dispose();
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void editarCliente(int id){
+    public void editarNovela(int id){
         Novela entidade;
         
         entidade = dao.Abrir(id);
