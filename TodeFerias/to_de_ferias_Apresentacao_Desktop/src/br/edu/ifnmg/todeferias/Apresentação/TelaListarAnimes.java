@@ -152,14 +152,15 @@ public class TelaListarAnimes extends javax.swing.JInternalFrame {
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
         
-        editarCliente(id);
+        editarAnime(id);
+        this.dispose();
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
-    public void editarCliente(int id){
+    public void editarAnime(int id){
         Anime entidade;
         
         entidade = dao.Abrir(id);

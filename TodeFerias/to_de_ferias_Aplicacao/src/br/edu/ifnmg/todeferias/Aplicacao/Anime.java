@@ -18,7 +18,7 @@ public class Anime implements Entidade {
     private String sinopse;
     private String nome;
     private int qtd_temp;
-    private int classificacao;
+    //private int classificacao;
     
     public Anime(){
         
@@ -64,13 +64,7 @@ public class Anime implements Entidade {
         this.qtd_temp = qtd_temp;
     }
 
-    public int getClassificacao() {
-        return classificacao;
-    }
-
-    public void setClassificacao(int classificacao) {
-        this.classificacao = classificacao;
-    }
+   
     
     public Anime(int id, int duracao_ep, String sinopse, String nome, int qtd_temp, int classificacao) {
         this.id = id;
@@ -78,7 +72,7 @@ public class Anime implements Entidade {
         this.sinopse = sinopse;
         this.nome = nome;
         this.qtd_temp = qtd_temp;
-        this.classificacao = classificacao;
+        //this.classificacao = classificacao;
     }
 
     @Override
@@ -89,7 +83,7 @@ public class Anime implements Entidade {
         hash = 41 * hash + Objects.hashCode(this.sinopse);
         hash = 41 * hash + Objects.hashCode(this.nome);
         hash = 41 * hash + this.qtd_temp;
-        hash = 41 * hash + this.classificacao;
+        //hash = 41 * hash + this.classificacao;
         return hash;
     }
 
@@ -114,9 +108,7 @@ public class Anime implements Entidade {
         if (this.qtd_temp != other.qtd_temp) {
             return false;
         }
-        if (this.classificacao != other.classificacao) {
-            return false;
-        }
+       
         if (!Objects.equals(this.sinopse, other.sinopse)) {
             return false;
         }

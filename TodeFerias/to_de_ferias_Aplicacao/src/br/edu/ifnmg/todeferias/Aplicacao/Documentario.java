@@ -15,7 +15,7 @@ public class Documentario implements Entidade {
 
     private Integer id;
     private String sinopse;
-    private int classificacao;
+    //private int classificacao;
     private int duracao;
     private String data;
     private String autor;
@@ -28,7 +28,7 @@ public class Documentario implements Entidade {
     public Documentario(int id, String sinopse, int classificacao, int duracao, String data, String autor, String nome) {
         this.id = id;
         this.sinopse = sinopse;
-        this.classificacao = classificacao;
+        //this.classificacao = classificacao;
         this.duracao = duracao;
         this.data = data;
         this.autor = autor;
@@ -40,7 +40,7 @@ public class Documentario implements Entidade {
         int hash = 7;
         hash = 11 * hash + this.id;
         hash = 11 * hash + Objects.hashCode(this.sinopse);
-        hash = 11 * hash + this.classificacao;
+        //hash = 11 * hash + this.classificacao;
         hash = 11 * hash + this.duracao;
         hash = 11 * hash + Objects.hashCode(this.data);
         hash = 11 * hash + Objects.hashCode(this.autor);
@@ -63,9 +63,9 @@ public class Documentario implements Entidade {
         if (this.id != other.id) {
             return false;
         }
-        if (this.classificacao != other.classificacao) {
+        /*if (this.classificacao != other.classificacao) {
             return false;
-        }
+        }*/
         if (this.duracao != other.duracao) {
             return false;
         }
@@ -102,13 +102,13 @@ public class Documentario implements Entidade {
         this.sinopse = sinopse;
     }
 
-    public int getClassificacao() {
+    /*public int getClassificacao() {
         return classificacao;
-    }
+    }*/
 
-    public void setClassificacao(int classificacao) {
+    /*public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
-    }
+    }*/
 
     public int getDuracao() {
         return duracao;

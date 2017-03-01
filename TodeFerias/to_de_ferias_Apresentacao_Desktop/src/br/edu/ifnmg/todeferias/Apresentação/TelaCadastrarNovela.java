@@ -184,7 +184,9 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Novela(0,0,0,"","");
                 preencheCampos();
-                
+                TelaListarNovelas tela = new TelaListarNovelas();
+                this.getParent().add(tela);
+                tela.setVisible(true);
                 this.dispose();
             }
             else

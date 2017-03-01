@@ -22,14 +22,14 @@ public class AnimeDAO extends DAOGenerico<Anime> implements AnimeRepositorio {
 
     
     public AnimeDAO() {
-        setConsultaAbrir("select id,duracao_ep,sinopse,nome,qtd_temp,classificacao from Anime where id = ?");
-        setConsultaApagar("DELETE FROM Anime WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Anime(duracao_ep,sinopse,nome,qtd_temp,classificacao) VALUES(?,?,?,?,?)");
+        setConsultaAbrir("select id,duracao_ep,sinopse,nome,qtd_temp from Anime where id = ? and status = 1");
+        setConsultaApagar("UPDATE Anime set status = 0  WHERE id = ? ");
+        setConsultaInserir("INSERT INTO Anime(duracao_ep,sinopse,nome,qtd_temp,status) VALUES(?,?,?,?,?)");
         setConsultaAlterar("UPDATE Anime SET duracao_ep = ?, sinopse = ?, nome = ?, "
-                        + "qtd_temp = ?, classificacao = ? "
+                        + "qtd_temp = ?, "
                         + "WHERE id = ?");
-        setConsultaBusca("select id,duracao_ep,sinopse,nome,qtd_temp,classificacao from Anime ");
-        setConsultaUltimoId("select max(id) from Anime where duracao_ep = ? and sinopse = ? and nome = ? and qtd_temp = ? and classificacao = ?");
+        setConsultaBusca("select id,duracao_ep,sinopse,nome,qtd_temp from Anime where status = 1 ");
+        setConsultaUltimoId("select max(id) from Anime where duracao_ep = ? and sinopse = ? and nome = ? and qtd_temp = ? and status = ?");
     }
     
     @Override
@@ -43,7 +43,7 @@ public class AnimeDAO extends DAOGenerico<Anime> implements AnimeRepositorio {
                 tmp.setSinopse(resultado.getString(3));
                 tmp.setNome(resultado.getString(4));
                 tmp.setQtd_temp(resultado.getInt(5));
-                tmp.setClassificacao(resultado.getInt(6));
+                //tmp.setClassificacao(resultado.getInt(6));
                 
          } catch (SQLException ex) {
             Logger.getLogger(AnimeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,9 +60,8 @@ public class AnimeDAO extends DAOGenerico<Anime> implements AnimeRepositorio {
             sql.setString(2, obj.getSinopse());
             sql.setString(3, obj.getNome());
             sql.setInt(4, obj.getQtd_temp());
-            sql.setInt(5, obj.getClassificacao());
-            
-            if(obj.getId() > 0) sql.setInt(6,obj.getId());
+            sql.setInt(5, 1);
+            if(obj.getId() > 0) sql.setInt(5,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(AnimeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,7 +79,7 @@ public class AnimeDAO extends DAOGenerico<Anime> implements AnimeRepositorio {
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,duracao_ep,sinopse,nome,qtd_temp,classificacao "
+            PreparedStatement sql = conn.prepareStatement("select id,duracao_ep,sinopse,nome,qtd_temp "
                     + "from Anime where nome = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -119,7 +118,7 @@ public class AnimeDAO extends DAOGenerico<Anime> implements AnimeRepositorio {
             if(filtro.getSinopse() != null ){ sql.setString(cont, filtro.getSinopse()); cont++; }
             if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
             if(filtro.getQtd_temp() > 0 ){ sql.setInt(cont, filtro.getQtd_temp()); cont++; }
-            if(filtro.getClassificacao() > 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
+            //if(filtro.getClassificacao() > 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
             
         
         } catch (SQLException ex) {

@@ -153,8 +153,10 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
         int selecionada = tblBusca.getSelectedRow();
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
-        this.dispose();
+        
         editarDocumentario(id);
+        this.dispose();
+        
         
     }//GEN-LAST:event_tblBuscaMouseClicked
 

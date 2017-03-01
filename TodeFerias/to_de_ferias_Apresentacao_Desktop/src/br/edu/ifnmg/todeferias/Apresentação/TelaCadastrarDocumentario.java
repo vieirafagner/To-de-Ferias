@@ -50,8 +50,6 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtSinopse = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
-        bxClassificacao = new javax.swing.JComboBox<>();
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -72,15 +70,6 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
         txtSinopse.setColumns(20);
         txtSinopse.setRows(5);
         jScrollPane1.setViewportView(txtSinopse);
-
-        jLabel6.setText("Classificação");
-
-        bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-        bxClassificacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bxClassificacaoActionPerformed(evt);
-            }
-        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -122,10 +111,6 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
@@ -136,19 +121,15 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
                             .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                             .addComponent(txtAutor)
                             .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(txtDuracao))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(txtDuracao)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jLabel7)))
+                .addGap(130, 130, 130)
+                .addComponent(jLabel7)
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -172,28 +153,20 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar)
                     .addComponent(btnExcluir))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bxClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxClassificacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bxClassificacaoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
@@ -227,6 +200,9 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Documentario(0,"",0,0,"", "", "");
                 preencheCampos();
+                TelaListarDocumentarios tela = new TelaListarDocumentarios();
+                this.getParent().add(tela);
+                tela.setVisible(true);
                 this.dispose();
             }
             else
@@ -242,13 +218,11 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> bxClassificacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
@@ -264,7 +238,7 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
         entidade.setAutor(txtAutor.getText() );
         entidade.setData(txtData.getText());
         entidade.setDuracao(Integer.parseInt(txtDuracao.getText()));
-        entidade.setClassificacao(bxClassificacao.getSelectedIndex());
+        //entidade.setClassificacao(bxClassificacao.getSelectedIndex());
         entidade.setSinopse( txtSinopse.getText());
     }
     
@@ -273,7 +247,7 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
         txtAutor.setText( entidade.getAutor());
         txtData.setText(entidade.getData());   
         txtDuracao.setText(Integer.toString(entidade.getDuracao()));
-        bxClassificacao.setSelectedItem( entidade.getClassificacao());
+        //bxClassificacao.setSelectedItem( entidade.getClassificacao());
         txtSinopse.setText(entidade.getSinopse());    
     }
     public Documentario getEntidade() {

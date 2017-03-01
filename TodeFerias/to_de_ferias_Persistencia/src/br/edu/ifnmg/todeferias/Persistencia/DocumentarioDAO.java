@@ -20,14 +20,14 @@ import java.util.logging.Logger;
 
 public class DocumentarioDAO  extends DAOGenerico<Documentario> implements DocumentarioRepositorio {
         public DocumentarioDAO() {
-        setConsultaAbrir("select id,sinopse,classificacao,duracao,data,autor,nome from Documentario where id = ?");
-        setConsultaApagar("DELETE FROM Documentario WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Documentario(sinopse,classificacao,duracao,data,autor,nome) VALUES(?,?,?,?,?,?)");
-        setConsultaAlterar("UPDATE Documentario SET sinopse = ?,classificacao = ?, duracao = ?, data = ?, autor = ?,"
+        setConsultaAbrir("select id,sinopse,duracao,data,autor,nome from Documentario where id = ? and status = 1");
+        setConsultaApagar("UPDATE Documentario set status =0 WHERE id = ? ");
+        setConsultaInserir("INSERT INTO Documentario(sinopse,duracao,data,autor,nome,status) VALUES(?,?,?,?,?,?)");
+        setConsultaAlterar("UPDATE Documentario SET sinopse = ? duracao = ?, data = ?, autor = ?,"
                         + "nome = ?"
                         + "WHERE id = ?");
-        setConsultaBusca("select id,sinopse,classificacao,duracao,data,autor,nome from Documentario ");
-        setConsultaUltimoId("select max(id) from Documentario where sinopse = ? and classificacao = ? and duracao = ? and data = ? and autor = ? and nome = ? ");
+        setConsultaBusca("select id,sinopse,duracao,data,autor,nome from Documentario where status = 1 ");
+        setConsultaUltimoId("select max(id) from Documentario where sinopse = ? and duracao = ? and data = ? and autor = ? and nome = ? and status = ? ");
     }
    
     @Override
@@ -38,11 +38,11 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
                 tmp.setId(resultado.getInt(1));
         
                 tmp.setSinopse(resultado.getString(2));
-                tmp.setClassificacao(resultado.getInt(3));
-                tmp.setDuracao(resultado.getInt(4));
-                tmp.setData(resultado.getString(5));
-                tmp.setAutor(resultado.getString(6));
-                tmp.setNome(resultado.getString(7));
+                //tmp.setClassificacao(resultado.getInt(3));
+                tmp.setDuracao(resultado.getInt(3));
+                tmp.setData(resultado.getString(4));
+                tmp.setAutor(resultado.getString(5));
+                tmp.setNome(resultado.getString(6));
                 
                 
          } catch (SQLException ex) {
@@ -57,14 +57,15 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
         try {
             // Passa os parâmetros para a consulta SQL
             sql.setString(1, obj.getSinopse());
-            sql.setInt(2, obj.getClassificacao());
-            sql.setInt(3, obj.getDuracao());
-            sql.setString(4,obj.getData());
-            sql.setString(5, obj.getAutor());
-             sql.setString(6, obj.getNome());
+            //sql.setInt(2, obj.getClassificacao());
+            sql.setInt(2, obj.getDuracao());
+            sql.setString(3,obj.getData());
+            sql.setString(4, obj.getAutor());
+             sql.setString(5, obj.getNome());
+             sql.setInt(6, 1);
             
             
-            if(obj.getId() > 0) sql.setInt(7,obj.getId());
+            if(obj.getId() > 0) sql.setInt(6,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(DocumentarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,7 +83,7 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,sinopse,classificacao,duracao,data,autor,nome "
+            PreparedStatement sql = conn.prepareStatement("select id,sinopse,duracao,data,autor,nome "
                     + "from Documentario where nome = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -118,7 +119,7 @@ public class DocumentarioDAO  extends DAOGenerico<Documentario> implements Docum
             if(filtro == null) return;
             if(filtro.getId() > 0){ sql.setInt(cont, filtro.getId()); cont++; }
             if(filtro.getSinopse() != null){ sql.setString(cont, filtro.getSinopse()); cont++; }
-            if(filtro.getClassificacao()> 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
+            //if(filtro.getClassificacao()> 0 ){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
             if(filtro.getDuracao() > 0){ sql.setInt(cont, filtro.getDuracao()); cont++; }
             if(filtro.getAutor()!= null ){ sql.setString(cont, filtro.getAutor()); cont++; }
             if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
