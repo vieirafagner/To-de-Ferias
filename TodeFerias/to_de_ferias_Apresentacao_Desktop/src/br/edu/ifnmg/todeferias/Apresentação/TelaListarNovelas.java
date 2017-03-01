@@ -21,6 +21,7 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
     NovelaRepositorio dao = GerenciadorReferencias.getNovela();
     TelaCadastrarNovela editar;
     Conta usuario;
+    TelaClassificacaoNovela Classificar;
     public TelaListarNovelas() {
         initComponents();
         List<Novela> busca = dao.Buscar(null);
@@ -151,8 +152,16 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
         
-        editarNovela(id);
-        this.dispose();
+        if (usuario.getStatus()!= 1)
+        {
+         ClassificarNovela(id);
+        }
+        else
+        {
+          editarNovela(id);
+          this.dispose();
+        }
+
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -174,7 +183,23 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
         editar.setVisible(true);
         this.setVisible(true);
     }
-
+    
+    public void ClassificarNovela(int id){
+        Novela entidade;
+        
+        entidade = dao.Abrir(id);
+        
+        Classificar = new TelaClassificacaoNovela(usuario);
+        
+        Classificar.setEntidade(entidade);
+        
+        Classificar.setListagem(this);
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
+        this.setVisible(true);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton jButton1;
