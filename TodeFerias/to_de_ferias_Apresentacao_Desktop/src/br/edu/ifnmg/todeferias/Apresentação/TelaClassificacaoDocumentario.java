@@ -19,7 +19,7 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
     Documentario entidade = new Documentario();
     DocumentarioRepositorio dao;
     TelaListarDocumentarios listagem;
-     Conta usuario;
+    Conta usuario;
     public TelaClassificacaoDocumentario(Conta usuario) {
         initComponents();
     }
