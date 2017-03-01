@@ -25,15 +25,13 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
     AnimeRepositorio dao;
     TelaListarAnimes listagem;
     private Conta usuario;
-    public TelaClassificacaoAnime() {
+    public TelaClassificacaoAnime(Conta usuario) {
         initComponents();
         
         this.usuario = usuario;
     }
 
-    TelaClassificacaoAnime(Conta usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

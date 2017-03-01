@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
 import java.util.List;
@@ -19,6 +20,8 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
     
     DocumentarioRepositorio dao = GerenciadorReferencias.getDocumentario();
     TelaCadastrarDocumentario editar;
+    TelaClassificacaoDocumentario Classificar;
+    Conta usuario;
     /**
      * Creates new form TelaListarDocumentarios
      */
@@ -26,6 +29,8 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
         initComponents();
         
        List<Documentario> busca = dao.Buscar(null);
+       
+       this.usuario=usuario;
         
         preencheTabela(busca);
     }
@@ -154,9 +159,13 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
         
-        editarDocumentario(id);
-        this.dispose();
-        
+        if(usuario.getStatus()!=1){
+            ClassificarDocumentario(id);
+        }
+        else{
+            editarDocumentario(id);
+            this.dispose();
+        }
         
     }//GEN-LAST:event_tblBuscaMouseClicked
 
@@ -181,6 +190,22 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
         
         this.getParent().add(editar);
         editar.setVisible(true);
+        this.setVisible(true);
+    }
+    
+     public void ClassificarDocumentario(int id){
+        Documentario entidade;
+        
+        entidade = dao.Abrir(id);
+        
+        Classificar = new TelaClassificacaoDocumentario(usuario);
+        
+        Classificar.setEntidade(entidade);
+        
+        Classificar.setListagem(this);
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
         this.setVisible(true);
     }
 
