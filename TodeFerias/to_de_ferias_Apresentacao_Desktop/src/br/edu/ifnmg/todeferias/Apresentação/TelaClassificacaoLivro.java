@@ -6,28 +6,28 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
-import br.edu.ifnmg.todeferias.Aplicacao.Novela;
-import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Livro;
+import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author cleiton rodrigues
  */
-public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
-    
-    Novela entidade = new Novela();
-    NovelaRepositorio dao;
-    TelaListarNovelas listagem;
+public class TelaClassificacaoLivro extends javax.swing.JInternalFrame {
+    Livro entidade = new Livro();
+    LivroRepositorio dao;
+    TelaListarLivros listagem;
     private Conta usuario;
-    public TelaClassificacaoNovela(Conta usuario) {
+    public TelaClassificacaoLivro(Conta usuario) {
         initComponents();
         
         this.usuario = usuario;
     /**
-     * Creates new form TelaClassificacaoNovela
+     * Creates new form TelaClassificacaoLivro
      */
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,36 +38,40 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        lblNome = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lblDiretor = new javax.swing.JLabel();
+        lblAutor = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblNumPagina = new javax.swing.JLabel();
         bxClassificacao = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
         btnClassificar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        lblNumCapitulo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lblResumo = new javax.swing.JLabel();
 
-        jLabel1.setText("Nome:");
+        jLabel1.setText("Título");
 
-        lblNome.setText("Nome");
+        lblTitulo.setText("Titulo");
 
-        jLabel2.setText("Diretor");
+        jLabel2.setText("Autor");
 
-        lblDiretor.setText("Diretor");
+        lblAutor.setText("Autor");
 
-        jLabel3.setText("N° de Capitulos");
+        jLabel3.setText("N° de Páginas");
+
+        lblNumPagina.setText("NdePagina");
+
+        bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        bxClassificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bxClassificacaoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Classificação");
 
-        bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-
         btnClassificar.setText("Classificar");
-        btnClassificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClassificarActionPerformed(evt);
-            }
-        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +80,9 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
             }
         });
 
-        lblNumCapitulo.setText("N de Capitulo");
+        jLabel5.setText("Resumo");
+
+        lblResumo.setText("Resumo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,104 +91,116 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblNumCapitulo)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblNome))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblDiretor))))
+                                .addComponent(lblAutor))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblTitulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblResumo)
+                                    .addComponent(lblNumPagina)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
+                        .addGap(156, 156, 156)
                         .addComponent(btnClassificar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addComponent(btnCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(lblNome))
+                    .addComponent(lblTitulo))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lblDiretor))
+                    .addComponent(lblAutor))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(lblNumCapitulo))
-                .addGap(42, 42, 42)
+                    .addComponent(lblNumPagina))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                    .addComponent(jLabel5)
+                    .addComponent(lblResumo))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClassificar)
                     .addComponent(btnCancelar))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnClassificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificarActionPerformed
-        ContaNovela contaNovela = new ContaNovela(usuario);
-        ContaNovelaDAO dao = new ContaNovelaDAO();
+    private void bxClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxClassificacaoActionPerformed
+        ContaLivro contaLivro = new ContaLivro(usuario);
+        ContaLivroDAO dao = new ContaLivroDAO();
     
         entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
-        usuario.addNovelas(entidade);
+        usuario.addLivros(entidade);
         
         System.out.println(bxClassificacao.getSelectedIndex()+1);
         
-        dao.Salvar(contaNovela);
+        dao.Salvar(contaLivro);
         
         JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
-    }//GEN-LAST:event_btnClassificarActionPerformed
+    }//GEN-LAST:event_bxClassificacaoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
     
-    
     private void preencheCampos(){
  
-        lblNome.setText( entidade.getNome() );
-        lblDiretor.setText(entidade.getDiretor());
-        lblNumCapitulo.setText( Integer.toString(entidade.getQtdCap()));
-         
+        lblTitulo.setText(entidade.getTitulo());
+        lblAutor.setText(entidade.getAutor());
+        lblNumPagina.setText( Integer.toString(entidade.getQtd_pag()));
+        lblResumo.setText(entidade.getResumo()); 
+        
+       
     }
     
-    public Novela getEntidade() {
+     public Livro getEntidade() {
         return entidade;
-    }
-    public void setEntidade(Novela entidade) {
+     }
+     
+    public void setEntidade(Livro entidade) {
         this.entidade = entidade;
         preencheCampos();
     }
     
-    public TelaListarNovelas getListagem() {
+    public TelaListarLivros getListagem() {
         return listagem;
     }
 
-    public void setListagem(TelaListarNovelas listagem) {
+    public void setListagem(TelaListarLivros listagem) {
         this.listagem = listagem;
     }
-
-
+  
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -192,8 +210,10 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel lblDiretor;
-    private javax.swing.JLabel lblNome;
-    private javax.swing.JLabel lblNumCapitulo;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblAutor;
+    private javax.swing.JLabel lblNumPagina;
+    private javax.swing.JLabel lblResumo;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
-}
+  }

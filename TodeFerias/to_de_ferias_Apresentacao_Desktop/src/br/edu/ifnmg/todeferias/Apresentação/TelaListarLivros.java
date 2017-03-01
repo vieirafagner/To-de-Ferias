@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.Livro;
 import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
 import java.util.List;
@@ -19,8 +20,9 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
 
     LivroRepositorio dao = GerenciadorReferencias.getLivro();
     TelaCadastrarLivros editar;
-    
-    public TelaListarLivros() {
+    TelaClassificacaoLivro Classificar;
+    Conta usuario;
+    public TelaListarLivros(Conta usuario) {
         initComponents();
          List<Livro> busca = dao.Buscar(null);
         
@@ -150,9 +152,13 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
         int selecionada = tblBusca.getSelectedRow();
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
-        
-        editarLivro(id);
-        this.dispose();
+        if(usuario.getStatus()!=1){
+            ClassificarLivro(id);
+        }
+        else{
+            editarLivro(id);
+            this.dispose();
+        }
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
@@ -172,6 +178,22 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
         
         this.getParent().add(editar);
         editar.setVisible(true);
+        this.setVisible(true);
+    }
+     
+       public void ClassificarLivro(int id){
+        Livro entidade;
+        
+        entidade = dao.Abrir(id);
+        
+        Classificar = new TelaClassificacaoLivro(usuario);
+        
+        Classificar.setEntidade(entidade);
+        
+        Classificar.setListagem(this);
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
         this.setVisible(true);
     }
 
