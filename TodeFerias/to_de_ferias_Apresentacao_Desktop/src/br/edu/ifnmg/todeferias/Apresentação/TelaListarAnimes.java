@@ -7,6 +7,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Anime;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -19,10 +20,14 @@ public class TelaListarAnimes extends javax.swing.JInternalFrame {
 
      AnimeRepositorio dao = GerenciadorReferencias.getAnime();
     TelaCadastrarAnime editar;
+    Conta usuario;
+    TelaClassificacaoAnime Classificar;
    
     public TelaListarAnimes() {
         initComponents();
         List<Anime> busca = dao.Buscar(null);
+        
+        this.usuario=usuario;
         
         preencheTabela(busca);
     }
@@ -151,9 +156,13 @@ public class TelaListarAnimes extends javax.swing.JInternalFrame {
        int selecionada = tblBusca.getSelectedRow();
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
-        
-        editarAnime(id);
-        this.dispose();
+        if(usuario.getStatus()!=1){
+            ClassificarAnime(id);
+        }
+        else{
+            editarAnime(id);
+            this.dispose();
+        }
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
@@ -173,6 +182,22 @@ public class TelaListarAnimes extends javax.swing.JInternalFrame {
         
         this.getParent().add(editar);
         editar.setVisible(true);
+        this.setVisible(true);
+    }
+    
+    public void ClassificarAnime(int id){
+        Anime entidade;
+        
+        entidade = dao.Abrir(id);
+        
+        Classificar = new TelaClassificacaoAnime(usuario);
+        
+        Classificar.setEntidade(entidade);
+        
+        Classificar.setListagem(this);
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
         this.setVisible(true);
     }
 

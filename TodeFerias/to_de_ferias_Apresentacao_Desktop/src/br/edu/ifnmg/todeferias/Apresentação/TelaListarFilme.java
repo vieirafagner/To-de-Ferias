@@ -21,7 +21,7 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
 
     FilmeRepositorio dao = GerenciadorReferencias.getFilme();
     TelaCadastroFilme editar;
-    TelaClassicacaoFilme Classificar;
+    TelaClassificacaoFilme Classificar;
     Conta usuario;
     
     public TelaListarFilme(Conta usuario) {
@@ -223,7 +223,7 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
         
         entidade = dao.Abrir(id);
         
-        Classificar = new TelaClassicacaoFilme(usuario);
+        Classificar = new TelaClassificacaoFilme(usuario);
         
         Classificar.setEntidade(entidade);
         

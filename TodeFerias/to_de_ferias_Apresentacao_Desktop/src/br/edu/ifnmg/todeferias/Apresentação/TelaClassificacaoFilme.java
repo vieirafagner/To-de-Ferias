@@ -16,13 +16,13 @@ import javax.swing.JOptionPane;
  *
  * @author fagner
  */
-public class TelaClassicacaoFilme extends javax.swing.JInternalFrame {
+public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
 
     Filme entidade = new Filme();
     FilmeRepositorio dao;
     TelaListarFilme listagem;
-    private Conta usuario;
-    public TelaClassicacaoFilme(Conta usuario) {
+     Conta usuario;
+    public TelaClassificacaoFilme(Conta usuario) {
         initComponents();
         this.usuario = usuario;
         
@@ -50,7 +50,7 @@ public class TelaClassicacaoFilme extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         bxClassificacao = new javax.swing.JComboBox<>();
         btnSalvar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         jLabel1.setText("Nome");
 
@@ -84,10 +84,10 @@ public class TelaClassicacaoFilme extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -127,7 +127,7 @@ public class TelaClassicacaoFilme extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalvar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnCancelar)
                 .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
@@ -160,7 +160,7 @@ public class TelaClassicacaoFilme extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(jButton1))
+                    .addComponent(btnCancelar))
                 .addGap(30, 30, 30))
         );
 
@@ -188,9 +188,9 @@ public class TelaClassicacaoFilme extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
     private void preencheCampos(){
  
         lblNome.setText( entidade.getNome() );
@@ -216,9 +216,9 @@ public class TelaClassicacaoFilme extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> bxClassificacao;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

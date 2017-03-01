@@ -7,6 +7,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Anime;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,8 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
         Anime entidade = new Anime();
         AnimeRepositorio dao;
         TelaListarAnimes listagem;
+        
+        Conta usuario;
         
     public TelaCadastrarAnime() {
         initComponents();
