@@ -43,8 +43,6 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
         txtAutor = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtQtd_pag = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        bxClassificacao = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         txtResumo = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
@@ -61,11 +59,6 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel4.setText("Número de Páginas");
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel5.setText("Classificação");
-
-        bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel6.setText("Resumo");
@@ -104,15 +97,7 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtQtd_pag, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtResumo)))
+                                .addComponent(txtQtd_pag, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(83, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -124,7 +109,12 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
                                 .addComponent(btnSalvar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnExcluir)
-                                .addContainerGap())))))
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtResumo, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,23 +128,18 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtQtd_pag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtQtd_pag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtResumo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 61, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtResumo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSalvar)
                             .addComponent(btnExcluir))
@@ -192,6 +177,9 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Livro(0,"",0,"", "",0);
                 preencheCampos();
+                TelaListarLivros tela = new TelaListarLivros();
+                this.getParent().add(tela);
+                tela.setVisible(true);
                 this.dispose();
             }
             else
@@ -206,14 +194,14 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
         entidade.setTitulo(txtTitulo.getText()  );
         entidade.setAutor(txtAutor.getText());
         entidade.setQtd_pag(Integer.parseInt(txtQtd_pag.getText()));
-        entidade.setClassificacao(bxClassificacao.getSelectedIndex());
+        //entidade.setClassificacao(bxClassificacao.getSelectedIndex());
         entidade.setResumo(txtResumo.getText());
     }
   private void preencheCampos(){
         txtTitulo.setText(entidade.getTitulo());
         txtAutor.setText( entidade.getAutor());
         txtQtd_pag.setText(Integer.toString(entidade.getQtd_pag()));
-        bxClassificacao.setSelectedItem( entidade.getClassificacao());
+       // bxClassificacao.setSelectedItem( entidade.getClassificacao());
         txtResumo.setText(entidade.getResumo());    
     }
   public Livro getEntidade() {
@@ -235,12 +223,10 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> bxClassificacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtQtd_pag;

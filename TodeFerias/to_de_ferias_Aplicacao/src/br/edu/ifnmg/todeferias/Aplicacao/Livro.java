@@ -13,7 +13,7 @@ public class Livro implements Entidade {
 
     private int id;
     private String titulo;
-    private int classificacao;
+    //private int classificacao;
     private String resumo;
     private String autor;
     private int qtd_pag;
@@ -24,7 +24,7 @@ public class Livro implements Entidade {
     public Livro(int id, String titulo,int classificacao,String resumo,String autor, int qtd_pag){
         this.id=id;
         this.titulo=titulo;
-        this.classificacao=classificacao;
+        //this.classificacao=classificacao;
         this.resumo=resumo;
         this.autor=autor;
         this.qtd_pag=qtd_pag;
@@ -60,16 +60,16 @@ public class Livro implements Entidade {
     /**
      * @return the classificacao
      */
-    public int getClassificacao() {
+    /*public int getClassificacao() {
         return classificacao;
-    }
+    }*/
 
     /**
      * @param classificacao the classificacao to set
      */
-    public void setClassificacao(int classificacao) {
+    /*public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
-    }
+    }*/
 
     /**
      * @return the resumo

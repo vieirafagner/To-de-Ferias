@@ -152,6 +152,7 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
         
         editarLivro(id);
+        this.dispose();
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed

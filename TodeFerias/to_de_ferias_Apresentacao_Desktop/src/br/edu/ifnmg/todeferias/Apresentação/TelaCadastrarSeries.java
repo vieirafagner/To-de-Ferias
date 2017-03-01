@@ -44,8 +44,6 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
         txtQtd_Temp = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtDuracao = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        bxClassificacao = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -65,15 +63,6 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
         jLabel4.setText("Quantidade de Temporadas");
 
         jLabel5.setText("Duração");
-
-        jLabel6.setText("Classificação");
-
-        bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-        bxClassificacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bxClassificacaoActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Tela de Cadastro de Série");
@@ -131,10 +120,6 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel7)
                                 .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -160,15 +145,11 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnExcluir))
@@ -185,6 +166,9 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Serie(0,0,"","",0,"",0);
                 preencheCampos();
+                TelaListarSerie tela = new TelaListarSerie();
+                this.getParent().add(tela);
+                tela.setVisible(true);
                 this.dispose();
             }
             else
@@ -194,10 +178,6 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
-
-    private void bxClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxClassificacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bxClassificacaoActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -229,7 +209,7 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
         entidade.setNome( txtNome.getText()  );
         entidade.setGenero(txtGenero.getText() );
         entidade.setDuracao_ep(Integer.parseInt(txtDuracao.getText()));
-        entidade.setClassificacao(bxClassificacao.getSelectedIndex());
+        //entidade.setClassificacao(bxClassificacao.getSelectedIndex());
         entidade.setQtd_temp(Integer.parseInt(txtQtd_Temp.getText()));
         entidade.setSinopse(txtSinopse.getText());
     }    
@@ -239,7 +219,7 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
  
         txtNome.setText( entidade.getNome() );
         txtGenero.setText( entidade.getGenero());
-        bxClassificacao.setSelectedItem( entidade.getClassificacao());
+        //bxClassificacao.setSelectedItem( entidade.getClassificacao());
         txtQtd_Temp.setText( Integer.toString(entidade.getQtd_temp()));
        txtDuracao.setText(Integer.toString(entidade.getDuracao_ep()));
        txtSinopse.setText(entidade.getSinopse());
@@ -263,13 +243,11 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> bxClassificacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtDuracao;
     private javax.swing.JTextField txtGenero;

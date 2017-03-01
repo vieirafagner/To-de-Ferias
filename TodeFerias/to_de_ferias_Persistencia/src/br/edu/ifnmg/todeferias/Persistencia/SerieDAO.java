@@ -21,14 +21,14 @@ import java.util.logging.Logger;
 public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
         
     public SerieDAO() {
-        setConsultaAbrir("select id,duracao_ep,genero,nome,classificacao,sinopse,qtd_temp from Serie where id = ?");
-        setConsultaApagar("DELETE FROM Serie WHERE id = ? ");
-        setConsultaInserir("INSERT INTO Serie(duracao_ep,genero,nome,classificacao,sinopse,qtd_temp) VALUES(?,?,?,?,?,?)");
-        setConsultaAlterar("UPDATE Serie SET duracao_ep = ?,genero = ?,nome = ?, classificacao = ?, "
+        setConsultaAbrir("select id,duracao_ep,genero,nome,sinopse,qtd_temp from Serie where id = ? and status = 1");
+        setConsultaApagar("UPDATE Serie set status = 0 WHERE id = ? ");
+        setConsultaInserir("INSERT INTO Serie(duracao_ep,genero,nome,sinopse,qtd_temp,status) VALUES(?,?,?,?,?,?)");
+        setConsultaAlterar("UPDATE Serie SET duracao_ep = ?,genero = ?,nome = ?, "
                         + "sinopse = ?, qtd_temp = ? "
                         + "WHERE id = ?");
-        setConsultaBusca("select id,duracao_ep,genero,nome,classificacao,sinopse,qtd_temp from Serie ");
-        setConsultaUltimoId("select max(id) from Serie where duracao_ep = ? and genero = ? and nome = ? and classificacao = ? and sinopse = ? and qtd_temp = ?");
+        setConsultaBusca("select id,duracao_ep,genero,nome,sinopse,qtd_temp from Serie where status = 1 ");
+        setConsultaUltimoId("select max(id) from Serie where duracao_ep = ? and genero = ? and nome = ? and sinopse = ? and qtd_temp = ? and status = ?");
     }
     
     @Override
@@ -41,9 +41,9 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
                 tmp.setDuracao_ep(resultado.getInt(2));
                 tmp.setGenero(resultado.getString(3));
                 tmp.setNome(resultado.getString(4));
-                tmp.setClassificacao(resultado.getInt(5));
-                tmp.setSinopse(resultado.getString(6));
-                tmp.setQtd_temp(resultado.getInt(7));
+                //tmp.setClassificacao(resultado.getInt(5));
+                tmp.setSinopse(resultado.getString(5));
+                tmp.setQtd_temp(resultado.getInt(6));
                 
          } catch (SQLException ex) {
             Logger.getLogger(SerieDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,11 +60,12 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
             sql.setInt(1, obj.getDuracao_ep());
             sql.setString(2, obj.getGenero());
             sql.setString(3, obj.getNome());
-            sql.setInt(4, obj.getClassificacao());
-            sql.setString(5, obj.getSinopse());
-            sql.setInt(6, obj.getQtd_temp());
+            //sql.setInt(4, obj.getClassificacao());
+            sql.setString(4, obj.getSinopse());
+            sql.setInt(5, obj.getQtd_temp());
+            sql.setInt(6, 1);
             
-            if(obj.getId() > 0) sql.setInt(7,obj.getId());
+            if(obj.getId() > 0) sql.setInt(6,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(SerieDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -81,7 +82,7 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,duracao_ep,genero,nome,classificacao,sinopse,qtd_temp "
+            PreparedStatement sql = conn.prepareStatement("select id,duracao_ep,genero,nome,sinopse,qtd_temp "
                     + "from Serie where nome = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -119,7 +120,7 @@ public class SerieDAO  extends DAOGenerico<Serie> implements SerieRepositorio {
             if(filtro.getDuracao_ep() > 0 ){ sql.setInt(cont, filtro.getDuracao_ep()); cont++; }
             if(filtro.getGenero()!= null ){ sql.setString(cont, filtro.getGenero()); cont++; }
             if(filtro.getNome() != null ){ sql.setString(cont, filtro.getNome()+ "%"); cont++; }
-            if(filtro.getClassificacao() > 0){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
+            //if(filtro.getClassificacao() > 0){ sql.setInt(cont, filtro.getClassificacao()); cont++; }
             if(filtro.getSinopse()!= null ){ sql.setString(cont, filtro.getSinopse()); cont++; }
             if(filtro.getQtd_temp() > 0 ){ sql.setInt(cont, filtro.getQtd_temp()); cont++; }
             
