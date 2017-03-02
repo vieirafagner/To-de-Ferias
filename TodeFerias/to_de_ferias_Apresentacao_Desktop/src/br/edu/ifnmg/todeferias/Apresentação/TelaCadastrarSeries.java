@@ -1,6 +1,7 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Aplicacao.Serie;
 import br.edu.ifnmg.todeferias.Aplicacao.SerieRepositorio;
@@ -24,9 +25,11 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
   Serie entidade = new Serie();
         SerieRepositorio dao;
         TelaListarSerie listagem;
-    public TelaCadastrarSeries() {
+        Conta usuario;
+    public TelaCadastrarSeries(Conta usuario) {
         initComponents();
         dao = GerenciadorReferencias.getSerie();
+        this.usuario=usuario;
     }
 
     /**
@@ -173,7 +176,7 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Serie(0,0,"","",0,"",0);
                 preencheCampos();
-                TelaListarSerie tela = new TelaListarSerie();
+                TelaListarSerie tela = new TelaListarSerie(usuario);
                 this.getParent().add(tela);
                 tela.setVisible(true);
                 this.dispose();

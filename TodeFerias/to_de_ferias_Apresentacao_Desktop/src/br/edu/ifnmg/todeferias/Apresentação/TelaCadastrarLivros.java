@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Aplicacao.Livro;
 import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
@@ -22,10 +23,12 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
     Livro entidade = new Livro();
     LivroRepositorio dao;
     TelaListarLivros listagem;
+    Conta usuario;
    
-    public TelaCadastrarLivros() {
+    public TelaCadastrarLivros(Conta usuario) {
         initComponents();
         dao = GerenciadorReferencias.getLivro();
+        this.usuario=usuario;
     }
 
     /**
@@ -184,7 +187,7 @@ public class TelaCadastrarLivros extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Livro(0,"",0,"", "",0);
                 preencheCampos();
-                TelaListarLivros tela = new TelaListarLivros();
+                TelaListarLivros tela = new TelaListarLivros(usuario);
                 this.getParent().add(tela);
                 tela.setVisible(true);
                 this.dispose();

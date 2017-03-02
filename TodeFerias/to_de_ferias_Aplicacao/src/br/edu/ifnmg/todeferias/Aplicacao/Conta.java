@@ -40,7 +40,7 @@ public class Conta implements Entidade {
     public Conta() {
 
         this.id = 0;
-        this.status = 2;
+        this.status = 1;
         this.filmes = new LinkedList<>();
     }
 

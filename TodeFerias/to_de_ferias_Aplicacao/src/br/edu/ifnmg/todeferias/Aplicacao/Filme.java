@@ -15,7 +15,7 @@ public class Filme implements Entidade {
     private String diretor;
     private int duracao;
     private String nome;
-    //private int classificacao;
+    private int classificacao;
     private String genero;
     private String sinopse;
    
@@ -91,19 +91,15 @@ public class Filme implements Entidade {
         this.nome = nome;
     }
 
-    /**
-     * @return the classificacao
-     */
-   /* public int getClassificacao() {
+    public int getClassificacao() {
         return classificacao;
-    }*/
+    }
 
-    /**
-     * @param classificacao the classificacao to set
-     */
-    /*public void setClassificacao(int classificacao) {
+    public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
-    }*/
+    }
+
+    
 
     /**
      * @return the genero
