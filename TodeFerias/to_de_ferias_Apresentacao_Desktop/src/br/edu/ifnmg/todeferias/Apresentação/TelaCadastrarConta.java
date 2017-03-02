@@ -8,6 +8,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,6 +54,12 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         jLabel2.setText("Email");
 
         jLabel3.setText("Senha");
+
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +183,30 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){ // usar para chamar o enter
+             try {
+              if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+            
+                preencheObjeto();
+                
+                if(dao.Salvar(entidade)){
+                    JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                this.dispose();
+                }
+                else
+                    JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
+            
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
+            }
+        } catch (ErroValidacao ex) {
+            System.out.println(ex);
+        }    
+        
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
  public Conta getEntidade() {
         return entidade;
     }

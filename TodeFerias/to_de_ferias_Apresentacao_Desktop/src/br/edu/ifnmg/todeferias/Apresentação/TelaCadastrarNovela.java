@@ -9,6 +9,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -73,6 +74,12 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel5.setText("Nº de Capitulos");
+
+        txtQtd_cap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtQtd_capKeyPressed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +203,29 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void txtQtd_capKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtd_capKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+            
+            try {
+                preencheObjeto();
+            } catch (ErroValidacao ex) {
+                Logger.getLogger(TelaCadastrarNovela.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if(dao.Salvar(entidade)){
+                JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                this.dispose();
+            } 
+            else
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
+            
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
+        }   
+        }
+    }//GEN-LAST:event_txtQtd_capKeyPressed
 private void preencheObjeto() throws ErroValidacao {
         
         entidade.setNome( txtNome.getText()  );

@@ -4,6 +4,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Aplicacao.Serie;
 import br.edu.ifnmg.todeferias.Aplicacao.SerieRepositorio;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -70,6 +71,12 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
         jLabel7.setText("Sinopse");
 
         jLabel2.setText("Nome");
+
+        txtSinopse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSinopseKeyPressed(evt);
+            }
+        });
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +210,29 @@ public class TelaCadastrarSeries extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void txtSinopseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSinopseKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+
+            try {
+                preencheObjeto();
+            } catch (ErroValidacao ex) {
+                Logger.getLogger(TelaCadastrarSeries.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if(dao.Salvar(entidade)){
+                JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                this.dispose();
+            }
+            else
+            JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
+        }   
+        }
+    }//GEN-LAST:event_txtSinopseKeyPressed
 
     private void preencheObjeto() throws ErroValidacao {
         

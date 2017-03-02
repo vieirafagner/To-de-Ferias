@@ -9,6 +9,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -68,6 +69,11 @@ public class TelaCadastroFilme extends javax.swing.JInternalFrame {
 
         txtSinopse.setColumns(20);
         txtSinopse.setRows(5);
+        txtSinopse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSinopseKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtSinopse);
 
         btnSalvar.setText("Salvar");
@@ -200,6 +206,29 @@ public class TelaCadastroFilme extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void txtSinopseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSinopseKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+            
+            try {
+                preencheObjeto();
+            } catch (ErroValidacao ex) {
+                Logger.getLogger(TelaCadastroFilme.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if(dao.Salvar(entidade)){
+                JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                this.dispose();
+            } 
+            else
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
+            
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
+        }   
+        }
+    }//GEN-LAST:event_txtSinopseKeyPressed
 
     private void preencheObjeto() throws ErroValidacao {
         

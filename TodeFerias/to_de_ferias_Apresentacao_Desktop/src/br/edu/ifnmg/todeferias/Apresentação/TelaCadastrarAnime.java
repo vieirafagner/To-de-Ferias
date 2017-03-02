@@ -9,6 +9,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.Anime;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -65,6 +66,12 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel6.setText("Sinopse");
+
+        txtSinopse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSinopseKeyPressed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -193,6 +200,29 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void txtSinopseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSinopseKeyPressed
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){ // usar para chamar o enter
+            if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+            
+            try {
+                preencheObjeto();
+            } catch (ErroValidacao ex) {
+                Logger.getLogger(TelaCadastrarAnime.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if(dao.Salvar(entidade)){
+                JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                this.dispose();
+            } 
+            else
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
+            }
+            else {
+            JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
+            }    
+         }
+    }//GEN-LAST:event_txtSinopseKeyPressed
 
          private void preencheObjeto() throws ErroValidacao {
         

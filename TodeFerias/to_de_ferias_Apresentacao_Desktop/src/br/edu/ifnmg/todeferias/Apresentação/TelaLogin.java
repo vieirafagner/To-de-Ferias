@@ -8,6 +8,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,6 +63,11 @@ public class TelaLogin extends javax.swing.JFrame {
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
+            }
+        });
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
             }
         });
 
@@ -161,6 +167,29 @@ public class TelaLogin extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){ // usar para chamar o enter
+            ContaDAO dao = new ContaDAO();
+        try {
+            Conta tmp = dao.checkLogin(txtEmail.getText(),txtSenha.getText());
+            if(tmp !=null){
+                
+                new TelaMenu(tmp).setVisible(true);
+                
+               
+               this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Email ou senha incorretos");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ErroValidacao ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
