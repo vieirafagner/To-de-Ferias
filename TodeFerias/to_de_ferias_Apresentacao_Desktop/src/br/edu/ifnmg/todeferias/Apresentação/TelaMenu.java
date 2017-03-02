@@ -21,6 +21,7 @@ public class TelaMenu extends javax.swing.JFrame {
      * Creates new form TelaMenu
      */
     public TelaMenu(Conta usuario) {
+        this.setExtendedState(MAXIMIZED_BOTH);
         initComponents();
         this.usuario = usuario;
         
