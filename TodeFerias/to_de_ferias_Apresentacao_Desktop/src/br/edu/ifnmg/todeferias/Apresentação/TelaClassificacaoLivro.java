@@ -6,8 +6,10 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaLivro;
 import br.edu.ifnmg.todeferias.Aplicacao.Livro;
 import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.ContaLivroDAO;
 import javax.swing.JOptionPane;
 
 /**
