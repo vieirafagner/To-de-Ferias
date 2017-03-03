@@ -6,8 +6,10 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaNovela;
 import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.ContaNovelaDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +21,7 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
     Novela entidade = new Novela();
     NovelaRepositorio dao;
     TelaListarNovelas listagem;
-    private Conta usuario;
+    Conta usuario;
     public TelaClassificacaoNovela(Conta usuario) {
         initComponents();
         

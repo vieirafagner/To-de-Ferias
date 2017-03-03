@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Novela implements Entidade {
     private int id;
     private int qtdCap;
-    //private int classificacao;
+    private int classificacao;
     private String diretor;
     private String nome;
     
@@ -25,7 +25,7 @@ public class Novela implements Entidade {
     public Novela(int id, int qtdCap, int classificacao, String diretor, String nome) {
         this.id = id;
         this.qtdCap = qtdCap;
-        //this.classificacao = classificacao;
+        this.classificacao = classificacao;
         this.diretor = diretor;
         this.nome = nome;
     }
@@ -61,16 +61,16 @@ public class Novela implements Entidade {
     /**
      * @return the classificacao
      */
-   /* public int getClassificacao() {
+    public int getClassificacao() {
         return classificacao;
-    }*/
+    }
 
     /**
      * @param classificacao the classificacao to set
      */
-    /*public void setClassificacao(int classificacao) {
+    public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
-    }*/
+    }
 
     /**
      * @return the diretor

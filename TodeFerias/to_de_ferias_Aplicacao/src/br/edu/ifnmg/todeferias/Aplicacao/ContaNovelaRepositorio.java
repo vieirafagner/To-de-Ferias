@@ -9,6 +9,6 @@ package br.edu.ifnmg.todeferias.Aplicacao;
  *
  * @author fagner
  */
-public interface ContaFilmeRepositorio extends Repositorio<ContaFilme> {
-    public ContaFilme Abrir(int id);
+public interface ContaNovelaRepositorio extends Repositorio<ContaNovela> {
+    public ContaNovela Abrir(int id);
 }

@@ -42,6 +42,11 @@ public class Conta implements Entidade {
         this.id = 0;
         this.status = 1;
         this.filmes = new LinkedList<>();
+        this.novelas = new LinkedList<>();
+        this.animes = new LinkedList<>();
+        this.series = new LinkedList<>();
+        this.livros = new LinkedList<>();
+        this.documentarios = new LinkedList<>();
     }
 
     public Conta(int id, String email,String senha, String nome,int status) {
@@ -51,6 +56,11 @@ public class Conta implements Entidade {
         this.nome = nome;
         this.status=status;
         this.filmes = new LinkedList<>();
+        this.novelas = new LinkedList<>();
+        this.animes = new LinkedList<>();
+        this.series = new LinkedList<>();
+        this.livros = new LinkedList<>();
+        this.documentarios = new LinkedList<>();
     }
     
     public void addAnime(Anime anime){
