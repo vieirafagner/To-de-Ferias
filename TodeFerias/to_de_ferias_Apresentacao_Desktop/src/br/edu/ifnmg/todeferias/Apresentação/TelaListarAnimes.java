@@ -8,6 +8,8 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.Anime;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaAnime;
+import br.edu.ifnmg.todeferias.Persistencia.AnimeDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -187,15 +189,15 @@ public class TelaListarAnimes extends javax.swing.JInternalFrame {
     }
     
     public void ClassificarAnime(int id){
-        Anime entidade;
+        ContaAnime entidade = new ContaAnime();
         
-        entidade = dao.Abrir(id);
-        
-        Classificar = new TelaClassificacaoAnime(usuario);
+       AnimeDAO daoAnime = new AnimeDAO();
+        entidade.setAnime(daoAnime.Abrir(id));
+        Classificar = new TelaClassificacaoAnime(usuario,false);
         
         Classificar.setEntidade(entidade);
         
-        Classificar.setListagem(this);
+       // Classificar.setListagem(this);
         
         this.getParent().add(Classificar);
         Classificar.setVisible(true);

@@ -21,6 +21,7 @@ public class TelaMeusAnimes extends javax.swing.JInternalFrame {
 
    private Conta usuario;
    List<ContaAnime>lista;
+   TelaClassificacaoAnime Classificar;
     public TelaMeusAnimes(Conta usuario) {
         initComponents();
         
@@ -30,6 +31,7 @@ public class TelaMeusAnimes extends javax.swing.JInternalFrame {
         
         this.lista = dao.Buscar(contaAnime);
         AnimeDAO daoAnime = new AnimeDAO();
+
         
         
          for(ContaAnime f :lista){
@@ -37,8 +39,6 @@ public class TelaMeusAnimes extends javax.swing.JInternalFrame {
             
             daoAnime.Abrir(f.getId()); 
             
-            lista.add(f)
-            lista.add();
         
         }
         
@@ -48,13 +48,13 @@ public class TelaMeusAnimes extends javax.swing.JInternalFrame {
    private void preencheTabela(List<ContaAnime> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
-        //modelo.addColumn("Nome");
+        modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
         
         for(ContaAnime ca : lista){
             Vector linha = new Vector();
             linha.add(ca.getId());
-            //linha.add(ct.());
+            linha.add(ca.getAnime().getNome());
             linha.add(ca.getClassificacao());
             modelo.addRow(linha);
         }
@@ -94,6 +94,11 @@ public class TelaMeusAnimes extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
+        tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBuscaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBusca);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,6 +135,38 @@ public class TelaMeusAnimes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscaActionPerformed
 
+    private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
+        int selecionada = tblBusca.getSelectedRow();
+        
+        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
+         if(usuario.getStatus()!=1){
+            ClassificarAnime(id);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tblBuscaMouseClicked
+    
+    public void ClassificarAnime(int id){
+        
+        ContaAnime entidade;
+        
+        ContaAnimeDAO daoContaFilme = new ContaAnimeDAO();
+        
+        
+        
+        entidade = daoContaFilme.Abrir(id);
+        
+        
+        Classificar = new TelaClassificacaoAnime(usuario,true);
+        
+        entidade.getAnime().setClassificacao(entidade.getClassificacao());
+        Classificar.setEntidade(entidade);
+        
+        
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
+        this.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

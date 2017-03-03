@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.todeferias.Persistencia;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Anime;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaAnime;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaAnimeRepositorio;
 import java.sql.PreparedStatement;
@@ -23,6 +24,7 @@ public class ContaAnimeDAO extends DAOGenerico<ContaAnime> implements ContaAnime
         setConsultaAbrir("select id,idConta,idAnime,classificacao FROM conta_anime ");
         setConsultaInserir("INSERT INTO conta_anime(idConta,idAnime,classificacao) VALUES(?,?,?)");
         setConsultaBusca("select id,idConta,idAnime,classificacao FROM conta_anime ");
+        setConsultaAlterar("UPDATE conta_anime SET idConta = ?, idAnime = ?,classificacao = ? WHERE id = ? ");
         
     }
 
@@ -32,10 +34,11 @@ public class ContaAnimeDAO extends DAOGenerico<ContaAnime> implements ContaAnime
         try {
             // Passa os parâmetros para a consulta SQL
             sql.setInt(1, obj.getConta().getId());
-            sql.setInt(2, obj.getConta().getAnimes().get(0).getId());//supondo q vou setar o 1º
+            sql.setInt(2, obj.getAnime().getId());//supondo q vou setar o 1º
             // teste
             //obj.getConta().getFilmes().get(0).setClassificacao(obj);
-            sql.setInt(3, obj.getConta().getAnimes().get(0).getClassificacao());
+            sql.setInt(3, obj.getClassificacao());
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaAnimeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,7 +59,7 @@ public class ContaAnimeDAO extends DAOGenerico<ContaAnime> implements ContaAnime
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,idConta,idAnime,classificacao FROM conta_anime"
+            PreparedStatement sql = conn.prepareStatement("select id,idConta,idAnime,classificacao FROM conta_anime "
                     + "where id = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -128,6 +131,8 @@ public class ContaAnimeDAO extends DAOGenerico<ContaAnime> implements ContaAnime
         
         // Posso os dados do resultado para o objeto
                 ContaAnime tmp = new ContaAnime();
+                AnimeDAO daoAnime = new AnimeDAO();
+                Anime anime = new Anime();
                
         try {
             tmp.setId(resultado.getInt(1));
@@ -136,6 +141,9 @@ public class ContaAnimeDAO extends DAOGenerico<ContaAnime> implements ContaAnime
             //select id,idConta,idFilme,classificacao
             tmp.setClassificacao(resultado.getInt(4));
             tmp.getAnime().setId(resultado.getInt(3));
+            tmp.setAnime(daoAnime.Abrir(tmp.getAnime().getId()));
+            
+            
                 
             
                 

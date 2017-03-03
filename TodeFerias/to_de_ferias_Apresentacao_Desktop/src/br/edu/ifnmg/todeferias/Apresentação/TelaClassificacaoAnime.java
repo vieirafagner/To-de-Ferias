@@ -17,14 +17,16 @@ import javax.swing.JOptionPane;
  */
 public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
 
-     Anime entidade = new Anime();
+     ContaAnime entidade = new ContaAnime();
     AnimeRepositorio dao;
     TelaListarAnimes listagem;
     private Conta usuario;
-    public TelaClassificacaoAnime(Conta usuario) {
+    private boolean editar;
+    public TelaClassificacaoAnime(Conta usuario,boolean editar) {
         initComponents();
         
         this.usuario = usuario;
+        this.editar=editar;
     }
 
     
@@ -154,18 +156,36 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClassificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificarActionPerformed
-       ContaAnime contaAnime = new ContaAnime(usuario);
-        ContaAnimeDAO dao = new ContaAnimeDAO();
+        ContaAnime contaAnime = new ContaAnime(usuario);
+            ContaAnimeDAO dao = new ContaAnimeDAO();
+            //contaFilme.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setConta(usuario);
+            
+            
+        if(editar){
+            
+            
+            dao.Salvar(entidade);
+            JOptionPane.showMessageDialog(this, "Classificação alterada com Sucesso !");
+        
+            this.dispose();
+        
+        }else{
+           usuario.addAnime(contaAnime.getAnime());// teste
     
-        entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
-        usuario.addAnime(entidade);
+            
         
-        System.out.println(bxClassificacao.getSelectedIndex()+1);
+            //System.out.println(bxClassificacao.getSelectedIndex()+1);
         
-        dao.Salvar(contaAnime);
+            dao.Salvar(entidade);
         
-        JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
-        this.dispose();
+            JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+        
+            this.dispose();
+            
+            
+        }
     }//GEN-LAST:event_btnClassificarActionPerformed
 
     private void brnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnCancelarActionPerformed
@@ -174,16 +194,18 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
 
     private void preencheCampos(){
  
-        lblnome.setText( entidade.getNome() );
-        lblDuracao.setText( Integer.toString(entidade.getDuracao_ep()));
-        lblQtd_temp.setText( Integer.toString(entidade.getQtd_temp()));
-        lblSinopse.setText(entidade.getSinopse());
+        lblnome.setText( entidade.getAnime().getNome() );
+        lblDuracao.setText( Integer.toString(entidade.getAnime().getDuracao_ep()));
+        lblQtd_temp.setText( Integer.toString(entidade.getAnime().getQtd_temp()));
+        lblSinopse.setText(entidade.getAnime().getSinopse());
+        bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
+               
          
     }
-    public Anime getEntidade() {
+    public ContaAnime getEntidade() {
         return entidade;
     }
-    public void setEntidade(Anime entidade) {
+    public void setEntidade(ContaAnime entidade) {
         this.entidade = entidade;
         preencheCampos();
     }

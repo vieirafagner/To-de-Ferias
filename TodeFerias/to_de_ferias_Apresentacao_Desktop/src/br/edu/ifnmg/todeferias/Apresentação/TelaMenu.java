@@ -74,6 +74,7 @@ public class TelaMenu extends javax.swing.JFrame {
         mnuAnime = new javax.swing.JMenu();
         mnuCadastrarAnime = new javax.swing.JMenuItem();
         mnuListarAnime = new javax.swing.JMenuItem();
+        mnuMeusAnimes = new javax.swing.JMenuItem();
         mnuLivros = new javax.swing.JMenu();
         mnuCadastrarLivro = new javax.swing.JMenuItem();
         mnuListarLivro = new javax.swing.JMenuItem();
@@ -191,6 +192,14 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
         mnuAnime.add(mnuListarAnime);
+
+        mnuMeusAnimes.setText("Meus Animes");
+        mnuMeusAnimes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuMeusAnimesActionPerformed(evt);
+            }
+        });
+        mnuAnime.add(mnuMeusAnimes);
 
         mnuMidias.add(mnuAnime);
 
@@ -431,6 +440,12 @@ public class TelaMenu extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_mnuMinhasSeriesActionPerformed
 
+    private void mnuMeusAnimesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMeusAnimesActionPerformed
+       TelaMeusAnimes tela = new TelaMeusAnimes(usuario);
+       this.add(tela);
+       tela.setVisible(true);
+    }//GEN-LAST:event_mnuMeusAnimesActionPerformed
+
      public void editarConta(int id){
         Conta entidade;
      
@@ -480,6 +495,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuListarAnime;
     private javax.swing.JMenuItem mnuListarLivro;
     private javax.swing.JMenu mnuLivros;
+    private javax.swing.JMenuItem mnuMeusAnimes;
     private javax.swing.JMenuItem mnuMeusDOC;
     private javax.swing.JMenuItem mnuMeusFilmes;
     private javax.swing.JMenuItem mnuMeusLivros;

@@ -23,7 +23,7 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
     TelaListarFilme listagem;
      Conta usuario;
      private boolean editar;
-    public TelaClassificacaoFilme(Conta usuario,boolean editar) {//editar se for verdadeiro chama o UPDATE caso falso so lista e classifica pela primeira vez
+    public TelaClassificacaoFilme(Conta usuario, boolean editar) {//editar se for verdadeiro chama o UPDATE caso falso so lista e classifica pela primeira vez
         initComponents();
         this.usuario = usuario;
         this.editar = editar;
@@ -198,7 +198,7 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
             //contaFilme.setId(entidade.getId());
             //usuario.addFilme(contaFilme.getFilme());// teste
             dao.Salvar(entidade);
-            JOptionPane.showMessageDialog(this, "Alterada classificação com Sucesso !");
+            JOptionPane.showMessageDialog(this, "Classificação alterada com Sucesso !");
         
             this.dispose();
         
@@ -209,7 +209,7 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
         
             //System.out.println(bxClassificacao.getSelectedIndex()+1);
         
-            dao.Salvar(contaFilme);
+            dao.Salvar(entidade);
         
             JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
         

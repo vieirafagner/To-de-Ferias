@@ -7,7 +7,6 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
-import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaFilmeDAO;
 import br.edu.ifnmg.todeferias.Persistencia.FilmeDAO;
@@ -33,8 +32,7 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
         ContaFilme contaFilme = new ContaFilme(usuario);
        
         
-//        this.lista = dao.Buscar(null);
-        //contaFilme.setId(31);
+//     
         
         
         this.lista = dao.Buscar(contaFilme);
