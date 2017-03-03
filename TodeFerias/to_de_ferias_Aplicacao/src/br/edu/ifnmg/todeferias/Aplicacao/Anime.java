@@ -18,7 +18,7 @@ public class Anime implements Entidade {
     private String sinopse;
     private String nome;
     private int qtd_temp;
-    //private int classificacao;
+    private int classificacao;
     
     public Anime(){
         
@@ -116,5 +116,13 @@ public class Anime implements Entidade {
             return false;
         }
         return true;
+    }
+
+    public int getClassificacao() {
+        return classificacao;
+    }
+
+    public void setClassificacao(int classificacao) {
+        this.classificacao = classificacao;
     }
 }

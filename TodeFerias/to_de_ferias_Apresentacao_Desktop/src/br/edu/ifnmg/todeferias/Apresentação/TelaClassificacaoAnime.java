@@ -8,6 +8,8 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.Anime;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaAnime;
+import br.edu.ifnmg.todeferias.Persistencia.ContaAnimeDAO;
 import javax.swing.JOptionPane;
 /**
  *
