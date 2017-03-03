@@ -85,18 +85,18 @@ public class Conta implements Entidade {
     public void removeAnimes(Anime anime){
         animes.remove(anime);
     }
-    public void removeNovela(Anime anime){
-        animes.remove(anime);
+    public void removeNovela(Novela novela){
+        animes.remove(novela);
     }
     
-    public void removeDocumentarios(Anime anime){
-        animes.remove(anime);
+    public void removeDocumentarios(Documentario documentario){
+        animes.remove(documentario);
     }
-    public void removeFilme(Anime anime){
-        animes.remove(anime);
+    public void removeFilme(Filme filme){
+        animes.remove(filme);
     }
-    public void removeLivros(Anime anime){
-        animes.remove(anime);
+    public void removeLivros(Livro livro){
+        animes.remove(livro);
     }
 
     public LinkedList<Anime> getAnimes() {

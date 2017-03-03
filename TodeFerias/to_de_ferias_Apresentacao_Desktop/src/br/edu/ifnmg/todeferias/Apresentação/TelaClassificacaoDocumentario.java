@@ -6,8 +6,10 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaDocumentario;
 import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.ContaDocumentarioDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +23,8 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
     TelaListarDocumentarios listagem;
     Conta usuario;
     public TelaClassificacaoDocumentario(Conta usuario) {
+        
+        this.usuario=usuario;
         initComponents();
     }
 
@@ -161,7 +165,7 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
         ContaDocumentarioDAO dao = new ContaDocumentarioDAO();
     
         entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
-        usuario.addDocumentario(entidade);
+        usuario.addDocumentarios(entidade);
         
         System.out.println(bxClassificacao.getSelectedIndex()+1);
         
