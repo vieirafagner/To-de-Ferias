@@ -30,6 +30,7 @@ public class ContaDocumentario implements Entidade {
     public ContaDocumentario(Conta conta) {
         this.conta = conta;
     }
+    
 
     public int getId() {
         return id;

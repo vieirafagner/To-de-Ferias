@@ -6,8 +6,10 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaDocumentario;
 import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.ContaDocumentarioDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -195,15 +197,17 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
     }
     
      public void ClassificarDocumentario(int id){
-        Documentario entidade;
+        ContaDocumentario entidade = new ContaDocumentario();
         
-        entidade = dao.Abrir(id);
+        ContaDocumentarioDAO daoDocumentario = new ContaDocumentarioDAO();
         
-        Classificar = new TelaClassificacaoDocumentario(usuario);
+        entidade = daoDocumentario.Abrir(id);
+        
+        Classificar = new TelaClassificacaoDocumentario(usuario,false);
         
         Classificar.setEntidade(entidade);
         
-        Classificar.setListagem(this);
+        //Classificar.setListagem(this);
         
         this.getParent().add(Classificar);
         Classificar.setVisible(true);

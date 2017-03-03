@@ -7,7 +7,6 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
-import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaFilmeDAO;
 import javax.swing.JOptionPane;

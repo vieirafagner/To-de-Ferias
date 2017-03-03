@@ -7,6 +7,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaDocumentario;
+import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDocumentarioDAO;
 import br.edu.ifnmg.todeferias.Persistencia.DocumentarioDAO;
 import java.util.List;
@@ -22,18 +23,19 @@ public class TelaMeusDocumentarios extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaMeusDocumentarios
      */
-    
+    TelaClassificacaoDocumentario Classificar;
+    DocumentarioRepositorio dao = GerenciadorReferencias.getDocumentario();
     private Conta usuario;
     List<ContaDocumentario>lista;
     
-    public TelaMeusDocumentarios() {
+    public TelaMeusDocumentarios(Conta usuario) {
         initComponents();
         
         this.usuario = usuario;
         ContaDocumentarioDAO  dao = new ContaDocumentarioDAO();
-        ContaDocumentario contaNovela = new ContaDocumentario(usuario);
+        ContaDocumentario contaDocumentario = new ContaDocumentario(usuario);
         
-        this.lista = dao.Buscar(contaNovela);
+        this.lista = dao.Buscar(contaDocumentario);
         DocumentarioDAO daoDocumentario = new DocumentarioDAO();
         //setar todos os filmes
         
@@ -42,9 +44,7 @@ public class TelaMeusDocumentarios extends javax.swing.JInternalFrame {
             
             daoDocumentario.Abrir(f.getId()); // pega o filme
             
-            lista.add(f)
-            lista.add();
-        
+
         }
         
         preencheTabela(lista);
@@ -53,13 +53,13 @@ public class TelaMeusDocumentarios extends javax.swing.JInternalFrame {
     private void preencheTabela(List<ContaDocumentario> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
-        //modelo.addColumn("Nome");
+        modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
         
         for(ContaDocumentario cs : lista){
             Vector linha = new Vector();
             linha.add(cs.getId());
-            //linha.add(ct.());
+            linha.add(cs.getDocumentario().getNome());
             linha.add(cs.getClassificacao());
             modelo.addRow(linha);
         }
@@ -93,6 +93,11 @@ public class TelaMeusDocumentarios extends javax.swing.JInternalFrame {
                 "Id", "Nome", "Classificação"
             }
         ));
+        tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBuscaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBusca);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,6 +128,35 @@ public class TelaMeusDocumentarios extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
+        int selecionada = tblBusca.getSelectedRow();
+        
+        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
+         if(usuario.getStatus()!=1){
+            ClassificarDocumentario(id);
+            this.dispose();
+        }
+ 
+    }//GEN-LAST:event_tblBuscaMouseClicked
+
+    public void ClassificarDocumentario(int id){
+        ContaDocumentario entidade;
+        
+       ContaDocumentarioDAO daoDocumentario = new ContaDocumentarioDAO();
+        
+        entidade = daoDocumentario.Abrir(id); 
+        
+        Classificar = new TelaClassificacaoDocumentario(usuario,true);
+        
+        entidade.getDocumentario().setClassificacao(entidade.getClassificacao());
+        Classificar.setEntidade(entidade);
+        
+        //Classificar.setListagem(this);
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
+        this.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

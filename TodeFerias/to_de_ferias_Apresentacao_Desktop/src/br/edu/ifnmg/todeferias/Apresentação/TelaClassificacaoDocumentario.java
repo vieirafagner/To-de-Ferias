@@ -7,7 +7,6 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaDocumentario;
-import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDocumentarioDAO;
 import javax.swing.JOptionPane;
@@ -18,14 +17,17 @@ import javax.swing.JOptionPane;
  */
 public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
 
-    Documentario entidade = new Documentario();
+    ContaDocumentario entidade = new ContaDocumentario();
     DocumentarioRepositorio dao;
     TelaListarDocumentarios listagem;
     Conta usuario;
-    public TelaClassificacaoDocumentario(Conta usuario) {
+    private boolean editar;
+    public TelaClassificacaoDocumentario(Conta usuario, boolean editar) {
         
         this.usuario=usuario;
         initComponents();
+        this.editar = editar;
+        preencheCampos();
     }
 
     /**
@@ -167,17 +169,40 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ContaDocumentario contaDocumentario = new ContaDocumentario(usuario);
-        ContaDocumentarioDAO dao = new ContaDocumentarioDAO();
+            ContaDocumentarioDAO dao = new ContaDocumentarioDAO();
+            //contaFilme.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setConta(usuario);
+            
+            
+        if(editar){
+            
+            //contaFilme.setId(entidade.getId());
+            //usuario.addFilme(contaFilme.getFilme());// teste
+            dao.Salvar(entidade);
+            JOptionPane.showMessageDialog(this, "Classificação alterada com Sucesso !");
+        
+            this.dispose();
+        
+        }else{
+           usuario.addDocumentarios(contaDocumentario.getDocumentario());// teste
     
-        entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
-        usuario.addDocumentarios(entidade);
+            
         
-        System.out.println(bxClassificacao.getSelectedIndex()+1);
+            //System.out.println(bxClassificacao.getSelectedIndex()+1);
         
-        dao.Salvar(contaDocumentario);
+            dao.Salvar(entidade);
         
-        JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
-        this.dispose();
+            JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+        
+            this.dispose();
+            
+            
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -186,16 +211,17 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
 
     private void preencheCampos(){
  
-        lblNome.setText( entidade.getNome() );
-        lblAutor.setText( entidade.getAutor());
-        lblData.setText( entidade.getData());
-        lblSinopse.setText(entidade.getSinopse());
-         
+        lblNome.setText( entidade.getDocumentario().getNome() );
+        lblAutor.setText( entidade.getDocumentario().getAutor());
+        lblData.setText( entidade.getDocumentario().getData());
+        lblDuracao.setText(Integer.toString(entidade.getDocumentario().getDuracao()));
+        lblSinopse.setText(entidade.getDocumentario().getSinopse());
+        bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
     }
-    public Documentario getEntidade() {
+    public ContaDocumentario getEntidade() {
         return entidade;
     }
-    public void setEntidade(Documentario entidade) {
+    public void setEntidade(ContaDocumentario entidade) {
         this.entidade = entidade;
         preencheCampos();
     }

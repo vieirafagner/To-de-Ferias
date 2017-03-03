@@ -429,7 +429,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuMeusLivrosActionPerformed
 
     private void mnuMeusDOCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMeusDOCActionPerformed
-       TelaMeusDocumentarios tela = new TelaMeusDocumentarios();
+       TelaMeusDocumentarios tela = new TelaMeusDocumentarios(usuario);
        this.add(tela);
        tela.setVisible(true);
     }//GEN-LAST:event_mnuMeusDOCActionPerformed

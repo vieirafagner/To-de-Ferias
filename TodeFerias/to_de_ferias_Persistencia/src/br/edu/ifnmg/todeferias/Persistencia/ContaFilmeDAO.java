@@ -90,12 +90,6 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
         if(filtro == null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
         if(filtro.getConta().getId()>0) adicionarFiltro("idConta", " = ");
-        
-        
-        
-        
-        //setConsultaBusca("select id,idConta,idFilme,classificacao FROM conta_filme");
-    
     }
 
     /**

@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaMeusFilmes extends javax.swing.JInternalFrame {
 
-   TelaClassificacaoFilme Classificar;
+    TelaClassificacaoFilme Classificar;
     FilmeRepositorio dao = GerenciadorReferencias.getFilme();
     private Conta usuario;
     List<ContaFilme>lista;

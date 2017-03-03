@@ -7,6 +7,7 @@ package br.edu.ifnmg.todeferias.Persistencia;
 
 import br.edu.ifnmg.todeferias.Aplicacao.ContaDocumentario;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaDocumentarioRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ public class ContaDocumentarioDAO extends DAOGenerico<ContaDocumentario> impleme
         setConsultaAbrir("select id,idConta,idDocumentario,classificacao FROM conta_documentario ");
         setConsultaInserir("INSERT INTO conta_documentario(idConta,idDocumentario,classificacao) VALUES(?,?,?)");
         setConsultaBusca("select id,idConta,idDocumentario,classificacao FROM conta_documentario ");
+        setConsultaAlterar("UPDATE conta_documentario SET idConta = ?, idDocumentario = ?,classificacao = ? WHERE id = ? ");
         
     }
     
@@ -32,10 +34,13 @@ public class ContaDocumentarioDAO extends DAOGenerico<ContaDocumentario> impleme
         try {
             // Passa os parâmetros para a consulta SQL
             sql.setInt(1, obj.getConta().getId());
-            sql.setInt(2, obj.getConta().getDocumentarios().get(0).getId());//supondo q vou setar o 1º
+            sql.setInt(2, obj.getDocumentario().getId());
+            //sql.setInt(2, obj.getConta().getDocumentarios().get(0).getId());//supondo q vou setar o 1º
             // teste
             //obj.getConta().getFilmes().get(0).setClassificacao(obj);
-            sql.setInt(3, obj.getConta().getDocumentarios().get(0).getClassificacao());
+            sql.setInt(3, obj.getClassificacao());
+            
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaDocumentarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,11 +48,12 @@ public class ContaDocumentarioDAO extends DAOGenerico<ContaDocumentario> impleme
         }   
     }
     
+     @Override
     public ContaDocumentario Abrir(int id){
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,idConta,idDocumentario,classificacao FROM conta_documentario"
+            PreparedStatement sql = conn.prepareStatement("select id,idConta,idDocumentario,classificacao FROM conta_documentario "
                     + "where id = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -73,12 +79,6 @@ public class ContaDocumentarioDAO extends DAOGenerico<ContaDocumentario> impleme
         if(filtro == null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
         if(filtro.getConta().getId()>0) adicionarFiltro("idConta", " = ");
-        
-        
-        
-        
-        //setConsultaBusca("select id,idConta,idFilme,classificacao FROM conta_filme");
-    
     }
 
     /**
@@ -119,6 +119,8 @@ public class ContaDocumentarioDAO extends DAOGenerico<ContaDocumentario> impleme
         
         // Posso os dados do resultado para o objeto
                 ContaDocumentario tmp = new ContaDocumentario();
+                DocumentarioDAO daoDocumentario = new DocumentarioDAO();
+                Documentario documentario = new Documentario();
                
         try {
             tmp.setId(resultado.getInt(1));
@@ -127,6 +129,7 @@ public class ContaDocumentarioDAO extends DAOGenerico<ContaDocumentario> impleme
             //select id,idConta,idFilme,classificacao
             tmp.setClassificacao(resultado.getInt(4));
             tmp.getDocumentario().setId(resultado.getInt(3));
+            tmp.setDocumentario(daoDocumentario.Abrir(tmp.getDocumentario().getId()));
                 
             
                 

@@ -62,7 +62,7 @@ public class Conta implements Entidade {
         this.livros = new LinkedList<>();
         this.documentarios = new LinkedList<>();
     }
-    
+   
     public void addAnime(Anime anime){
         animes.add(anime);
     }
