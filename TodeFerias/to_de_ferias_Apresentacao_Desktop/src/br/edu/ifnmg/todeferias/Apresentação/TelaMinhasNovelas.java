@@ -62,11 +62,11 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
         //modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
         
-        for(ContaNovela cs : lista){
+        for(ContaNovela cn : lista){
             Vector linha = new Vector();
-            linha.add(cs.getId());
+            linha.add(cn.getId());
             //linha.add(ct.());
-            linha.add(cs.getClassificacao());
+            linha.add(cn.getClassificacao());
             modelo.addRow(linha);
         }
         

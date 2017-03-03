@@ -155,6 +155,7 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
         if (usuario.getStatus()!= 1)
         {
          ClassificarNovela(id);
+         this.dispose();
         }
         else
         {

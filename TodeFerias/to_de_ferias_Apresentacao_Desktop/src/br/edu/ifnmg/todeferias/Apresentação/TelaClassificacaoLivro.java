@@ -181,6 +181,8 @@ public class TelaClassificacaoLivro extends javax.swing.JInternalFrame {
         dao.Salvar(contaLivro);
         
         JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+        
+        this.dispose();
     }//GEN-LAST:event_btnClassificarActionPerformed
     
     private void preencheCampos(){

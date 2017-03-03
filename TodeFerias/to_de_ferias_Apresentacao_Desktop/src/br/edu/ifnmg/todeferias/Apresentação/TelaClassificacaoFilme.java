@@ -196,6 +196,8 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
         
         JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
         
+        this.dispose();
+        
         
         
     }//GEN-LAST:event_btnSalvarActionPerformed

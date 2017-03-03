@@ -9,6 +9,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +20,7 @@ public class TelaListagemContas extends javax.swing.JFrame {
 
     ContaRepositorio dao = GerenciadorReferencias.getConta();
     Conta usuario = new Conta();
+    TelaCadastrarConta editar;
     /**
      * Creates new form TelaListagemContas
      */
@@ -66,6 +68,7 @@ public class TelaListagemContas extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBusca = new javax.swing.JTable();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,7 +102,19 @@ public class TelaListagemContas extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBuscaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBusca);
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,8 +129,13 @@ public class TelaListagemContas extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnExcluir)
+                        .addGap(43, 43, 43))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,8 +146,9 @@ public class TelaListagemContas extends javax.swing.JFrame {
                     .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExcluir))
         );
 
         pack();
@@ -143,9 +164,50 @@ public class TelaListagemContas extends javax.swing.JFrame {
       tela.setVisible(true);
     }//GEN-LAST:event_btnNovoActionPerformed
 
+    private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
+        int selecionada = tblBusca.getSelectedRow();
+        
+        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
+       
+        editarConta(id);
+    }//GEN-LAST:event_tblBuscaMouseClicked
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+    /*   if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+
+            if(dao.Apagar(id)){
+                JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
+                entidade = new Conta(0, "", "","", 0);
+                preencheCampos();
+                this.dispose();
+            }
+            else
+                JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
+        }*/
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+     public void editarConta(int id){
+        Conta entidade;
+     
+        entidade = dao.Abrir(id);
+        
+        editar = new TelaCadastrarConta();
+        
+        editar.setEntidade(entidade);
+        
+        //editar.setListagem(this);
+        
+        this.add(editar);
+        editar.setVisible(true);
+        //this.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblBusca;

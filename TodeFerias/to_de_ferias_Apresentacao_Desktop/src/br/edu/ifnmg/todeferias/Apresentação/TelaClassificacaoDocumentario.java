@@ -48,7 +48,7 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         lblSinopse = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         bxClassificacao = new javax.swing.JComboBox<>();
 
@@ -79,7 +79,12 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Cancelar");
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Classificação");
 
@@ -93,7 +98,7 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
                 .addContainerGap(153, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(28, 28, 28)
-                .addComponent(jButton2)
+                .addComponent(btnCancelar)
                 .addGap(57, 57, 57))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +158,7 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnCancelar))
                 .addGap(31, 31, 31))
         );
 
@@ -172,7 +177,12 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
         dao.Salvar(contaDocumentario);
         
         JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void preencheCampos(){
  
@@ -199,9 +209,9 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> bxClassificacao;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

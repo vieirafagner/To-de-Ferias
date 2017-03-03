@@ -57,6 +57,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jPopupMenu3 = new javax.swing.JPopupMenu();
         jPopupMenu4 = new javax.swing.JPopupMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         btnPerfil = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -69,21 +70,27 @@ public class TelaMenu extends javax.swing.JFrame {
         mnuNovelas = new javax.swing.JMenu();
         mnuCadastrarNovela = new javax.swing.JMenuItem();
         mnuListNovela = new javax.swing.JMenuItem();
+        mnuMinhasNovelas = new javax.swing.JMenuItem();
         mnuAnime = new javax.swing.JMenu();
         mnuCadastrarAnime = new javax.swing.JMenuItem();
         mnuListarAnime = new javax.swing.JMenuItem();
         mnuLivros = new javax.swing.JMenu();
         mnuCadastrarLivro = new javax.swing.JMenuItem();
         mnuListarLivro = new javax.swing.JMenuItem();
+        mnuMeusLivros = new javax.swing.JMenuItem();
         mnuDocumentario = new javax.swing.JMenu();
         mnuCadastrarDocumentario = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        mnuMeusDOC = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuCadastrarSerie = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        mnuMinhasSeries = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jMenuItem7.setText("jMenuItem7");
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,6 +164,14 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         mnuNovelas.add(mnuListNovela);
 
+        mnuMinhasNovelas.setText("Minha Novelas");
+        mnuMinhasNovelas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuMinhasNovelasActionPerformed(evt);
+            }
+        });
+        mnuNovelas.add(mnuMinhasNovelas);
+
         mnuMidias.add(mnuNovelas);
 
         mnuAnime.setText("Animes");
@@ -197,6 +212,14 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         mnuLivros.add(mnuListarLivro);
 
+        mnuMeusLivros.setText("Meus Livros");
+        mnuMeusLivros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuMeusLivrosActionPerformed(evt);
+            }
+        });
+        mnuLivros.add(mnuMeusLivros);
+
         mnuMidias.add(mnuLivros);
 
         mnuDocumentario.setText("Documentário");
@@ -217,6 +240,14 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         mnuDocumentario.add(jMenuItem2);
 
+        mnuMeusDOC.setText("Meus Documentários");
+        mnuMeusDOC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuMeusDOCActionPerformed(evt);
+            }
+        });
+        mnuDocumentario.add(mnuMeusDOC);
+
         mnuMidias.add(mnuDocumentario);
 
         jMenu3.setText("Série");
@@ -236,6 +267,14 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem4);
+
+        mnuMinhasSeries.setText("Minhas Séries");
+        mnuMinhasSeries.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuMinhasSeriesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mnuMinhasSeries);
 
         mnuMidias.add(jMenu3);
 
@@ -274,12 +313,12 @@ public class TelaMenu extends javax.swing.JFrame {
         NewJFrame aa = new NewJFrame();
         aa.setVisible(rootPaneCheckingEnabled);
         */
-        editarCliente(usuario.getId());
+        editarConta(usuario.getId());
     }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void ItmListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItmListarUsuariosActionPerformed
         new TelaListagemContas().setVisible(true);
-        this.dispose();
+       
         
     }//GEN-LAST:event_ItmListarUsuariosActionPerformed
 
@@ -368,7 +407,31 @@ public class TelaMenu extends javax.swing.JFrame {
        tela.setVisible(true);
     }//GEN-LAST:event_mnuMeusFilmesActionPerformed
 
-     public void editarCliente(int id){
+    private void mnuMinhasNovelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMinhasNovelasActionPerformed
+        TelaMinhasNovelas tela = new TelaMinhasNovelas(usuario);
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuMinhasNovelasActionPerformed
+
+    private void mnuMeusLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMeusLivrosActionPerformed
+        TelaMeusLivros tela = new TelaMeusLivros(usuario);
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuMeusLivrosActionPerformed
+
+    private void mnuMeusDOCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMeusDOCActionPerformed
+       TelaMeusDocumentarios tela = new TelaMeusDocumentarios();
+       this.add(tela);
+       tela.setVisible(true);
+    }//GEN-LAST:event_mnuMeusDOCActionPerformed
+
+    private void mnuMinhasSeriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMinhasSeriesActionPerformed
+        TelaMinhasSeries tela = new TelaMinhasSeries(usuario);
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuMinhasSeriesActionPerformed
+
+     public void editarConta(int id){
         Conta entidade;
      
         entidade = dao.Abrir(id);
@@ -395,6 +458,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
@@ -416,8 +480,12 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuListarAnime;
     private javax.swing.JMenuItem mnuListarLivro;
     private javax.swing.JMenu mnuLivros;
+    private javax.swing.JMenuItem mnuMeusDOC;
     private javax.swing.JMenuItem mnuMeusFilmes;
+    private javax.swing.JMenuItem mnuMeusLivros;
     private javax.swing.JMenu mnuMidias;
+    private javax.swing.JMenuItem mnuMinhasNovelas;
+    private javax.swing.JMenuItem mnuMinhasSeries;
     private javax.swing.JMenu mnuNovelas;
     // End of variables declaration//GEN-END:variables
 }

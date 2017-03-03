@@ -187,6 +187,7 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
         
         if(usuario.getStatus()!=1){
             ClassificarFilme(id);
+            this.dispose();
         }
         else{
             editarFilme(id);

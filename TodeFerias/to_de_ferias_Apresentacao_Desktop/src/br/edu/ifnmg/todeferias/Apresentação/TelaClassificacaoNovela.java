@@ -158,6 +158,8 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
         dao.Salvar(contaNovela);
         
         JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+        
+        this.dispose();
     }//GEN-LAST:event_btnClassificarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

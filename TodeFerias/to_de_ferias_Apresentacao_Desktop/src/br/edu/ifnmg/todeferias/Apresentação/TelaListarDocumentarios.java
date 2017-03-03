@@ -161,6 +161,7 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
         
         if(usuario.getStatus()!=1){
             ClassificarDocumentario(id);
+            this.dispose();
         }
         else{
             editarDocumentario(id);

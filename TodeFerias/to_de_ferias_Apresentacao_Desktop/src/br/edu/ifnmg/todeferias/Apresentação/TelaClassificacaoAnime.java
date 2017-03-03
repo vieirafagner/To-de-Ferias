@@ -79,6 +79,11 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
         });
 
         brnCancelar.setText("Cancelar");
+        brnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                brnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,7 +165,12 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
         dao.Salvar(contaAnime);
         
         JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+        this.dispose();
     }//GEN-LAST:event_btnClassificarActionPerformed
+
+    private void brnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnCancelarActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_brnCancelarActionPerformed
 
     private void preencheCampos(){
  

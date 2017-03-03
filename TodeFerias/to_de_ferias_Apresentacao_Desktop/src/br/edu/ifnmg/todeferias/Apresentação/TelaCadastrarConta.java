@@ -24,6 +24,13 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         initComponents();
          dao = GerenciadorReferencias.getConta();
         this.usuario = usuario;
+        /*if(usuario.getStatus()==1){
+            txtNome.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtSenha.setEnabled(false);
+            btnSalvar.setEnabled(false);
+            
+        }*/
     }
 
     
