@@ -8,6 +8,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
+import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaFilmeDAO;
 import br.edu.ifnmg.todeferias.Persistencia.FilmeDAO;
 import java.util.List;
@@ -20,10 +21,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaMeusFilmes extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form TelaMeusFilmes
-     */
-    
+   TelaClassificacaoFilme Classificar;
+    FilmeRepositorio dao = GerenciadorReferencias.getFilme();
     private Conta usuario;
     List<ContaFilme>lista;
     public TelaMeusFilmes(Conta usuario) {
@@ -46,9 +45,6 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
             //contaFilme.setFilme();   
             
             daoFIlme.Abrir(f.getId()); // pega o filme
-            
-            lista.add(f)
-            lista.add();
         
         }
         
@@ -61,13 +57,13 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
     private void preencheTabela(List<ContaFilme> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
-        //modelo.addColumn("Nome");
+        modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
         
         for(ContaFilme ct : lista){
             Vector linha = new Vector();
             linha.add(ct.getId());
-            //linha.add(ct.());
+            linha.add(ct.getFilme().getNome());
             linha.add(ct.getClassificacao());
             modelo.addRow(linha);
         }
@@ -113,6 +109,11 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
+        tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBuscaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBusca);
 
         txtBusca.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +154,38 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscaActionPerformed
 
+    private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
+        int selecionada = tblBusca.getSelectedRow();
+        
+        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
+         if(usuario.getStatus()!=1){
+            ClassificarFilme(id);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tblBuscaMouseClicked
+
+     public void ClassificarFilme(int id){
+        
+        ContaFilme entidade;
+        
+        ContaFilmeDAO daoContaFilme = new ContaFilmeDAO();
+        
+        
+        
+        entidade = daoContaFilme.Abrir(id);
+        
+        
+        Classificar = new TelaClassificacaoFilme(usuario,true);
+        
+        entidade.getFilme().setClassificacao(entidade.getClassificacao());
+        Classificar.setEntidade(entidade);
+        
+        
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
+        this.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

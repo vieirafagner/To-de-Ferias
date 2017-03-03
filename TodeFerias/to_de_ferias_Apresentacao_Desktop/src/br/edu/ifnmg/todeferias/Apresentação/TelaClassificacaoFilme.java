@@ -18,13 +18,15 @@ import javax.swing.JOptionPane;
  */
 public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
 
-    Filme entidade = new Filme();
+    ContaFilme entidade = new ContaFilme();
     FilmeRepositorio dao;
     TelaListarFilme listagem;
      Conta usuario;
-    public TelaClassificacaoFilme(Conta usuario) {
+     private boolean editar;
+    public TelaClassificacaoFilme(Conta usuario,boolean editar) {//editar se for verdadeiro chama o UPDATE caso falso so lista e classifica pela primeira vez
         initComponents();
         this.usuario = usuario;
+        this.editar = editar;
         
         /*
             Receber dados de classificação
@@ -40,7 +42,7 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
         
         
         
-        
+        preencheCampos();
         
     }
 
@@ -184,19 +186,38 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        ContaFilme contaFilme = new ContaFilme(usuario);
-        ContaFilmeDAO dao = new ContaFilmeDAO();
+            ContaFilme contaFilme = new ContaFilme(usuario);
+            ContaFilmeDAO dao = new ContaFilmeDAO();
+            //contaFilme.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setConta(usuario);
+            
+            
+        if(editar){
+            
+            //contaFilme.setId(entidade.getId());
+            //usuario.addFilme(contaFilme.getFilme());// teste
+            dao.Salvar(entidade);
+            JOptionPane.showMessageDialog(this, "Alterada classificação com Sucesso !");
+        
+            this.dispose();
+        
+        }else{
+           usuario.addFilme(contaFilme.getFilme());// teste
     
-        entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
-        usuario.addFilme(entidade);
+            
         
-        System.out.println(bxClassificacao.getSelectedIndex()+1);
+            //System.out.println(bxClassificacao.getSelectedIndex()+1);
         
-        dao.Salvar(contaFilme);
+            dao.Salvar(contaFilme);
         
-        JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+            JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
         
-        this.dispose();
+            this.dispose();
+            
+            
+        }
+        
         
         
         
@@ -207,16 +228,17 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
     private void preencheCampos(){
  
-        lblNome.setText( entidade.getNome() );
-        lblDiretor.setText( entidade.getDiretor());
-        lblDuracao.setText( Integer.toString(entidade.getDuracao()));
-        lblGenero.setText(entidade.getGenero());
-        lblSinopse.setText(entidade.getSinopse());    
+        lblNome.setText( entidade.getFilme().getNome() );
+        lblDiretor.setText( entidade.getFilme().getDiretor());
+        lblDuracao.setText( Integer.toString(entidade.getFilme().getDuracao()));
+        lblGenero.setText(entidade.getFilme().getGenero());
+        lblSinopse.setText(entidade.getFilme().getSinopse());    
+        bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
     }
-    public Filme getEntidade() {
+    public ContaFilme getEntidade() {
         return entidade;
     }
-    public void setEntidade(Filme entidade) {
+    public void setEntidade(ContaFilme entidade) {
         this.entidade = entidade;
         preencheCampos();
     }

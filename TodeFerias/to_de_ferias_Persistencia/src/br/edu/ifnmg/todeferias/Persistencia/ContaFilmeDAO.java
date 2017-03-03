@@ -26,6 +26,8 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
         setConsultaAbrir("select id,idConta,idFilme,classificacao FROM conta_filme ");
         setConsultaInserir("INSERT INTO conta_filme(idConta,idFilme,classificacao) VALUES(?,?,?)");
         setConsultaBusca("select id,idConta,idFilme,classificacao FROM conta_filme ");
+        setConsultaAlterar("UPDATE conta_filme SET idConta = ?, idFilme = ?,classificacao = ? WHERE id = ? ");
+
         
     }
 
@@ -35,10 +37,13 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
         try {
             // Passa os parâmetros para a consulta SQL
             sql.setInt(1, obj.getConta().getId());
-            sql.setInt(2, obj.getConta().getFilmes().get(0).getId());//supondo q vou setar o 1º
+            //sql.setInt(2, obj.getConta().getFilmes().get(0).getId());//supondo q vou setar o 1º "ta serta"
+            sql.setInt(2, obj.getFilme().getId());//supondo q vou setar o 1º
             // teste
             //obj.getConta().getFilmes().get(0).setClassificacao(obj);
-            sql.setInt(3, obj.getConta().getFilmes().get(0).getClassificacao());
+            sql.setInt(3, obj.getClassificacao());
+            
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaFilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,7 +64,7 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,idConta,idFilme,classificacao FROM conta_filme"
+            PreparedStatement sql = conn.prepareStatement("select id,idConta,idFilme,classificacao FROM conta_filme "
                     + "where id = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -131,6 +136,8 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
         
         // Posso os dados do resultado para o objeto
                 ContaFilme tmp = new ContaFilme();
+                FilmeDAO daoFilme = new FilmeDAO();
+                Filme filme = new Filme();
                
         try {
             tmp.setId(resultado.getInt(1));
@@ -139,6 +146,7 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
             //select id,idConta,idFilme,classificacao
             tmp.setClassificacao(resultado.getInt(4));
             tmp.getFilme().setId(resultado.getInt(3));
+            tmp.setFilme(daoFilme.Abrir(tmp.getFilme().getId()));// recebe o filme
                 
             
                 

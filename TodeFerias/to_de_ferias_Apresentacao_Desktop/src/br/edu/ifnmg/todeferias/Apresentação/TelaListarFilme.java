@@ -1,8 +1,10 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.ContaFilmeDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -220,15 +222,17 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
     }
     
         public void ClassificarFilme(int id){
-        Filme entidade;
+        ContaFilme entidade;
+        ContaFilmeDAO daoFilme = new ContaFilmeDAO();
         
-        entidade = dao.Abrir(id);
+        entidade = daoFilme.Abrir(id);
         
-        Classificar = new TelaClassificacaoFilme(usuario);
+        Classificar = new TelaClassificacaoFilme(usuario,false);
         
+        entidade.getFilme().setClassificacao(entidade.getClassificacao());
         Classificar.setEntidade(entidade);
         
-        Classificar.setListagem(this);
+        //Classificar.setListagem(this);
         
         this.getParent().add(Classificar);
         Classificar.setVisible(true);
