@@ -5,6 +5,14 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaNovela;
+import br.edu.ifnmg.todeferias.Persistencia.ContaNovelaDAO;
+import br.edu.ifnmg.todeferias.Persistencia.NovelaDAO;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author fagner
@@ -14,8 +22,55 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaMinhasNovelas
      */
-    public TelaMinhasNovelas() {
+    
+    private Conta usuario;
+    List<ContaNovela>lista;
+    
+    public TelaMinhasNovelas(Conta usuario) {
         initComponents();
+        
+        
+        this.usuario = usuario;
+        ContaNovelaDAO  dao = new ContaNovelaDAO();
+        ContaNovela contaNovela = new ContaNovela(usuario);
+       
+        
+//        this.lista = dao.Buscar(null);
+        //contaFilme.setId(31);
+        
+        
+        this.lista = dao.Buscar(contaNovela);
+        NovelaDAO daoNovela = new NovelaDAO();
+        //setar todos os filmes
+        
+        for(ContaNovela f :lista){
+            //contaFilme.setFilme();   
+            
+            daoNovela.Abrir(f.getId()); // pega o filme
+            
+            lista.add(f)
+            lista.add();
+        
+        }
+        
+        preencheTabela(lista);
+    
+    }
+    private void preencheTabela(List<ContaNovela> lista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Id");
+        //modelo.addColumn("Nome");
+        modelo.addColumn("classificacao");
+        
+        for(ContaNovela cs : lista){
+            Vector linha = new Vector();
+            linha.add(cs.getId());
+            //linha.add(ct.());
+            linha.add(cs.getClassificacao());
+            modelo.addRow(linha);
+        }
+        
+        tblBusca.setModel(modelo);
     }
 
     /**
@@ -27,15 +82,57 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtBusca = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblBusca = new javax.swing.JTable();
+
+        btnBuscar.setText("Buscar");
+
+        tblBusca.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nome", "Classificação"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblBusca);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtBusca)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -43,5 +140,9 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblBusca;
+    private javax.swing.JTextField txtBusca;
     // End of variables declaration//GEN-END:variables
 }

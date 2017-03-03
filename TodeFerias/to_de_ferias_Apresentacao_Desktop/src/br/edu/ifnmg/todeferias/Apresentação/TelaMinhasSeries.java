@@ -6,9 +6,9 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
-import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaSerie;
 import br.edu.ifnmg.todeferias.Persistencia.ContaSerieDAO;
+import br.edu.ifnmg.todeferias.Persistencia.SerieDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -23,14 +23,15 @@ public class TelaMinhasSeries extends javax.swing.JInternalFrame {
      * Creates new form TelaMinhasSeries
      */
     private Conta usuario;
-    List<ContaSerie>lista;
+    List<ContaSerie> lista;
     public TelaMinhasSeries(Conta usuario) {
         initComponents();
         this.usuario = usuario;
         ContaSerieDAO  dao = new ContaSerieDAO();
         ContaSerie contaSerie = new ContaSerie(usuario);
-    }
-    this.lista = dao.Buscar(contaSerie);
+                
+        
+        this.lista = dao.Buscar(contaSerie);
         SerieDAO daoSerie = new SerieDAO();
         //setar todos os filmes
         
@@ -43,6 +44,10 @@ public class TelaMinhasSeries extends javax.swing.JInternalFrame {
             lista.add();
         
         }
+        
+        preencheTabela(lista);
+    }
+
      private void preencheTabela(List<ContaSerie> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
