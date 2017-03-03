@@ -63,6 +63,11 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
         jLabel4.setText("Classificação");
 
         bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        bxClassificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bxClassificacaoActionPerformed(evt);
+            }
+        });
 
         btnClassificar.setText("Classificar");
         btnClassificar.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +163,10 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void bxClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxClassificacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bxClassificacaoActionPerformed
     
     
     private void preencheCampos(){

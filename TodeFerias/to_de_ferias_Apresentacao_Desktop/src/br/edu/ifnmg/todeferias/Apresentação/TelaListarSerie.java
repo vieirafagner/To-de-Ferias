@@ -150,9 +150,14 @@ public class TelaListarSerie extends javax.swing.JInternalFrame {
         int selecionada = tblBusca.getSelectedRow();
 
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
-
-        editarSerie(id);
-        this.dispose();
+        if (usuario.getStatus() != 1) {
+            ClassificarSerie(id);
+            this.dispose();
+        }
+        else{
+            editarSerie(id);
+            this.dispose();
+        }
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed

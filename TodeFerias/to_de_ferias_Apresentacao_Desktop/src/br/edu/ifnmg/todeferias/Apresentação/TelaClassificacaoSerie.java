@@ -6,8 +6,11 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaSerie;
 import br.edu.ifnmg.todeferias.Aplicacao.Serie;
 import br.edu.ifnmg.todeferias.Aplicacao.SerieRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.ContaSerieDAO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,9 +21,10 @@ public class TelaClassificacaoSerie extends javax.swing.JInternalFrame {
     Serie entidade = new Serie();
     SerieRepositorio dao;
     TelaListarSerie listagem;
-    Serie usuario;
+    Conta usuario;
     public TelaClassificacaoSerie(Conta usuario) {
         initComponents();
+        this.usuario = usuario;
     }
 
     /**

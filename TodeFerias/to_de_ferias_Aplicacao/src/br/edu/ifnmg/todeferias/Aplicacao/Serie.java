@@ -15,7 +15,7 @@ public class Serie implements Entidade {
         private int duracao_ep;
         private String genero;
         private String nome;
-        //private int classificacao;
+        private int classificacao;
         private String sinopse;
         private int qtd_temp;
             
@@ -29,7 +29,7 @@ public class Serie implements Entidade {
         this.duracao_ep = duracao_ep;
         this.genero = genero;
         this.nome = nome;
-       // this.classificacao = classificacao;
+        this.classificacao = classificacao;
         this.sinopse = sinopse;
         this.qtd_temp = qtd_temp;
     }
@@ -96,16 +96,16 @@ public class Serie implements Entidade {
     /**
      * @return the classificacao
      */
-    /*public int getClassificacao() {
+    public int getClassificacao() {
         return classificacao;
-    }*/
+    }
 
     /**
      * @param classificacao the classificacao to set
      */
-    /*public void setClassificacao(int classificacao) {
+    public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
-    }*/
+    }
 
     /**
      * @return the sinopse

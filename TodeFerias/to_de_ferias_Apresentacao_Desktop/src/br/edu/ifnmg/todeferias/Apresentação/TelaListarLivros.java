@@ -25,6 +25,7 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
     public TelaListarLivros(Conta usuario) {
         initComponents();
          List<Livro> busca = dao.Buscar(null);
+         this.usuario=usuario;
         
         preencheTabela(busca);
     }

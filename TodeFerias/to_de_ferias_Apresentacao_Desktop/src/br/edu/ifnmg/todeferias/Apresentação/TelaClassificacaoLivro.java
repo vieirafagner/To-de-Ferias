@@ -162,7 +162,15 @@ public class TelaClassificacaoLivro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bxClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxClassificacaoActionPerformed
-        ContaLivro contaLivro = new ContaLivro(usuario);
+       
+    }//GEN-LAST:event_bxClassificacaoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnClassificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificarActionPerformed
+         ContaLivro contaLivro = new ContaLivro(usuario);
         ContaLivroDAO dao = new ContaLivroDAO();
     
         entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
@@ -173,14 +181,6 @@ public class TelaClassificacaoLivro extends javax.swing.JInternalFrame {
         dao.Salvar(contaLivro);
         
         JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
-    }//GEN-LAST:event_bxClassificacaoActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnClassificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificarActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnClassificarActionPerformed
     
     private void preencheCampos(){
