@@ -35,7 +35,7 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
 //     
         
         
-        this.lista = dao.Buscar(contaFilme);
+        this.lista = dao.Buscar(contaFilme);// este  codigo para diferenciar
         FilmeDAO daoFIlme = new FilmeDAO();
         //setar todos os filmes
         
