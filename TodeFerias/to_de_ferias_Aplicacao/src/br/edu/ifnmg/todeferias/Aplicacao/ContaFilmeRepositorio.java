@@ -10,5 +10,5 @@ package br.edu.ifnmg.todeferias.Aplicacao;
  * @author fagner
  */
 public interface ContaFilmeRepositorio {
-    
+    public ContaFilme Abrir(int id);
 }

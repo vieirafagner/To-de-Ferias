@@ -8,7 +8,7 @@ package br.edu.ifnmg.todeferias.Persistencia;
 
 import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaFilmeRepositorio;
-import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
+import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,9 +23,9 @@ import java.util.logging.Logger;
 public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilmeRepositorio{
 
     public ContaFilmeDAO() {
-        setConsultaAbrir("select id,idConta,idFilme,classificacao FROM conta_filme");
+        setConsultaAbrir("select id,idConta,idFilme,classificacao FROM conta_filme ");
         setConsultaInserir("INSERT INTO conta_filme(idConta,idFilme,classificacao) VALUES(?,?,?)");
-        setConsultaBusca("select id,idConta,idFilme,classificacao FROM conta_filme");
+        setConsultaBusca("select id,idConta,idFilme,classificacao FROM conta_filme ");
         
     }
 
@@ -83,9 +83,13 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
     @Override
     protected void preencheFiltros(ContaFilme filtro) {
         if(filtro == null) return;
-        //if(filtro.getId() > 0) adicionarFiltro("id", "=");
+        if(filtro.getId() > 0) adicionarFiltro("id", "=");
         if(filtro.getConta().getId()>0) adicionarFiltro("idConta", " = ");
         
+        
+        
+        
+        //setConsultaBusca("select id,idConta,idFilme,classificacao FROM conta_filme");
     
     }
 
@@ -99,10 +103,20 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
         try {
             int cont = 1;
             if(filtro == null) return;
-            if(filtro.getConta().getId() > 0){ 
-                sql.setInt(1, filtro.getConta().getId()); 
+            if(filtro.getId() > 0){ 
+                sql.setInt(cont, filtro.getId()); 
                 cont++; 
             }
+            
+            if(filtro.getConta().getId() > 0){ 
+                sql.setInt(cont, filtro.getConta().getId()); 
+                cont++; 
+            }
+            
+            
+            
+            
+            
             //if(filtro.getConta().getId() >0 ){ sql.setInt(cont, filtro.getConta().getId()); cont++; }
             
            
@@ -117,12 +131,14 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
         
         // Posso os dados do resultado para o objeto
                 ContaFilme tmp = new ContaFilme();
+               
         try {
             tmp.setId(resultado.getInt(1));
         
             
             //select id,idConta,idFilme,classificacao
             tmp.setClassificacao(resultado.getInt(4));
+            tmp.getFilme().setId(resultado.getInt(3));
                 
             
                 
@@ -133,21 +149,6 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
                 return tmp;
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
-
-    
-
     
  }

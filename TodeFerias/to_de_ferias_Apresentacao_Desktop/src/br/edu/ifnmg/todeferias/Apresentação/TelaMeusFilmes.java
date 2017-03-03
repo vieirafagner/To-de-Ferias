@@ -7,11 +7,11 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
-import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
+import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Persistencia.ContaFilmeDAO;
+import br.edu.ifnmg.todeferias.Persistencia.FilmeDAO;
 import java.util.List;
 import java.util.Vector;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,18 +32,27 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
         this.usuario = usuario;
         ContaFilmeDAO  dao = new ContaFilmeDAO();
         ContaFilme contaFilme = new ContaFilme(usuario);
-        
-       /*
-        Conta tmp = new Conta();
-        ContaDAO daoConta = new ContaDAO();
-        tmp.setId(8);
-        daoConta.Buscar(tmp);
-        */
-        
-        JOptionPane.showMessageDialog(this, dao.Abrir(31));
+       
         
 //        this.lista = dao.Buscar(null);
+        //contaFilme.setId(31);
+        
+        
         this.lista = dao.Buscar(contaFilme);
+        FilmeDAO daoFIlme = new FilmeDAO();
+        //setar todos os filmes
+        
+        for(ContaFilme f :lista){
+            //contaFilme.setFilme();   
+            
+            daoFIlme.Abrir(f.getId()); // pega o filme
+            
+            lista.add(f)
+            lista.add();
+        
+        }
+        
+        
         
         
          preencheTabela(lista);
