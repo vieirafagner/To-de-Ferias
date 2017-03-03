@@ -74,6 +74,11 @@ public class TelaClassificacaoLivro extends javax.swing.JInternalFrame {
         jLabel4.setText("Classificação");
 
         btnClassificar.setText("Classificar");
+        btnClassificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClassificarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -173,6 +178,10 @@ public class TelaClassificacaoLivro extends javax.swing.JInternalFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnClassificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClassificarActionPerformed
     
     private void preencheCampos(){
  
