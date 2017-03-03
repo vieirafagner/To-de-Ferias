@@ -26,6 +26,22 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
         initComponents();
         this.usuario = usuario;
         
+        /*
+            Receber dados de classificação
+        */
+        
+            ContaFilmeDAO dao = new ContaFilmeDAO();
+            //CONRINUA............
+        
+        /*
+        *******************************************
+        
+        */
+        
+        
+        
+        
+        
     }
 
     /**
@@ -179,10 +195,6 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
         dao.Salvar(contaFilme);
         
         JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
-        
-        
-        
-        
         
         
         

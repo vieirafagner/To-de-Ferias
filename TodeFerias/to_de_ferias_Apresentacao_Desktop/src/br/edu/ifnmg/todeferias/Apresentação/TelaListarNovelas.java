@@ -22,7 +22,7 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
     TelaCadastrarNovela editar;
     Conta usuario;
     TelaClassificacaoNovela Classificar;
-    public TelaListarNovelas() {
+    public TelaListarNovelas(Conta usuario) {
         initComponents();
         List<Novela> busca = dao.Buscar(null);
         this.usuario=usuario;

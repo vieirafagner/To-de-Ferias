@@ -25,7 +25,7 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaListarDocumentarios
      */
-    public TelaListarDocumentarios() {
+    public TelaListarDocumentarios(Conta usuario) {
         initComponents();
         
        List<Documentario> busca = dao.Buscar(null);

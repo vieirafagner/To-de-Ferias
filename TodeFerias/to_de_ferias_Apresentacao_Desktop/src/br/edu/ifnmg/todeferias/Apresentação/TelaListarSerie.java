@@ -167,7 +167,7 @@ public class TelaListarSerie extends javax.swing.JInternalFrame {
         
         entidade = dao.Abrir(id);
         
-        editar = new TelaCadastrarSeries();
+        editar = new TelaCadastrarSeries(usuario);
         
         editar.setEntidade(entidade);
         

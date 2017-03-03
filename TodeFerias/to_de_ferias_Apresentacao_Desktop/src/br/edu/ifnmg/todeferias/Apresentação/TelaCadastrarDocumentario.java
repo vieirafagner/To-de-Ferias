@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
@@ -22,12 +23,14 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
     Documentario entidade = new Documentario();
     DocumentarioRepositorio dao; 
     TelaListarDocumentarios listagem;
+    Conta usuario;
     /**
      * Creates new form TelaCadastrarDocumentario
      */
     public TelaCadastrarDocumentario() {
         initComponents();
     dao = GerenciadorReferencias.getDocumentario();
+    
     }
 
     /**
@@ -206,7 +209,7 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Documentario(0,"",0,0,"", "", "");
                 preencheCampos();
-                TelaListarDocumentarios tela = new TelaListarDocumentarios();
+                TelaListarDocumentarios tela = new TelaListarDocumentarios(usuario);
                 this.getParent().add(tela);
                 tela.setVisible(true);
                 this.dispose();

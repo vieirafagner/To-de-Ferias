@@ -23,7 +23,7 @@ public class TelaListarAnimes extends javax.swing.JInternalFrame {
     Conta usuario;
     TelaClassificacaoAnime Classificar;
    
-    public TelaListarAnimes() {
+    public TelaListarAnimes(Conta usuario) {
         initComponents();
         List<Anime> busca = dao.Buscar(null);
         

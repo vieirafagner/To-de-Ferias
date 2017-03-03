@@ -8,6 +8,7 @@ package br.edu.ifnmg.todeferias.Persistencia;
 
 import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaFilmeRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.ErroValidacao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,8 +23,10 @@ import java.util.logging.Logger;
 public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilmeRepositorio{
 
     public ContaFilmeDAO() {
+        setConsultaAbrir("select id,idConta,idFilme,classificacao FROM conta_filme");
         setConsultaInserir("INSERT INTO conta_filme(idConta,idFilme,classificacao) VALUES(?,?,?)");
-    
+        setConsultaBusca("select id,idConta,idFilme,classificacao FROM conta_filme");
+        
     }
 
     @Override
@@ -46,21 +49,102 @@ public class ContaFilmeDAO extends DAOGenerico<ContaFilme> implements ContaFilme
         
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public ContaFilme Abrir(int id){
+        try {
+            
+            // Crio a consulta sql
+            PreparedStatement sql = conn.prepareStatement("select id,idConta,idFilme,classificacao FROM conta_filme"
+                    + "where id = ?");
+            
+            // Passo os parâmentros para a consulta sql
+            sql.setInt(1, id);
+            
+            // Executo a consulta sql e pego os resultados
+            ResultSet resultado = sql.executeQuery();
+            
+            // Verifica se algum registro foi retornado na consulta
+            if(resultado.next()){
+                
+                return preencheObjeto(resultado);
+            }            
+        }  catch(SQLException ex){
+            System.out.println(ex);
+        }
+        
+        return null;
     
-
+    }
     @Override
     protected void preencheFiltros(ContaFilme filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(filtro == null) return;
+        //if(filtro.getId() > 0) adicionarFiltro("id", "=");
+        if(filtro.getConta().getId()>0) adicionarFiltro("idConta", " = ");
+        
+    
     }
 
+    /**
+     *
+     * @param sql
+     * @param filtro
+     */
     @Override
     protected void preencheParametros(PreparedStatement sql, ContaFilme filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            int cont = 1;
+            if(filtro == null) return;
+            if(filtro.getConta().getId() > 0){ 
+                sql.setInt(1, filtro.getConta().getId()); 
+                cont++; 
+            }
+            //if(filtro.getConta().getId() >0 ){ sql.setInt(cont, filtro.getConta().getId()); cont++; }
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(ContaFilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+
 
     @Override
     protected ContaFilme preencheObjeto(ResultSet resultado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        // Posso os dados do resultado para o objeto
+                ContaFilme tmp = new ContaFilme();
+        try {
+            tmp.setId(resultado.getInt(1));
+        
+            
+            //select id,idConta,idFilme,classificacao
+            tmp.setClassificacao(resultado.getInt(4));
+                
+            
+                
+         } catch (SQLException ex) {
+            Logger.getLogger(ContaFilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                // Retorna o objeto
+                return tmp;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     

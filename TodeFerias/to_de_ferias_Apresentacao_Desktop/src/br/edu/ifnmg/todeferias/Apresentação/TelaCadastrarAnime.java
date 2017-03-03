@@ -188,7 +188,7 @@ public class TelaCadastrarAnime extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
                 entidade = new Anime(0,0,"","", 0,0);
                 preencheCampos();
-                TelaListarAnimes tela = new TelaListarAnimes();
+                TelaListarAnimes tela = new TelaListarAnimes(usuario);
                  this.getParent().add(tela);
                  tela.setVisible(true);
                 this.dispose();

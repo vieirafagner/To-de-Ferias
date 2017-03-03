@@ -170,7 +170,7 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
         
         entidade = dao.Abrir(id);
         
-        editar = new TelaCadastrarLivros();
+        editar = new TelaCadastrarLivros(usuario);
         
         editar.setEntidade(entidade);
         

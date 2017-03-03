@@ -17,6 +17,7 @@ import java.util.List;
 /**
  *
  * @author fagner
+ * @param <T>
  */
 public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> {
 

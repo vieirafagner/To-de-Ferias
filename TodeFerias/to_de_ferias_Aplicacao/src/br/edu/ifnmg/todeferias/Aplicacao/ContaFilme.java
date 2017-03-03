@@ -13,6 +13,16 @@ public class ContaFilme implements Entidade{
 
     private int id;
     private Conta conta;
+    private int classificacao;
+
+    public ContaFilme() {
+    }
+
+    public ContaFilme(int id, Conta conta, int classificacao) {
+        this.id = id;
+        this.conta = conta;
+        this.classificacao = classificacao;
+    }
     
     
     @Override
@@ -36,6 +46,16 @@ public class ContaFilme implements Entidade{
     public ContaFilme(Conta conta) {
         this.conta = conta;
     }
+
+    public int getClassificacao() {
+        return classificacao;
+    }
+
+    public void setClassificacao(int classificacao) {
+        this.classificacao = classificacao;
+    }
+    
+    
     
       
 }
