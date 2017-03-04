@@ -18,13 +18,16 @@ import javax.swing.JOptionPane;
  */
 public class TelaClassificacaoSerie extends javax.swing.JInternalFrame {
 
-    Serie entidade = new Serie();
+    ContaSerie entidade = new ContaSerie();
     SerieRepositorio dao;
     TelaListarSerie listagem;
     Conta usuario;
-    public TelaClassificacaoSerie(Conta usuario) {
+    private boolean editar;
+    public TelaClassificacaoSerie(Conta usuario,boolean editar) {
         initComponents();
         this.usuario = usuario;
+        this.editar=editar;
+        preencheCampos();
     }
 
     /**
@@ -169,32 +172,49 @@ public class TelaClassificacaoSerie extends javax.swing.JInternalFrame {
 
     private void btnClassificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificarActionPerformed
         ContaSerie contaSerie = new ContaSerie(usuario);
-        ContaSerieDAO dao = new ContaSerieDAO();
-
-        entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
-        usuario.addSeries(entidade);
-
-        System.out.println(bxClassificacao.getSelectedIndex()+1);
-
-        dao.Salvar(contaSerie);
-
-        JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+            ContaSerieDAO dao = new ContaSerieDAO();
+            //contaFilme.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setConta(usuario);
+            
+            
+        if(editar){
+            
+            //contaFilme.setId(entidade.getId());
+            //usuario.addFilme(contaFilme.getFilme());// teste
+            dao.Salvar(entidade);
+            JOptionPane.showMessageDialog(this, "Classificação alterada com Sucesso !");
         
-        this.dispose();
+            this.dispose();
+        
+        }else{
+           usuario.addSeries(contaSerie.getSerie());// teste
+    
+            
+        
+            //System.out.println(bxClassificacao.getSelectedIndex()+1);
+        
+            dao.Salvar(entidade);
+        
+            JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+        
+            this.dispose();
+        }    
     }//GEN-LAST:event_btnClassificarActionPerformed
     private void preencheCampos(){
  
-        lblNome.setText( entidade.getNome() );
-        lblGenero.setText( entidade.getGenero());
-        lblQtdTemporadas.setText( Integer.toString(entidade.getQtd_temp()));
-        lblDuracao.setText( Integer.toString(entidade.getDuracao_ep()));
-        lblSinopse.setText(entidade.getSinopse());
+        lblNome.setText( entidade.getSerie().getNome() );
+        lblGenero.setText( entidade.getSerie().getGenero());
+        lblQtdTemporadas.setText( Integer.toString(entidade.getSerie().getQtd_temp()));
+        lblDuracao.setText( Integer.toString(entidade.getSerie().getDuracao_ep()));
+        lblSinopse.setText(entidade.getSerie().getSinopse());
+        bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
          
     }
-    public Serie getEntidade() {
+    public ContaSerie getEntidade() {
         return entidade;
     }
-    public void setEntidade(Serie entidade) {
+    public void setEntidade(ContaSerie entidade) {
         this.entidade = entidade;
         preencheCampos();
     }

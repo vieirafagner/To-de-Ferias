@@ -2,10 +2,10 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaSerie;
 import br.edu.ifnmg.todeferias.Aplicacao.Serie;
 import br.edu.ifnmg.todeferias.Aplicacao.SerieRepositorio;
-import br.edu.ifnmg.todeferias.Apresentação.GerenciadorReferencias;
-import br.edu.ifnmg.todeferias.Apresentação.TelaCadastrarSeries;
+import br.edu.ifnmg.todeferias.Persistencia.SerieDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -183,15 +183,16 @@ public class TelaListarSerie extends javax.swing.JInternalFrame {
         this.setVisible(true);
     }
       public void ClassificarSerie(int id){
-        Serie entidade;
+        ContaSerie entidade = new ContaSerie();
         
-        entidade = dao.Abrir(id);
+        SerieDAO daoSerie = new SerieDAO();
+        entidade.setSerie(dao.Abrir(id));
         
-        Classificar = new TelaClassificacaoSerie(usuario);
+        Classificar = new TelaClassificacaoSerie(usuario,false);
         
         Classificar.setEntidade(entidade);
         
-        Classificar.setListagem(this);
+        //Classificar.setListagem(this);
         
         this.getParent().add(Classificar);
         Classificar.setVisible(true);
