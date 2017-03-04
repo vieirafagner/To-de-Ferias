@@ -7,6 +7,7 @@ package br.edu.ifnmg.todeferias.Persistencia;
 
 import br.edu.ifnmg.todeferias.Aplicacao.ContaNovela;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaNovelaRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +24,9 @@ public class ContaNovelaDAO extends DAOGenerico<ContaNovela> implements ContaNov
         setConsultaAbrir("select id,idConta,idNovela,classificacao FROM conta_novela ");
         setConsultaInserir("INSERT INTO conta_novela(idConta,idNovela,classificacao) VALUES(?,?,?)");
         setConsultaBusca("select id,idConta,idNovela,classificacao FROM conta_novela ");
+        setConsultaAlterar("UPDATE conta_novela SET idConta = ?, idNovela = ?,classificacao = ? WHERE id = ? ");
+
+    
         
     }
     
@@ -32,10 +36,13 @@ public class ContaNovelaDAO extends DAOGenerico<ContaNovela> implements ContaNov
         try {
             // Passa os parâmetros para a consulta SQL
             sql.setInt(1, obj.getConta().getId());
-            sql.setInt(2, obj.getConta().getNovelas().get(0).getId());//supondo q vou setar o 1º
+            sql.setInt(2, obj.getNovela().getId());
+            //sql.setInt(2, obj.getConta().getNovelas().get(0).getId());//supondo q vou setar o 1º
             // teste
             //obj.getConta().getFilmes().get(0).setClassificacao(obj);
             sql.setInt(3, obj.getConta().getNovelas().get(0).getClassificacao());
+            
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaNovelaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -119,6 +126,9 @@ public class ContaNovelaDAO extends DAOGenerico<ContaNovela> implements ContaNov
         
         // Posso os dados do resultado para o objeto
                 ContaNovela tmp = new ContaNovela();
+                NovelaDAO daoNovela = new NovelaDAO();
+                Novela novela = new Novela();
+                
                
         try {
             tmp.setId(resultado.getInt(1));
@@ -127,6 +137,7 @@ public class ContaNovelaDAO extends DAOGenerico<ContaNovela> implements ContaNov
             //select id,idConta,idFilme,classificacao
             tmp.setClassificacao(resultado.getInt(4));
             tmp.getNovela().setId(resultado.getInt(3));
+            tmp.setNovela(daoNovela.Abrir(tmp.getNovela().getId()));
                 
             
                 

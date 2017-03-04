@@ -6,8 +6,10 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaNovela;
 import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.ContaNovelaDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -186,15 +188,17 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
     }
     
     public void ClassificarNovela(int id){
-        Novela entidade;
+        ContaNovela entidade;
         
-        entidade = dao.Abrir(id);
+        ContaNovelaDAO daoNovela = new ContaNovelaDAO();
         
-        Classificar = new TelaClassificacaoNovela(usuario);
+        entidade = daoNovela.Abrir(id);
+        
+        Classificar = new TelaClassificacaoNovela(usuario,false);
         
         Classificar.setEntidade(entidade);
         
-        Classificar.setListagem(this);
+        //Classificar.setListagem(this);
         
         this.getParent().add(Classificar);
         Classificar.setVisible(true);

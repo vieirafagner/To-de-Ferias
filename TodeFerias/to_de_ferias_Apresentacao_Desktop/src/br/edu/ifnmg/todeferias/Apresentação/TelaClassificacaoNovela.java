@@ -18,14 +18,17 @@ import javax.swing.JOptionPane;
  */
 public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
     
-    Novela entidade = new Novela();
+    ContaNovela entidade = new ContaNovela();
     NovelaRepositorio dao;
     TelaListarNovelas listagem;
     Conta usuario;
-    public TelaClassificacaoNovela(Conta usuario) {
+    private boolean editar;
+    public TelaClassificacaoNovela(Conta usuario, boolean editar) {
         initComponents();
         
-        this.usuario = usuario;
+        this.usuario=usuario;
+        this.editar = editar;
+        preencheCampos();
     /**
      * Creates new form TelaClassificacaoNovela
      */
@@ -151,7 +154,7 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
         ContaNovelaDAO dao = new ContaNovelaDAO();
     
         entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
-        usuario.addNovelas(entidade);
+        usuario.addNovelas(contaNovela.getNovela());
         
         System.out.println(bxClassificacao.getSelectedIndex()+1);
         
@@ -173,16 +176,17 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
     
     private void preencheCampos(){
  
-        lblNome.setText( entidade.getNome() );
-        lblDiretor.setText(entidade.getDiretor());
-        lblNumCapitulo.setText( Integer.toString(entidade.getQtdCap()));
+        lblNome.setText( entidade.getNovela().getNome() );
+        lblDiretor.setText(entidade.getNovela().getDiretor());
+        lblNumCapitulo.setText( Integer.toString(entidade.getNovela().getQtdCap()));
+        bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
          
     }
     
-    public Novela getEntidade() {
+    public ContaNovela getEntidade() {
         return entidade;
     }
-    public void setEntidade(Novela entidade) {
+    public void setEntidade(ContaNovela entidade) {
         this.entidade = entidade;
         preencheCampos();
     }

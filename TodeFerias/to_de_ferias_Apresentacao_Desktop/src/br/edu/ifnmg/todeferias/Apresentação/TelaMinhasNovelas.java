@@ -7,6 +7,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaNovela;
+import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaNovelaDAO;
 import br.edu.ifnmg.todeferias.Persistencia.NovelaDAO;
 import java.util.List;
@@ -22,7 +23,8 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaMinhasNovelas
      */
-    
+    TelaClassificacaoNovela Classificar;
+    NovelaRepositorio dao = GerenciadorReferencias.getNovela();
     private Conta usuario;
     List<ContaNovela>lista;
     
@@ -47,9 +49,7 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
             //contaFilme.setFilme();   
             
             daoNovela.Abrir(f.getId()); // pega o filme
-            
-            /*sta.add(f)
-            lista.add();*/
+
         
         }
         
@@ -59,13 +59,13 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
     private void preencheTabela(List<ContaNovela> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
-        //modelo.addColumn("Nome");
+        modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
         
         for(ContaNovela cn : lista){
             Vector linha = new Vector();
             linha.add(cn.getId());
-            //linha.add(ct.());
+            linha.add(cn.getNovela().getNome());
             linha.add(cn.getClassificacao());
             modelo.addRow(linha);
         }
@@ -105,6 +105,14 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
+        tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBuscaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tblBuscaMouseEntered(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBusca);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,6 +145,39 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblBuscaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblBuscaMouseEntered
+
+    private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
+        int selecionada = tblBusca.getSelectedRow();
+        
+        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
+         if(usuario.getStatus()!=1){
+            ClassificarNovela(id);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tblBuscaMouseClicked
+       public void ClassificarNovela(int id){
+           
+        ContaNovela entidade;
+        
+        ContaNovelaDAO daoNovela = new ContaNovelaDAO();
+        
+        entidade = daoNovela.Abrir(id); 
+        
+        Classificar = new TelaClassificacaoNovela(usuario,true);
+        
+        entidade.getNovela().setClassificacao(entidade.getClassificacao());
+        Classificar.setEntidade(entidade);
+        
+        //Classificar.setListagem(this);
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
+        this.setVisible(true);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
