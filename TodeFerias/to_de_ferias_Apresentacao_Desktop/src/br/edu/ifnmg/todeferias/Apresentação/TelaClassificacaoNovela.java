@@ -7,7 +7,6 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaNovela;
-import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaNovelaDAO;
 import javax.swing.JOptionPane;
@@ -154,15 +153,29 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
         ContaNovelaDAO dao = new ContaNovelaDAO();
     
         entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
-        usuario.addNovelas(contaNovela.getNovela());
+         entidade.setConta(usuario);
+            
+            
+        if(editar){
+            
+            //contaFilme.setId(entidade.getId());
+            //usuario.addFilme(contaFilme.getFilme());// teste
+            dao.Salvar(entidade);
+            JOptionPane.showMessageDialog(this, "Classificação alterada com Sucesso !");
         
-        System.out.println(bxClassificacao.getSelectedIndex()+1);
+            this.dispose();
         
-        dao.Salvar(contaNovela);
+        }else{
+           usuario.addNovelas(contaNovela.getNovela());
+            dao.Salvar(entidade);
         
-        JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+            JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
         
-        this.dispose();
+            this.dispose();
+        }
+            
+            
+           
     }//GEN-LAST:event_btnClassificarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

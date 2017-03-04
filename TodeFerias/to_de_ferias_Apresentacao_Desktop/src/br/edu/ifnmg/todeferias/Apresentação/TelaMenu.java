@@ -357,7 +357,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuListNovelaActionPerformed
 
     private void mnuCadastrarNovelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarNovelaActionPerformed
-        TelaCadastrarNovela tela = new TelaCadastrarNovela();
+        TelaCadastrarNovela tela = new TelaCadastrarNovela(usuario);
         this.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_mnuCadastrarNovelaActionPerformed

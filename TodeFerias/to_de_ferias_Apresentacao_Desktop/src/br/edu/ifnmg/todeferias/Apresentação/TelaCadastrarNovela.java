@@ -27,9 +27,10 @@ public class TelaCadastrarNovela extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaCadastrarNovela
      */
-    public TelaCadastrarNovela() {
+    public TelaCadastrarNovela(Conta usuario) {
         initComponents();
         dao = GerenciadorReferencias.getNovela();
+        this.usuario=usuario;
     }
 
     /**

@@ -10,6 +10,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.ContaNovela;
 import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaNovelaDAO;
+import br.edu.ifnmg.todeferias.Persistencia.NovelaDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -176,7 +177,7 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
         
         entidade = dao.Abrir(id);
         
-        editar = new TelaCadastrarNovela();
+        editar = new TelaCadastrarNovela(usuario);
         
         editar.setEntidade(entidade);
         
@@ -188,11 +189,11 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
     }
     
     public void ClassificarNovela(int id){
-        ContaNovela entidade;
+        ContaNovela entidade = new ContaNovela();;
         
-        ContaNovelaDAO daoNovela = new ContaNovelaDAO();
+        NovelaDAO daoNovela = new NovelaDAO();
         
-        entidade = daoNovela.Abrir(id);
+        entidade.setNovela(daoNovela.Abrir(id));
         
         Classificar = new TelaClassificacaoNovela(usuario,false);
         

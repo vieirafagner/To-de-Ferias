@@ -40,7 +40,7 @@ public class ContaNovelaDAO extends DAOGenerico<ContaNovela> implements ContaNov
             //sql.setInt(2, obj.getConta().getNovelas().get(0).getId());//supondo q vou setar o 1º
             // teste
             //obj.getConta().getFilmes().get(0).setClassificacao(obj);
-            sql.setInt(3, obj.getConta().getNovelas().get(0).getClassificacao());
+            sql.setInt(3, obj.getClassificacao());
             
             if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
@@ -54,7 +54,7 @@ public class ContaNovelaDAO extends DAOGenerico<ContaNovela> implements ContaNov
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,idConta,idNovela,classificacao FROM conta_novela"
+            PreparedStatement sql = conn.prepareStatement("select id,idConta,idNovela,classificacao FROM conta_novela "
                     + "where id = ?");
             
             // Passo os parâmentros para a consulta sql
