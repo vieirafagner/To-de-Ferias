@@ -48,8 +48,8 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
             
             daoNovela.Abrir(f.getId()); // pega o filme
             
-            lista.add(f)
-            lista.add();
+            /*sta.add(f)
+            lista.add();*/
         
         }
         

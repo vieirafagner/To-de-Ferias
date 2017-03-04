@@ -7,6 +7,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaLivro;
+import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaLivroDAO;
 import br.edu.ifnmg.todeferias.Persistencia.LivroDAO;
 import java.util.List;
@@ -19,14 +20,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaMeusLivros extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form TelaMeusLivros
-     */
-    
-     
+   TelaClassificacaoLivro Classificar;
+    LivroRepositorio dao = GerenciadorReferencias.getLivro();
     private Conta usuario;
     List<ContaLivro>lista;
-    
     public TelaMeusLivros(Conta usuario) {
         initComponents();
         
@@ -42,10 +39,6 @@ public class TelaMeusLivros extends javax.swing.JInternalFrame {
             //contaFilme.setFilme();   
             
             daoLivro.Abrir(f.getId()); // pega o filme
-            
-            lista.add(f)
-            lista.add();
-        
         }
         
         preencheTabela(lista);
@@ -54,14 +47,14 @@ public class TelaMeusLivros extends javax.swing.JInternalFrame {
     private void preencheTabela(List<ContaLivro> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
-        //modelo.addColumn("Nome");
+        modelo.addColumn("Titulo");
         modelo.addColumn("classificacao");
         
-        for(ContaLivro cs : lista){
+        for(ContaLivro ct : lista){
             Vector linha = new Vector();
-            linha.add(cs.getId());
-            //linha.add(ct.());
-            linha.add(cs.getClassificacao());
+            linha.add(ct.getId());
+            linha.add(ct.getLivro().getTitulo());
+            linha.add(ct.getClassificacao());
             modelo.addRow(linha);
         }
         
@@ -93,6 +86,11 @@ public class TelaMeusLivros extends javax.swing.JInternalFrame {
                 "Id", "Nome", "Classificação"
             }
         ));
+        tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBuscaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBusca);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,7 +123,37 @@ public class TelaMeusLivros extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
+        int selecionada = tblBusca.getSelectedRow();
+        
+        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
+         if(usuario.getStatus()!=1){
+            ClassificarLivro(id);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tblBuscaMouseClicked
+    public void ClassificarLivro(int id){
+        
+        ContaLivro entidade;
+        
+        ContaLivroDAO daoContaLivro = new ContaLivroDAO();
+        
+        
+        
+        entidade = daoContaLivro.Abrir(id);
+        
+        
+        Classificar = new TelaClassificacaoLivro(usuario,true);
+        
+        entidade.getLivro().setClassificacao(entidade.getClassificacao());
+        Classificar.setEntidade(entidade);
+        
+        
+        
+        this.getParent().add(Classificar);
+        Classificar.setVisible(true);
+        this.setVisible(true);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JScrollPane jScrollPane1;
@@ -133,3 +161,4 @@ public class TelaMeusLivros extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtBusca;
     // End of variables declaration//GEN-END:variables
 }
+

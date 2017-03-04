@@ -32,7 +32,7 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
         */
         
             ContaFilmeDAO dao = new ContaFilmeDAO();
-            //CONRINUA............
+            //CONtINUA............
         
         /*
         *******************************************
@@ -223,17 +223,17 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();
+        this.dispose(); 
     }//GEN-LAST:event_btnCancelarActionPerformed
     private void preencheCampos(){
  
-        lblNome.setText( entidade.getFilme().getNome() );
-        lblDiretor.setText( entidade.getFilme().getDiretor());
-        lblDuracao.setText( Integer.toString(entidade.getFilme().getDuracao()));
-        lblGenero.setText(entidade.getFilme().getGenero());
-        lblSinopse.setText(entidade.getFilme().getSinopse());    
-        bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
-    }
+            lblNome.setText( entidade.getFilme().getNome() );
+            lblDiretor.setText( entidade.getFilme().getDiretor());
+            lblDuracao.setText( Integer.toString(entidade.getFilme().getDuracao()));
+            lblGenero.setText(entidade.getFilme().getGenero());
+            lblSinopse.setText(entidade.getFilme().getSinopse());    
+            bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
+        }
     public ContaFilme getEntidade() {
         return entidade;
     }

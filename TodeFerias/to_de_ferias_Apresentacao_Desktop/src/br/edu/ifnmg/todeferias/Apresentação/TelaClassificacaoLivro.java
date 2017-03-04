@@ -7,7 +7,6 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaLivro;
-import br.edu.ifnmg.todeferias.Aplicacao.Livro;
 import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaLivroDAO;
 import javax.swing.JOptionPane;
@@ -17,14 +16,18 @@ import javax.swing.JOptionPane;
  * @author cleiton rodrigues
  */
 public class TelaClassificacaoLivro extends javax.swing.JInternalFrame {
-    Livro entidade = new Livro();
+     ContaLivro entidade = new ContaLivro();
     LivroRepositorio dao;
     TelaListarLivros listagem;
-    private Conta usuario;
-    public TelaClassificacaoLivro(Conta usuario) {
+     Conta usuario;
+     private boolean editar;
+    public TelaClassificacaoLivro(Conta usuario, boolean editar) {//editar se for verdadeiro chama o UPDATE caso falso so lista e classifica pela primeira vez
         initComponents();
-        
         this.usuario = usuario;
+        this.editar = editar;
+        
+        
+        preencheCampos();
     /**
      * Creates new form TelaClassificacaoLivro
      */
@@ -170,36 +173,52 @@ public class TelaClassificacaoLivro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnClassificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificarActionPerformed
-         ContaLivro contaLivro = new ContaLivro(usuario);
-        ContaLivroDAO dao = new ContaLivroDAO();
+        ContaLivro contaLivro = new ContaLivro(usuario);
+            ContaLivroDAO dao = new ContaLivroDAO();
+            //contaFilme.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setConta(usuario);
+            
+            
+        if(editar){
+            
+            //contaFilme.setId(entidade.getId());
+            //usuario.addFilme(contaFilme.getFilme());// teste
+            dao.Salvar(entidade);
+            JOptionPane.showMessageDialog(this, "Classificação alterada com Sucesso !");
+        
+            this.dispose();
+        
+        }else{
+           usuario.addLivros(contaLivro.getLivro());// teste
     
-        entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
-        usuario.addLivros(entidade);
+            
         
-        System.out.println(bxClassificacao.getSelectedIndex()+1);
+            //System.out.println(bxClassificacao.getSelectedIndex()+1);
         
-        dao.Salvar(contaLivro);
+            dao.Salvar(entidade);
         
-        JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
+            JOptionPane.showMessageDialog(this, "Classificado Com Sucesso !");
         
-        this.dispose();
+            this.dispose();
+        }    
     }//GEN-LAST:event_btnClassificarActionPerformed
     
     private void preencheCampos(){
  
-        lblTitulo.setText(entidade.getTitulo());
-        lblAutor.setText(entidade.getAutor());
-        lblNumPagina.setText( Integer.toString(entidade.getQtd_pag()));
-        lblResumo.setText(entidade.getResumo()); 
-        
+        lblTitulo.setText(entidade.getLivro().getTitulo());
+        lblAutor.setText(entidade.getLivro().getAutor());
+        lblNumPagina.setText( Integer.toString(entidade.getLivro().getQtd_pag()));
+        lblResumo.setText(entidade.getLivro().getResumo()); 
+        bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
        
     }
     
-     public Livro getEntidade() {
+     public ContaLivro getEntidade() {
         return entidade;
      }
      
-    public void setEntidade(Livro entidade) {
+    public void setEntidade(ContaLivro entidade) {
         this.entidade = entidade;
         preencheCampos();
     }

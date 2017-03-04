@@ -4,7 +4,6 @@ import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
-import br.edu.ifnmg.todeferias.Persistencia.ContaFilmeDAO;
 import br.edu.ifnmg.todeferias.Persistencia.FilmeDAO;
 import java.util.List;
 import java.util.Vector;
@@ -26,28 +25,16 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
     TelaCadastroFilme editar;
     TelaClassificacaoFilme Classificar;
     Conta usuario;
-    
     public TelaListarFilme(Conta usuario) {
        initComponents();
        List<Filme> busca = dao.Buscar(null);
        
        this.usuario = usuario;
        
+       preencheTabela(busca);
        
-       
-       
-       /*
-       
-       codigo q funfa
-       usuario.addFilme(busca.get(0));
-       ContaFilmeDAO dao = new ContaFilmeDAO();
-       ContaFilme tmp = new ContaFilme(usuario);
-       dao.Salvar(tmp);
-       */
-        
-        
-        preencheTabela(busca);
     }
+       
     private void preencheTabela(List<Filme> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");

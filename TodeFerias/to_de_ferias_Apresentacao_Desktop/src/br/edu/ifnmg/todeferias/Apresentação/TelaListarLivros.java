@@ -6,8 +6,10 @@
 package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
+import br.edu.ifnmg.todeferias.Aplicacao.ContaLivro;
 import br.edu.ifnmg.todeferias.Aplicacao.Livro;
 import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.LivroDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -153,6 +155,7 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
         int selecionada = tblBusca.getSelectedRow();
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
+       
         if(usuario.getStatus()!=1){
             ClassificarLivro(id);
             this.dispose();
@@ -184,15 +187,20 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
     }
      
        public void ClassificarLivro(int id){
-        Livro entidade;
+        ContaLivro entidade = new ContaLivro();
         
-        entidade = dao.Abrir(id);
+        //ContaLivroDAO daoContaLivro = new ContaLivroDAO();
         
-        Classificar = new TelaClassificacaoLivro(usuario);
+        LivroDAO daoLivro = new LivroDAO();
         
+        entidade.setLivro(daoLivro.Abrir(id));
+        
+        Classificar = new TelaClassificacaoLivro(usuario,false);
+        
+        //entidade.getFilme().setClassificacao(entidade.getClassificacao());
         Classificar.setEntidade(entidade);
         
-        Classificar.setListagem(this);
+        //Classificar.setListagem(this);
         
         this.getParent().add(Classificar);
         Classificar.setVisible(true);

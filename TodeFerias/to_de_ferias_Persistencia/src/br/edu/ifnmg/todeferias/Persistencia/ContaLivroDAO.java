@@ -7,6 +7,7 @@ package br.edu.ifnmg.todeferias.Persistencia;
 
 import br.edu.ifnmg.todeferias.Aplicacao.ContaLivro;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaLivroRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.Livro;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,27 +23,27 @@ public class ContaLivroDAO extends DAOGenerico<ContaLivro> implements ContaLivro
         setConsultaAbrir("select id,idConta,idLivro,classificacao FROM conta_livro ");
         setConsultaInserir("INSERT INTO conta_livro(idConta,idLivro,classificacao) VALUES(?,?,?)");
         setConsultaBusca("select id,idConta,idLivro,classificacao FROM conta_livro ");
-        
+        setConsultaAlterar("UPDATE conta_livro SET idConta = ?, idLivro = ?,classificacao = ? WHERE id = ? ");        
     }
 
     @Override
     protected void preencheConsulta(PreparedStatement sql, ContaLivro obj) {
-      
-        try {
+      try {
             // Passa os parâmetros para a consulta SQL
             sql.setInt(1, obj.getConta().getId());
-            sql.setInt(2, obj.getConta().getLivros().get(0).getId());//supondo q vou setar o 1º
+            //sql.setInt(2, obj.getConta().getFilmes().get(0).getId());//supondo q vou setar o 1º "ta serta"
+            sql.setInt(2, obj.getLivro().getId());//supondo q vou setar o 1º
             // teste
             //obj.getConta().getFilmes().get(0).setClassificacao(obj);
-            sql.setInt(3, obj.getConta().getLivros().get(0).getClassificacao());
+            sql.setInt(3, obj.getClassificacao());
+            
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
-            Logger.getLogger(ContaLivroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ContaFilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
             
         }
            
-            
-        
     }
 
     /**
@@ -52,10 +53,10 @@ public class ContaLivroDAO extends DAOGenerico<ContaLivro> implements ContaLivro
      */
     @Override
     public ContaLivro Abrir(int id){
-        try {
+       try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,idConta,idLivro,classificacao FROM conta_livro"
+            PreparedStatement sql = conn.prepareStatement("select id,idConta,idLivro,classificacao FROM conta_livro "
                     + "where id = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -125,25 +126,26 @@ public class ContaLivroDAO extends DAOGenerico<ContaLivro> implements ContaLivro
     @Override
     protected ContaLivro preencheObjeto(ResultSet resultado) {
         
-        // Posso os dados do resultado para o objeto
-                ContaLivro tmp = new ContaLivro();
+       ContaLivro tmp = new ContaLivro();
+                LivroDAO daoLivro = new LivroDAO();
+                Livro livro = new Livro();
                
         try {
             tmp.setId(resultado.getInt(1));
         
             
-            //select id,idConta,idFilme,classificacao
+            //select id,idConta,idlivro,classificacao
             tmp.setClassificacao(resultado.getInt(4));
             tmp.getLivro().setId(resultado.getInt(3));
+            tmp.setLivro(daoLivro.Abrir(tmp.getLivro().getId()));// recebe o livro
                 
             
                 
          } catch (SQLException ex) {
-            Logger.getLogger(ContaLivroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ContaFilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
                 // Retorna o objeto
                 return tmp;
-        
         
     }
 }

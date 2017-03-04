@@ -68,14 +68,7 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
         
         tblBusca.setModel(modelo);
     }
-      /*public void buscar(String nome){
-        ContaFilme filtro = new ContaFilme(0,0);
-        
-        List<Anime> busca = dao.Buscar(filtro);
-        
-        preencheTabela(busca);
-        
-    }*/
+      
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,6 +114,11 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
         });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,6 +159,10 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }//GEN-LAST:event_tblBuscaMouseClicked
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
      public void ClassificarFilme(int id){
         

@@ -40,8 +40,8 @@ public class TelaMinhasSeries extends javax.swing.JInternalFrame {
             
             daoSerie.Abrir(f.getId()); // pega o filme
             
-            lista.add(f)
-            lista.add();
+            /*lista.add(f)
+            lista.add();*/
         
         }
         
