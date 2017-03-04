@@ -22,20 +22,18 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnNovo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtBusca" min="-2" pref="263" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="txtBusca" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Component id="jScrollPane1" min="-2" pref="404" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -52,10 +50,9 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtBusca" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnNovo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="253" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="242" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnFechar" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -67,16 +64,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/iconSearch.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnNovo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="novo"/>
-      </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -119,6 +114,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnFechar">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/iconClose.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Fechar"/>
       </Properties>
       <Events>
