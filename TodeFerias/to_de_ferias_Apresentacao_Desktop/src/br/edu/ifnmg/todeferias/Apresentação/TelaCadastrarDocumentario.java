@@ -27,9 +27,10 @@ public class TelaCadastrarDocumentario extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaCadastrarDocumentario
      */
-    public TelaCadastrarDocumentario() {
+    public TelaCadastrarDocumentario(Conta usuario) {
         initComponents();
     dao = GerenciadorReferencias.getDocumentario();
+    this.usuario=usuario;
     
     }
 

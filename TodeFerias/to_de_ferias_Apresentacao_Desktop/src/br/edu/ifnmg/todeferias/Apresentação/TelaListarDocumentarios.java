@@ -10,6 +10,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.ContaDocumentario;
 import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDocumentarioDAO;
+import br.edu.ifnmg.todeferias.Persistencia.DocumentarioDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -26,6 +27,7 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
     Conta usuario;
     /**
      * Creates new form TelaListarDocumentarios
+     * @param usuario
      */
     public TelaListarDocumentarios(Conta usuario) {
         initComponents();
@@ -185,7 +187,7 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
         
         entidade = dao.Abrir(id);
         
-        editar = new TelaCadastrarDocumentario();
+        editar = new TelaCadastrarDocumentario(usuario);
         
         editar.setEntidade(entidade);
         
@@ -199,9 +201,9 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
      public void ClassificarDocumentario(int id){
         ContaDocumentario entidade = new ContaDocumentario();
         
-        ContaDocumentarioDAO daoDocumentario = new ContaDocumentarioDAO();
+        DocumentarioDAO daoDocumentario = new DocumentarioDAO();
         
-        entidade = daoDocumentario.Abrir(id);
+        entidade.setDocumentario(daoDocumentario.Abrir(id));
         
         Classificar = new TelaClassificacaoDocumentario(usuario,false);
         
