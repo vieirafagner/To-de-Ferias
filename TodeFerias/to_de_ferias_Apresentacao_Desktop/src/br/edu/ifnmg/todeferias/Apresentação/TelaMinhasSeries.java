@@ -80,6 +80,12 @@ public class TelaMinhasSeries extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBusca = new javax.swing.JTable();
 
+        txtBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaActionPerformed(evt);
+            }
+        });
+
         btnBusca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/iconSair.png"))); // NOI18N
         btnBusca.setText("Buscar");
 
@@ -144,6 +150,10 @@ public class TelaMinhasSeries extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }//GEN-LAST:event_tblBuscaMouseClicked
+
+    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaActionPerformed
 
     public void ClassificarSerie(int id){
         

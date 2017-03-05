@@ -7,6 +7,20 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -88,6 +102,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         mnuMinhasSeries = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        relUsuario = new javax.swing.JMenuItem();
 
         jMenuItem7.setText("jMenuItem7");
 
@@ -292,6 +307,15 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Relatórios");
+
+        relUsuario.setText("Usuários");
+        relUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(relUsuario);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -446,6 +470,11 @@ public class TelaMenu extends javax.swing.JFrame {
        tela.setVisible(true);
     }//GEN-LAST:event_mnuMeusAnimesActionPerformed
 
+    private void relUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relUsuarioActionPerformed
+       ContaRepositorio dao = GerenciadorReferencias.getConta();
+        exibeRelatorioJasper("Conta.jasper", dao.Buscar(null));
+    }//GEN-LAST:event_relUsuarioActionPerformed
+
      public void editarConta(int id){
         Conta entidade;
      
@@ -461,9 +490,31 @@ public class TelaMenu extends javax.swing.JFrame {
         editar.setVisible(true);
         //this.setVisible(true);
     }
-    /**
-     * @param args the command line arguments
-     */
+    private void exibeRelatorioJasper(String caminho_relatorio, List dados) {
+
+        try {
+            // Parâmetros
+            Map parametros = new HashMap();
+
+            // Pega o caminho do arquivo do relatório
+            URL arquivo = getClass().getResource(caminho_relatorio);
+            
+            // Carrega o relatório na memória
+            JasperReport relatorio = (JasperReport) JRLoader.loadObject(arquivo);
+            
+            JRDataSource fontededados = new JRBeanCollectionDataSource(dados, true);
+            
+            JasperPrint jasperPrint = JasperFillManager.fillReport(relatorio, parametros, fontededados);
+            
+            // Visualiza o relatório
+            JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+            
+            jrviewer.setVisible(true);
+        
+        } catch (JRException ex) {
+            Logger.getLogger(JasperReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -503,5 +554,6 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuMinhasNovelas;
     private javax.swing.JMenuItem mnuMinhasSeries;
     private javax.swing.JMenu mnuNovelas;
+    private javax.swing.JMenuItem relUsuario;
     // End of variables declaration//GEN-END:variables
 }

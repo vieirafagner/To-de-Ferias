@@ -138,6 +138,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
         if(filtro==null) return;
         if(filtro.getId() > 0) adicionarFiltro("id", "=");
         if(filtro.getNome() != null) adicionarFiltro("nome", "like");
+        if(filtro.getEmail()!= null) adicionarFiltro("email", "like");
     
     }
 
