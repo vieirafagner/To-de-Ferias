@@ -10,6 +10,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.ContaLivro;
 import br.edu.ifnmg.todeferias.Aplicacao.Livro;
 import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.LivroDAO;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -24,9 +25,10 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
     TelaCadastrarLivros editar;
     TelaClassificacaoLivro Classificar;
     Conta usuario;
+    List<Livro> busca;
     public TelaListarLivros(Conta usuario) {
         initComponents();
-         List<Livro> busca = dao.Buscar(null);
+         this.busca = dao.Buscar(null);
          this.usuario=usuario;
         
         preencheTabela(busca);
@@ -48,12 +50,14 @@ public class TelaListarLivros extends javax.swing.JInternalFrame {
     }
     
      public void buscar(String titulo){
-        Livro filtro = new Livro(0,titulo,0,null,null,0);
         
-        List<Livro> busca = dao.Buscar(filtro);
-        
-        preencheTabela(busca);
-        
+       List<Livro> filtro = new LinkedList<>();
+       for(Livro f : this.busca){
+           if(f.getTitulo().matches("(.*)"+titulo+(".*"))){
+               filtro.add(f);
+           }
+       }
+        preencheTabela(filtro);
     }
 
     /**

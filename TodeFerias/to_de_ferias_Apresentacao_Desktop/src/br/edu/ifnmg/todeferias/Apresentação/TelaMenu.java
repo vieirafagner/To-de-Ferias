@@ -8,6 +8,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -73,6 +74,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jPopupMenu4 = new javax.swing.JPopupMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         btnPerfil = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -105,10 +107,13 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         relUsuario = new javax.swing.JMenuItem();
         itmAnimes = new javax.swing.JMenuItem();
+        relFilmes = new javax.swing.JMenuItem();
 
         jMenuItem7.setText("jMenuItem7");
 
         jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -326,6 +331,14 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenu2.add(itmAnimes);
 
+        relFilmes.setText("Filmes");
+        relFilmes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                relFilmesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(relFilmes);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -490,6 +503,11 @@ public class TelaMenu extends javax.swing.JFrame {
         exibeRelatorioJasper("Animes.jasper", dao.Buscar(null));
     }//GEN-LAST:event_itmAnimesActionPerformed
 
+    private void relFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relFilmesActionPerformed
+        FilmeRepositorio dao = GerenciadorReferencias.getFilme();
+        exibeRelatorioJasper("Filmes.jasper", dao.Buscar(null));
+    }//GEN-LAST:event_relFilmesActionPerformed
+
      public void editarConta(int id){
         Conta entidade;
      
@@ -542,6 +560,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -570,6 +589,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuMinhasNovelas;
     private javax.swing.JMenuItem mnuMinhasSeries;
     private javax.swing.JMenu mnuNovelas;
+    private javax.swing.JMenuItem relFilmes;
     private javax.swing.JMenuItem relUsuario;
     // End of variables declaration//GEN-END:variables
 }

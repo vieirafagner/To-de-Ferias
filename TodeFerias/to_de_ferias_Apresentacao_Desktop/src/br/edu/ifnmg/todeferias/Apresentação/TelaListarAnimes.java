@@ -10,6 +10,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaAnime;
 import br.edu.ifnmg.todeferias.Persistencia.AnimeDAO;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -24,10 +25,10 @@ public class TelaListarAnimes extends javax.swing.JInternalFrame {
     TelaCadastrarAnime editar;
     Conta usuario;
     TelaClassificacaoAnime Classificar;
-   
+    List<Anime> busca;
     public TelaListarAnimes(Conta usuario) {
         initComponents();
-        List<Anime> busca = dao.Buscar(null);
+        this.busca= dao.Buscar(null);
         
         this.usuario=usuario;
         
@@ -48,13 +49,15 @@ public class TelaListarAnimes extends javax.swing.JInternalFrame {
         
         tblBusca.setModel(modelo);
     }
-      public void buscar(String nome){
-        Anime filtro = new Anime(0,0,null,nome,0,0);
+    public void buscar(String nome){
         
-        List<Anime> busca = dao.Buscar(filtro);
-        
-        preencheTabela(busca);
-        
+       List<Anime> filtro = new LinkedList<>();
+       for(Anime f : this.busca){
+           if(f.getNome().matches("(.*)"+nome+(".*"))){
+               filtro.add(f);
+           }
+       }
+        preencheTabela(filtro);
     }
     /**
      * This method is called from within the constructor to initialize the form.

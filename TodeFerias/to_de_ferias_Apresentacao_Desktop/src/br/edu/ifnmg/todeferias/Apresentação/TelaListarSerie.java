@@ -6,6 +6,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.ContaSerie;
 import br.edu.ifnmg.todeferias.Aplicacao.Serie;
 import br.edu.ifnmg.todeferias.Aplicacao.SerieRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.SerieDAO;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -26,10 +27,10 @@ public class TelaListarSerie extends javax.swing.JInternalFrame {
     TelaCadastrarSeries editar;
     TelaClassificacaoSerie Classificar;
     Conta usuario;
-    
+    List<Serie> busca;
     public TelaListarSerie(Conta usuario) {
         initComponents();
-          List<Serie> busca = dao.Buscar(null);
+          this.busca = dao.Buscar(null);
           preencheTabela(busca);
           this.usuario = usuario;
     }
@@ -51,12 +52,14 @@ public class TelaListarSerie extends javax.swing.JInternalFrame {
     
     
     public void buscar(String nome){
-        Serie filtro = new Serie(0,0,null,nome,0,null,0);
         
-        List<Serie> busca = dao.Buscar(filtro);
-        
-        preencheTabela(busca);
-        
+       List<Serie> filtro = new LinkedList<>();
+       for(Serie f : this.busca){
+           if(f.getNome().matches("(.*)"+nome+(".*"))){
+               filtro.add(f);
+           }
+       }
+        preencheTabela(filtro);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

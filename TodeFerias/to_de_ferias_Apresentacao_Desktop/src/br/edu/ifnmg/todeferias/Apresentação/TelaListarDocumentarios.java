@@ -11,6 +11,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDocumentarioDAO;
 import br.edu.ifnmg.todeferias.Persistencia.DocumentarioDAO;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -25,14 +26,11 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
     TelaCadastrarDocumentario editar;
     TelaClassificacaoDocumentario Classificar;
     Conta usuario;
-    /**
-     * Creates new form TelaListarDocumentarios
-     * @param usuario
-     */
+    List<Documentario> busca;
     public TelaListarDocumentarios(Conta usuario) {
         initComponents();
         
-       List<Documentario> busca = dao.Buscar(null);
+       this.busca = dao.Buscar(null);
        
        this.usuario=usuario;
         
@@ -54,12 +52,14 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
     }
         
     public void buscar(String nome){
-        Documentario filtro = new Documentario(0,null,0,0,null,null,nome);
         
-        List<Documentario> busca = dao.Buscar(filtro);
-        
-        preencheTabela(busca);
-        
+       List<Documentario> filtro = new LinkedList<>();
+       for(Documentario f : this.busca){
+           if(f.getNome().matches("(.*)"+nome+(".*"))){
+               filtro.add(f);
+           }
+       }
+        preencheTabela(filtro);
     }
 
     /**

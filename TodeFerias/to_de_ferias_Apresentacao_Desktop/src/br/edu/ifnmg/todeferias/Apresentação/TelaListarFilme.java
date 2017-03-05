@@ -5,6 +5,7 @@ import br.edu.ifnmg.todeferias.Aplicacao.ContaFilme;
 import br.edu.ifnmg.todeferias.Aplicacao.Filme;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.FilmeDAO;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -25,9 +26,10 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
     TelaCadastroFilme editar;
     TelaClassificacaoFilme Classificar;
     Conta usuario;
+    List<Filme> busca;
     public TelaListarFilme(Conta usuario) {
        initComponents();
-       List<Filme> busca = dao.Buscar(null);
+       this.busca = dao.Buscar(null);
        
        this.usuario = usuario;
        
@@ -51,12 +53,14 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
     }
 
     public void buscar(String nome){
-        Filme filtro = new Filme(0, null,0,nome,0,null,null);
         
-        List<Filme> busca = dao.Buscar(filtro);
-        
-        preencheTabela(busca);
-        
+       List<Filme> filtro = new LinkedList<>();
+       for(Filme f : this.busca){
+           if(f.getNome().matches("(.*)"+nome+(".*"))){
+               filtro.add(f);
+           }
+       }
+        preencheTabela(filtro);
     }
 
     /**

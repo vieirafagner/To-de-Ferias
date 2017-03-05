@@ -9,8 +9,8 @@ import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaNovela;
 import br.edu.ifnmg.todeferias.Aplicacao.Novela;
 import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
-import br.edu.ifnmg.todeferias.Persistencia.ContaNovelaDAO;
 import br.edu.ifnmg.todeferias.Persistencia.NovelaDAO;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -25,9 +25,10 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
     TelaCadastrarNovela editar;
     Conta usuario;
     TelaClassificacaoNovela Classificar;
+    List<Novela> busca;
     public TelaListarNovelas(Conta usuario) {
         initComponents();
-        List<Novela> busca = dao.Buscar(null);
+        this.busca = dao.Buscar(null);
         this.usuario=usuario;
         preencheTabela(busca);
     }
@@ -49,15 +50,16 @@ public class TelaListarNovelas extends javax.swing.JInternalFrame {
         tblBusca.setModel(modelo);
     }
      
-     public void buscar(String nome){
-        Novela filtro = new Novela(0,0,0,null,nome);
+    public void buscar(String nome){
         
-        List<Novela> busca = dao.Buscar(filtro);
-        
-        preencheTabela(busca);
-        
+       List<Novela> filtro = new LinkedList<>();
+       for(Novela f : this.busca){
+           if(f.getNome().matches("(.*)"+nome+(".*"))){
+               filtro.add(f);
+           }
+       }
+        preencheTabela(filtro);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
