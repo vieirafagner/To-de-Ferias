@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
+import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
 import java.net.URL;
@@ -103,6 +104,7 @@ public class TelaMenu extends javax.swing.JFrame {
         mnuMinhasSeries = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         relUsuario = new javax.swing.JMenuItem();
+        itmAnimes = new javax.swing.JMenuItem();
 
         jMenuItem7.setText("jMenuItem7");
 
@@ -316,6 +318,14 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenu2.add(relUsuario);
 
+        itmAnimes.setText("Animes");
+        itmAnimes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmAnimesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itmAnimes);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -475,6 +485,11 @@ public class TelaMenu extends javax.swing.JFrame {
         exibeRelatorioJasper("Conta.jasper", dao.Buscar(null));
     }//GEN-LAST:event_relUsuarioActionPerformed
 
+    private void itmAnimesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAnimesActionPerformed
+        AnimeRepositorio dao = GerenciadorReferencias.getAnime();
+        exibeRelatorioJasper("Animes.jasper", dao.Buscar(null));
+    }//GEN-LAST:event_itmAnimesActionPerformed
+
      public void editarConta(int id){
         Conta entidade;
      
@@ -520,6 +535,7 @@ public class TelaMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ItmListarUsuarios;
     private javax.swing.JButton btnPerfil;
+    private javax.swing.JMenuItem itmAnimes;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
