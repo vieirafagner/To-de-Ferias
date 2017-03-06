@@ -126,6 +126,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/perfil.png"))); // NOI18N
         btnPerfil.setText("Perfil ");
         btnPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +146,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         mnuMidias.setText("Midias");
 
+        mnuFilmes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/filmeIcon.png"))); // NOI18N
         mnuFilmes.setText("Filmes");
         mnuFilmes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +180,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         mnuMidias.add(mnuFilmes);
 
+        mnuNovelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/novelas.png"))); // NOI18N
         mnuNovelas.setText("Novelas");
 
         mnuCadastrarNovela.setText("Cadastrar");
@@ -206,6 +209,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         mnuMidias.add(mnuNovelas);
 
+        mnuAnime.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/pokebola.png"))); // NOI18N
         mnuAnime.setText("Animes");
 
         mnuCadastrarAnime.setText("Cadastrar");
@@ -234,6 +238,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         mnuMidias.add(mnuAnime);
 
+        mnuLivros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/livro (2).png"))); // NOI18N
         mnuLivros.setText("Livros");
 
         mnuCadastrarLivro.setText("Cadastrar");
@@ -262,6 +267,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         mnuMidias.add(mnuLivros);
 
+        mnuDocumentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/Documentario.png"))); // NOI18N
         mnuDocumentario.setText("Documentário");
 
         mnuCadastrarDocumentario.setText("Cadastrar");
@@ -290,6 +296,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         mnuMidias.add(mnuDocumentario);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/serie.png"))); // NOI18N
         jMenu3.setText("Série");
 
         menuCadastrarSerie.setText("Cadastrar");
@@ -389,16 +396,16 @@ public class TelaMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(314, Short.MAX_VALUE)
+                .addContainerGap(279, Short.MAX_VALUE)
                 .addComponent(btnPerfil)
-                .addGap(27, 27, 27))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnPerfil)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
 
         pack();

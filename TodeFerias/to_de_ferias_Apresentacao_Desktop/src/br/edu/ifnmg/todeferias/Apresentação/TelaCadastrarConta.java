@@ -277,6 +277,7 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         this.dispose();
         if(usuario.getId() != 1)
         principal.Aparece(true);
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed

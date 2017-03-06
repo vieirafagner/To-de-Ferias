@@ -63,6 +63,9 @@
               <SubComponents>
                 <Menu class="javax.swing.JMenu" name="mnuFilmes">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/filmeIcon.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Filmes"/>
                   </Properties>
                   <Events>
@@ -97,6 +100,9 @@
                 </Menu>
                 <Menu class="javax.swing.JMenu" name="mnuNovelas">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/novelas.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Novelas"/>
                   </Properties>
                   <SubComponents>
@@ -128,6 +134,9 @@
                 </Menu>
                 <Menu class="javax.swing.JMenu" name="mnuAnime">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/pokebola.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Animes"/>
                   </Properties>
                   <SubComponents>
@@ -159,6 +168,9 @@
                 </Menu>
                 <Menu class="javax.swing.JMenu" name="mnuLivros">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/livro (2).png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Livros"/>
                   </Properties>
                   <SubComponents>
@@ -190,6 +202,9 @@
                 </Menu>
                 <Menu class="javax.swing.JMenu" name="mnuDocumentario">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/Documentario.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Document&#xe1;rio"/>
                   </Properties>
                   <SubComponents>
@@ -221,6 +236,9 @@
                 </Menu>
                 <Menu class="javax.swing.JMenu" name="jMenu3">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/serie.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="S&#xe9;rie"/>
                   </Properties>
                   <SubComponents>
@@ -344,9 +362,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="314" max="32767" attributes="0"/>
+              <EmptySpace pref="279" max="32767" attributes="0"/>
               <Component id="btnPerfil" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -355,7 +373,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnPerfil" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="245" max="32767" attributes="0"/>
+              <EmptySpace pref="211" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -363,6 +381,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnPerfil">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/perfil.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Perfil "/>
       </Properties>
       <Events>
