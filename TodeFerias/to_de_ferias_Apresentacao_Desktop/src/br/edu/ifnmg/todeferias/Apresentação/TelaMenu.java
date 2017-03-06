@@ -468,7 +468,7 @@ public class TelaMenu extends javax.swing.JFrame {
       TelaCadastroFilme tela = new TelaCadastroFilme();
       this.add(tela);
       tela.setVisible(true);
-      
+      lblMenu.setVisible(false);
       
       
     }//GEN-LAST:event_menuCadastrarFilmeActionPerformed
@@ -481,102 +481,119 @@ public class TelaMenu extends javax.swing.JFrame {
       TelaListarFilme tela = new TelaListarFilme(this.usuario);
       this.add(tela);
       tela.setVisible(true);
+      lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuListFilmeActionPerformed
 
     private void mnuListNovelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListNovelaActionPerformed
        TelaListarNovelas tela = new TelaListarNovelas(usuario);
        this.add(tela);
        tela.setVisible(true);
+       lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuListNovelaActionPerformed
 
     private void mnuCadastrarNovelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarNovelaActionPerformed
         TelaCadastrarNovela tela = new TelaCadastrarNovela(usuario);
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuCadastrarNovelaActionPerformed
 
     private void mnuCadastrarAnimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarAnimeActionPerformed
         TelaCadastrarAnime tela = new TelaCadastrarAnime();
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuCadastrarAnimeActionPerformed
 
     private void mnuListarAnimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListarAnimeActionPerformed
        TelaListarAnimes tela = new TelaListarAnimes(usuario);
        this.add(tela);
        tela.setVisible(true);
+       lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuListarAnimeActionPerformed
 
     private void mnuCadastrarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarLivroActionPerformed
         TelaCadastrarLivros tela = new TelaCadastrarLivros(usuario);
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuCadastrarLivroActionPerformed
 
     private void mnuListarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListarLivroActionPerformed
        TelaListarLivros tela = new TelaListarLivros(usuario);
        this.add(tela);
        tela.setVisible(true);
+       lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuListarLivroActionPerformed
 
     private void mnuCadastrarDocumentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarDocumentarioActionPerformed
         TelaCadastrarDocumentario tela = new TelaCadastrarDocumentario(usuario);
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuCadastrarDocumentarioActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         TelaListarDocumentarios tela = new TelaListarDocumentarios(usuario);
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void menuCadastrarSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarSerieActionPerformed
         TelaCadastrarSeries tela = new TelaCadastrarSeries(usuario);
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_menuCadastrarSerieActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         TelaListarSerie tela = new TelaListarSerie(usuario);
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void mnuMeusFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMeusFilmesActionPerformed
        TelaMeusFilmes tela = new TelaMeusFilmes(usuario);
        this.add(tela);
        tela.setVisible(true);
+       lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuMeusFilmesActionPerformed
 
     private void mnuMinhasNovelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMinhasNovelasActionPerformed
         TelaMinhasNovelas tela = new TelaMinhasNovelas(usuario);
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuMinhasNovelasActionPerformed
 
     private void mnuMeusLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMeusLivrosActionPerformed
         TelaMeusLivros tela = new TelaMeusLivros(usuario);
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuMeusLivrosActionPerformed
 
     private void mnuMeusDOCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMeusDOCActionPerformed
        TelaMeusDocumentarios tela = new TelaMeusDocumentarios(usuario);
        this.add(tela);
        tela.setVisible(true);
+       lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuMeusDOCActionPerformed
 
     private void mnuMinhasSeriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMinhasSeriesActionPerformed
         TelaMinhasSeries tela = new TelaMinhasSeries(usuario);
         this.add(tela);
         tela.setVisible(true);
+        lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuMinhasSeriesActionPerformed
 
     private void mnuMeusAnimesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMeusAnimesActionPerformed
        TelaMeusAnimes tela = new TelaMeusAnimes(usuario);
        this.add(tela);
        tela.setVisible(true);
+       lblMenu.setVisible(false);
     }//GEN-LAST:event_mnuMeusAnimesActionPerformed
 
     private void relUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relUsuarioActionPerformed

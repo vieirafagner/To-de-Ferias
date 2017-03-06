@@ -233,7 +233,11 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
                 
                 if(dao.Salvar(entidade)){
                     JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
-                this.dispose();
+                    this.dispose();
+                   if(usuario.getId() != 1){
+                    principal.Aparece(true);
+                   }
+                
                 }
                 else
                     JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
