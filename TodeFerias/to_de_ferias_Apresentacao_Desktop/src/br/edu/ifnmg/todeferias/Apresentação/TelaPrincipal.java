@@ -133,15 +133,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        TelaCadastrarConta tela = new TelaCadastrarConta();
+        TelaCadastrarConta tela = new TelaCadastrarConta(this);
         this.add(tela);
-        this.pipoca.setVisible(false);
-        this.goten.setVisible(false);
-        this.chapel.setVisible(false);
-        this.titulo.setVisible(false);
-        
+        Aparece(false);
         tela.setVisible(true);
-        
+      
         
     }//GEN-LAST:event_btnCadastroActionPerformed
     //System.exit(0);
@@ -149,8 +145,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
-
-   
+    boolean teste;
+   protected void Aparece(boolean teste){
+       if(teste){
+        this.pipoca.setVisible(true);
+        this.goten.setVisible(true);
+        this.chapel.setVisible(true);
+        this.titulo.setVisible(true);
+       }
+       else{
+        this.pipoca.setVisible(false);
+        this.goten.setVisible(false);
+        this.chapel.setVisible(false);
+        this.titulo.setVisible(false);
+       }
+        
+   }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

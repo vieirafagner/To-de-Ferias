@@ -20,10 +20,13 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
     Conta entidade = new Conta();
     ContaRepositorio dao;
     Conta usuario = new Conta();
-    public TelaCadastrarConta() {
+    TelaPrincipal principal;
+    TelaMenu menu;
+    public TelaCadastrarConta(TelaPrincipal principal) {
         initComponents();
          dao = GerenciadorReferencias.getConta();
-        this.usuario = usuario;
+        this.usuario = principal.usuario;
+        this.principal=principal;
         /*if(usuario.getStatus()==1){
             txtNome.setEnabled(false);
             txtEmail.setEnabled(false);
@@ -32,8 +35,71 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
             
         }*/
     }
-
+    public TelaCadastrarConta(TelaMenu menu) {
+        initComponents();
+         dao = GerenciadorReferencias.getConta();
+         this.usuario = menu.usuario;
+        //this.usuario = usuario;
+        //this.principal=principal;
+        this.menu=menu;
+        /*if(usuario.getStatus()==1){
+            txtNome.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtSenha.setEnabled(false);
+            btnSalvar.setEnabled(false);
+            
+        }*/
+    }
     
+    TelaListagemContas listagemContas;
+    public TelaCadastrarConta(Conta usuario,TelaListagemContas listagemContas) {
+        initComponents();
+         dao = GerenciadorReferencias.getConta();
+         this.usuario = listagemContas.usuario;
+        //this.usuario = usuario;
+        //this.principal=principal;
+        this.listagemContas=listagemContas;
+        /*if(usuario.getStatus()==1){
+            txtNome.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtSenha.setEnabled(false);
+            btnSalvar.setEnabled(false);
+            
+        }*/
+    }
+    
+    
+    
+    
+    
+    
+
+    public TelaCadastrarConta(Conta usuario) {
+        initComponents();
+         dao = GerenciadorReferencias.getConta();
+        this.usuario = usuario;
+        //this.principal=principal;
+        /*if(usuario.getStatus()==1){
+            txtNome.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtSenha.setEnabled(false);
+            btnSalvar.setEnabled(false);
+            
+        }*/
+    }
+    public TelaCadastrarConta() {
+        initComponents();
+         dao = GerenciadorReferencias.getConta();
+        this.usuario = usuario;
+        this.principal=principal;
+        /*if(usuario.getStatus()==1){
+            txtNome.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtSenha.setEnabled(false);
+            btnSalvar.setEnabled(false);
+            
+        }*/
+    }
     
 
     /**
@@ -149,6 +215,8 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
         );
 
+        getAccessibleContext().setAccessibleParent(this);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -178,9 +246,18 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
 
             if(dao.Apagar(entidade)){
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
-                entidade = new Conta(0, "", "","", 0);
-                preencheCampos();
-                this.dispose();
+                if(usuario.getId()!=1){
+                    menu.ocultaBotaoPerfil();
+                    TelaPrincipal tela = new TelaPrincipal();
+                    tela.setVisible(true);
+                    this.dispose();
+                    menu.dispose();
+                }
+                else
+                   this.dispose();
+                    listagemContas.dispose();
+                
+                
             }
             else
                 JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro durante a execução! Procure o administrador do sistema.");
@@ -191,7 +268,10 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         this.dispose();
+        if(usuario.getId() != 1)
+        principal.Aparece(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed

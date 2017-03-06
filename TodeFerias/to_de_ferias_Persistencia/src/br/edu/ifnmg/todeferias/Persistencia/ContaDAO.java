@@ -21,13 +21,13 @@ import java.util.logging.Logger;
 public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
     
     public ContaDAO() {
-        setConsultaAbrir("select id,email,senha,nome,status from Conta where id = ?");
-        setConsultaApagar("DELETE FROM Conta WHERE id = ? ");
+        setConsultaAbrir("select id,email,senha,nome,status from Conta where id = ? and status = 1");
+        setConsultaApagar("UPDATE Conta set status = 0 WHERE id = ? ");
         setConsultaInserir("INSERT INTO Conta(email,senha,nome,status) VALUES(?,?,?,?)");
         setConsultaAlterar("UPDATE Conta SET email = ?, "
                         + "senha = ?, nome=?"
                         + "WHERE id = ?");
-        setConsultaBusca("select id,email,senha,nome,status from Conta ");
+        setConsultaBusca("select id,email,senha,nome,status from Conta where status = 1  ");
         setConsultaUltimoId("select max(id) from Conta where email = ? and senha = ? and nome = ? and status = ?");
     }
     
@@ -42,7 +42,7 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
          ResultSet rs = null;
          Conta usuario = null;
          try{
-             stat=conn.prepareStatement("SELECT * FROM Conta WHERE email = ? and senha = ?");
+             stat=conn.prepareStatement("SELECT * FROM Conta WHERE email = ? and senha = ? and status = 1");
              stat.setString(1, email);
              stat.setString(2, senha);
               rs = stat.executeQuery();
@@ -93,9 +93,10 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
             sql.setString(2, obj.getSenha());
             sql.setString(3, obj.getNome());
             sql.setInt(4, obj.getStatus());
+            sql.setInt(5, 1);
             
             
-            if(obj.getId() > 0) sql.setInt(4,obj.getId());
+            if(obj.getId() > 0) sql.setInt(5,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);

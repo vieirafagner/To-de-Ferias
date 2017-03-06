@@ -43,7 +43,7 @@ public class TelaMenu extends javax.swing.JFrame {
         
         System.out.println(usuario);
         
-        if(this.usuario.getStatus() == 1){
+        if(this.usuario.getId() == 1){
             btnPerfil.setVisible(false);
         }
         else{
@@ -373,7 +373,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void ItmListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItmListarUsuariosActionPerformed
-        new TelaListagemContas().setVisible(true);
+        new TelaListagemContas(this.usuario).setVisible(true);
        
         
     }//GEN-LAST:event_ItmListarUsuariosActionPerformed
@@ -513,7 +513,7 @@ public class TelaMenu extends javax.swing.JFrame {
      
         entidade = dao.Abrir(id);
         
-        editar = new TelaCadastrarConta();
+        editar = new TelaCadastrarConta(this);
         
         editar.setEntidade(entidade);
         
@@ -523,6 +523,10 @@ public class TelaMenu extends javax.swing.JFrame {
         editar.setVisible(true);
         //this.setVisible(true);
     }
+    
+     protected void ocultaBotaoPerfil(){
+         this.btnPerfil.setVisible(false);
+     }
     private void exibeRelatorioJasper(String caminho_relatorio, List dados) {
 
         try {

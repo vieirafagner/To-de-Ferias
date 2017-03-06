@@ -7,6 +7,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
+import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -18,15 +19,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaListagemContas extends javax.swing.JFrame {
 
-    ContaRepositorio dao = GerenciadorReferencias.getConta();
-    Conta usuario = new Conta();
+    ContaRepositorio dao ;
+    Conta usuario ;
     TelaCadastrarConta editar;
+    int id;
     /**
      * Creates new form TelaListagemContas
      */
-    public TelaListagemContas() {
+    public TelaListagemContas(Conta usuario) {
         initComponents();
+        dao = new ContaDAO();
         List<Conta> busca = dao.Buscar(null);
+        this.usuario = usuario;
         
         preencheTabela(busca);
     }
@@ -141,6 +145,8 @@ public class TelaListagemContas extends javax.swing.JFrame {
                 .addComponent(btnExcluir))
         );
 
+        getAccessibleContext().setAccessibleParent(this);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -151,18 +157,20 @@ public class TelaListagemContas extends javax.swing.JFrame {
     private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
         int selecionada = tblBusca.getSelectedRow();
         
-        int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
+         id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
        
         editarConta(id);
+      
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-    /*   if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
-
-            if(dao.Apagar(id)){
+       
+        if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar as alterações?") == 0){
+             Conta conta = new Conta();
+             conta.setId(id);
+            if(dao.Apagar(conta)){
                 JOptionPane.showMessageDialog(rootPane, "Operação concluída com sucesso!");
-                entidade = new Conta(0, "", "","", 0);
-                preencheCampos();
+               
                 this.dispose();
             }
             else
@@ -170,7 +178,7 @@ public class TelaListagemContas extends javax.swing.JFrame {
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
-        }*/
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
      public void editarConta(int id){
@@ -178,7 +186,7 @@ public class TelaListagemContas extends javax.swing.JFrame {
      
         entidade = dao.Abrir(id);
         
-        editar = new TelaCadastrarConta();
+        editar = new TelaCadastrarConta(usuario, this);
         
         editar.setEntidade(entidade);
         
@@ -187,6 +195,7 @@ public class TelaListagemContas extends javax.swing.JFrame {
         this.add(editar);
         editar.setVisible(true);
         //this.setVisible(true);
+        //this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

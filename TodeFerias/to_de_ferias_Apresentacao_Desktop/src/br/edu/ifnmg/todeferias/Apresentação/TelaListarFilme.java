@@ -175,7 +175,7 @@ public class TelaListarFilme extends javax.swing.JInternalFrame {
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
         
-        if(usuario.getStatus()!=1){
+        if(usuario.getId()!=1){
             ClassificarFilme(id);
             this.dispose();
         }

@@ -9,7 +9,6 @@ import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaDocumentario;
 import br.edu.ifnmg.todeferias.Aplicacao.Documentario;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
-import br.edu.ifnmg.todeferias.Persistencia.ContaDocumentarioDAO;
 import br.edu.ifnmg.todeferias.Persistencia.DocumentarioDAO;
 import java.util.LinkedList;
 import java.util.List;
@@ -159,7 +158,7 @@ public class TelaListarDocumentarios extends javax.swing.JInternalFrame {
         
         int id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString() );
         
-        if(usuario.getStatus()!=1){
+        if(usuario.getId()!=1){
             ClassificarDocumentario(id);
             this.dispose();
         }
