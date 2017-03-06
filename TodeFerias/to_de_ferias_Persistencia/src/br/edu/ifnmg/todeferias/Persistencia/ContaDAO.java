@@ -92,11 +92,11 @@ public class ContaDAO extends DAOGenerico<Conta> implements ContaRepositorio {
             sql.setString(1, obj.getEmail());
             sql.setString(2, obj.getSenha());
             sql.setString(3, obj.getNome());
-            sql.setInt(4, obj.getStatus());
-            sql.setInt(5, 1);
+            sql.setInt(4, 2);
             
             
-            if(obj.getId() > 0) sql.setInt(5,obj.getId());
+            
+            if(obj.getId() > 0) sql.setInt(4,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);

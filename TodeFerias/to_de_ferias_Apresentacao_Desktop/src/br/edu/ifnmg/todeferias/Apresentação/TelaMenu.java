@@ -84,6 +84,7 @@ public class TelaMenu extends javax.swing.JFrame {
         btnPerfil = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
+        lblMenu = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ItmListarUsuarios = new javax.swing.JMenuItem();
@@ -148,6 +149,8 @@ public class TelaMenu extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
+
+        lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/a3.png"))); // NOI18N
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/gerenciar.png"))); // NOI18N
         jMenu1.setText("Gerenciar");
@@ -348,6 +351,7 @@ public class TelaMenu extends javax.swing.JFrame {
         mnuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/report.png"))); // NOI18N
         mnuRelatorios.setText("Relatórios");
 
+        relUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/user.png"))); // NOI18N
         relUsuario.setText("Usuários");
         relUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,6 +360,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         mnuRelatorios.add(relUsuario);
 
+        itmAnimes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/pokebola.png"))); // NOI18N
         itmAnimes.setText("Animes");
         itmAnimes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,6 +369,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         mnuRelatorios.add(itmAnimes);
 
+        relFilmes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/filmeIcon.png"))); // NOI18N
         relFilmes.setText("Filmes");
         relFilmes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,6 +378,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         mnuRelatorios.add(relFilmes);
 
+        itmLivro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/livro (2).png"))); // NOI18N
         itmLivro.setText("Livros");
         itmLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,6 +387,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         mnuRelatorios.add(itmLivro);
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/Documentario.png"))); // NOI18N
         jMenuItem5.setText("Documentários");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -388,6 +396,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         mnuRelatorios.add(jMenuItem5);
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/novelas.png"))); // NOI18N
         jMenuItem6.setText("Novelas");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,6 +405,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         mnuRelatorios.add(jMenuItem6);
 
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/serie.png"))); // NOI18N
         jMenuItem8.setText("Series");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -412,11 +422,15 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(188, Short.MAX_VALUE)
-                .addComponent(btnPerfil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 178, Short.MAX_VALUE)
+                        .addComponent(btnPerfil)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -426,7 +440,9 @@ public class TelaMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 183, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -438,6 +454,7 @@ public class TelaMenu extends javax.swing.JFrame {
         NewJFrame aa = new NewJFrame();
         aa.setVisible(rootPaneCheckingEnabled);
         */
+        lblMenu.setVisible(false);
         editarConta(usuario.getId());
     }//GEN-LAST:event_btnPerfilActionPerformed
 
@@ -672,6 +689,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JPopupMenu jPopupMenu4;
+    private javax.swing.JLabel lblMenu;
     private javax.swing.JMenuItem menuCadastrarFilme;
     private javax.swing.JMenuItem menuCadastrarSerie;
     private javax.swing.JMenu mnuAnime;
