@@ -8,7 +8,9 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -108,6 +110,8 @@ public class TelaMenu extends javax.swing.JFrame {
         relUsuario = new javax.swing.JMenuItem();
         itmAnimes = new javax.swing.JMenuItem();
         relFilmes = new javax.swing.JMenuItem();
+        itmLivro = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenuItem7.setText("jMenuItem7");
 
@@ -339,6 +343,22 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenu2.add(relFilmes);
 
+        itmLivro.setText("Livros");
+        itmLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmLivroActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itmLivro);
+
+        jMenuItem5.setText("Documentários");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -508,6 +528,16 @@ public class TelaMenu extends javax.swing.JFrame {
         exibeRelatorioJasper("Filmes.jasper", dao.Buscar(null));
     }//GEN-LAST:event_relFilmesActionPerformed
 
+    private void itmLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmLivroActionPerformed
+        LivroRepositorio dao = GerenciadorReferencias.getLivro();
+        exibeRelatorioJasper("Livros.jasper", dao.Buscar(null));
+    }//GEN-LAST:event_itmLivroActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        DocumentarioRepositorio dao = GerenciadorReferencias.getDocumentario();
+        exibeRelatorioJasper("Documentarios.jasper", dao.Buscar(null));
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
      public void editarConta(int id){
         Conta entidade;
      
@@ -558,6 +588,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem ItmListarUsuarios;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JMenuItem itmAnimes;
+    private javax.swing.JMenuItem itmLivro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -566,6 +597,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
