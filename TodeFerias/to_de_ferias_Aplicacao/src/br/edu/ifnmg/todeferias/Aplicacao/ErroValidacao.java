@@ -14,4 +14,9 @@ public class ErroValidacao extends Exception {
     public ErroValidacao(String o_atributo_nome_deve_ter_no_máximo_250_ca) {
     }
     
+    public void validaemail(){
+       // private static final String EMAIL_REGEX = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$";
+        //private static final String EMAIL_REGEX2 = ".+@.+\\.[a-z]+";
+    }
+    
 }
