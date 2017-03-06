@@ -11,6 +11,8 @@ import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.DocumentarioRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.FilmeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.LivroRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.NovelaRepositorio;
+import br.edu.ifnmg.todeferias.Aplicacao.SerieRepositorio;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +58,7 @@ public class TelaMenu extends javax.swing.JFrame {
             menuCadastrarSerie.setEnabled(false);
             mnuCadastrarDocumentario.setEnabled(false);
             ItmListarUsuarios.setVisible(false);
+            relUsuario.setVisible(false);
         }
     }
 
@@ -106,12 +109,14 @@ public class TelaMenu extends javax.swing.JFrame {
         menuCadastrarSerie = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         mnuMinhasSeries = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        mnuRelatorios = new javax.swing.JMenu();
         relUsuario = new javax.swing.JMenuItem();
         itmAnimes = new javax.swing.JMenuItem();
         relFilmes = new javax.swing.JMenuItem();
         itmLivro = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         jMenuItem7.setText("jMenuItem7");
 
@@ -317,7 +322,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Relatórios");
+        mnuRelatorios.setText("Relatórios");
 
         relUsuario.setText("Usuários");
         relUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -325,7 +330,7 @@ public class TelaMenu extends javax.swing.JFrame {
                 relUsuarioActionPerformed(evt);
             }
         });
-        jMenu2.add(relUsuario);
+        mnuRelatorios.add(relUsuario);
 
         itmAnimes.setText("Animes");
         itmAnimes.addActionListener(new java.awt.event.ActionListener() {
@@ -333,7 +338,7 @@ public class TelaMenu extends javax.swing.JFrame {
                 itmAnimesActionPerformed(evt);
             }
         });
-        jMenu2.add(itmAnimes);
+        mnuRelatorios.add(itmAnimes);
 
         relFilmes.setText("Filmes");
         relFilmes.addActionListener(new java.awt.event.ActionListener() {
@@ -341,7 +346,7 @@ public class TelaMenu extends javax.swing.JFrame {
                 relFilmesActionPerformed(evt);
             }
         });
-        jMenu2.add(relFilmes);
+        mnuRelatorios.add(relFilmes);
 
         itmLivro.setText("Livros");
         itmLivro.addActionListener(new java.awt.event.ActionListener() {
@@ -349,7 +354,7 @@ public class TelaMenu extends javax.swing.JFrame {
                 itmLivroActionPerformed(evt);
             }
         });
-        jMenu2.add(itmLivro);
+        mnuRelatorios.add(itmLivro);
 
         jMenuItem5.setText("Documentários");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -357,9 +362,25 @@ public class TelaMenu extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        mnuRelatorios.add(jMenuItem5);
 
-        jMenuBar1.add(jMenu2);
+        jMenuItem6.setText("Novelas");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        mnuRelatorios.add(jMenuItem6);
+
+        jMenuItem8.setText("Series");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        mnuRelatorios.add(jMenuItem8);
+
+        jMenuBar1.add(mnuRelatorios);
 
         setJMenuBar(jMenuBar1);
 
@@ -538,6 +559,16 @@ public class TelaMenu extends javax.swing.JFrame {
         exibeRelatorioJasper("Documentarios.jasper", dao.Buscar(null));
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        NovelaRepositorio dao = GerenciadorReferencias.getNovela();
+        exibeRelatorioJasper("Novelas.jasper", dao.Buscar(null));
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        SerieRepositorio dao = GerenciadorReferencias.getSerie();
+        exibeRelatorioJasper("Series.jasper", dao.Buscar(null));  
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
      public void editarConta(int id){
         Conta entidade;
      
@@ -590,7 +621,6 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmAnimes;
     private javax.swing.JMenuItem itmLivro;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -598,7 +628,9 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
@@ -625,6 +657,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuMinhasNovelas;
     private javax.swing.JMenuItem mnuMinhasSeries;
     private javax.swing.JMenu mnuNovelas;
+    private javax.swing.JMenu mnuRelatorios;
     private javax.swing.JMenuItem relFilmes;
     private javax.swing.JMenuItem relUsuario;
     // End of variables declaration//GEN-END:variables
