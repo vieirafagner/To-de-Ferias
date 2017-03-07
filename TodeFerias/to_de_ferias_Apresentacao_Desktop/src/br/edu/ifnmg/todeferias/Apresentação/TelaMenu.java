@@ -49,6 +49,12 @@ public class TelaMenu extends javax.swing.JFrame {
         
         if(this.usuario.getId() == 1){
             btnPerfil.setVisible(false);
+            mnuMeusAnimes.setVisible(false);
+            mnuMeusDOC.setVisible(false);
+            mnuMeusLivros.setVisible(false);
+            mnuMeusFilmes.setVisible(false);
+            mnuMinhasNovelas.setVisible(false);
+            mnuMinhasSeries.setVisible(false);
         }
         else{
             menuCadastrarFilme.setEnabled(false);
@@ -287,7 +293,7 @@ public class TelaMenu extends javax.swing.JFrame {
         mnuMidias.add(mnuLivros);
 
         mnuDocumentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/Documentario.png"))); // NOI18N
-        mnuDocumentario.setText("Documentário");
+        mnuDocumentario.setText("Documentários");
 
         mnuCadastrarDocumentario.setText("Cadastrar");
         mnuCadastrarDocumentario.addActionListener(new java.awt.event.ActionListener() {
@@ -316,7 +322,7 @@ public class TelaMenu extends javax.swing.JFrame {
         mnuMidias.add(mnuDocumentario);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/serie.png"))); // NOI18N
-        jMenu3.setText("Série");
+        jMenu3.setText("Séries");
 
         menuCadastrarSerie.setText("Cadastrar");
         menuCadastrarSerie.addActionListener(new java.awt.event.ActionListener() {

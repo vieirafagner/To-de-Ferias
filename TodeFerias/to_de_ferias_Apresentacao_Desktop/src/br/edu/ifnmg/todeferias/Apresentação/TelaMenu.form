@@ -213,7 +213,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/Documentario.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Document&#xe1;rio"/>
+                    <Property name="text" type="java.lang.String" value="Document&#xe1;rios"/>
                   </Properties>
                   <SubComponents>
                     <MenuItem class="javax.swing.JMenuItem" name="mnuCadastrarDocumentario">
@@ -247,7 +247,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/br/edu/ifnmg/todeferias/imagens/serie.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="S&#xe9;rie"/>
+                    <Property name="text" type="java.lang.String" value="S&#xe9;ries"/>
                   </Properties>
                   <SubComponents>
                     <MenuItem class="javax.swing.JMenuItem" name="menuCadastrarSerie">

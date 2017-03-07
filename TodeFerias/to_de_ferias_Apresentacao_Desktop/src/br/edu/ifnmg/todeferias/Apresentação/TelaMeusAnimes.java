@@ -50,12 +50,14 @@ public class TelaMeusAnimes extends javax.swing.JInternalFrame {
         modelo.addColumn("Id");
         modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
+        modelo.addColumn("comentario");
         
         for(ContaAnime ca : lista){
             Vector linha = new Vector();
             linha.add(ca.getId());
             linha.add(ca.getAnime().getNome());
             linha.add(ca.getClassificacao());
+            linha.add(ca.getComentario());
             modelo.addRow(linha);
         }
         
@@ -85,11 +87,11 @@ public class TelaMeusAnimes extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Classificação"
+                "Id", "Nome", "Classificação", "Comentário"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -175,6 +177,7 @@ public class TelaMeusAnimes extends javax.swing.JInternalFrame {
         Classificar = new TelaClassificacaoAnime(usuario,true);
         
         entidade.getAnime().setClassificacao(entidade.getClassificacao());
+        entidade.getAnime().setComentario(entidade.getComentario());
         Classificar.setEntidade(entidade);
         
         

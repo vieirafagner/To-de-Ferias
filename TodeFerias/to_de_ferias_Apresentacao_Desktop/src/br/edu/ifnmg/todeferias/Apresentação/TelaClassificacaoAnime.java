@@ -5,7 +5,6 @@
  */
 package br.edu.ifnmg.todeferias.Apresentação;
 
-import br.edu.ifnmg.todeferias.Aplicacao.Anime;
 import br.edu.ifnmg.todeferias.Aplicacao.AnimeRepositorio;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaAnime;
@@ -17,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
 
-     ContaAnime entidade = new ContaAnime();
+    ContaAnime entidade = new ContaAnime();
     AnimeRepositorio dao;
     TelaListarAnimes listagem;
     private Conta usuario;
@@ -53,6 +52,8 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
         btnClassificar = new javax.swing.JButton();
         brnCancelar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtComentario = new javax.swing.JTextField();
 
         jLabel1.setText("Nome");
 
@@ -74,6 +75,7 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
 
         bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
+        btnClassificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/star.png"))); // NOI18N
         btnClassificar.setText("Classificar");
         btnClassificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +83,7 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
             }
         });
 
+        brnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/iconClose.png"))); // NOI18N
         brnCancelar.setText("Cancelar");
         brnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +93,8 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Tela de Classificação de Anime");
+
+        jLabel5.setText("Adicionar comentário");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,11 +110,11 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(bxClassificacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +134,12 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(jLabel3)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtComentario))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +166,11 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClassificar)
                     .addComponent(brnCancelar))
@@ -171,6 +185,7 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
             ContaAnimeDAO dao = new ContaAnimeDAO();
             //contaFilme.setClassificacao(bxClassificacao.getSelectedIndex()+1);
             entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setComentario(txtComentario.getText());
             entidade.setConta(usuario);
             
             
@@ -210,7 +225,7 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
         lblQtd_temp.setText( Integer.toString(entidade.getAnime().getQtd_temp()));
         lblSinopse.setText(entidade.getAnime().getSinopse());
         bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
-               
+        txtComentario.setText(entidade.getComentario());
          
     }
     public ContaAnime getEntidade() {
@@ -237,11 +252,13 @@ public class TelaClassificacaoAnime extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblDuracao;
     private javax.swing.JLabel lblQtd_temp;
     private javax.swing.JLabel lblSinopse;
     private javax.swing.JLabel lblnome;
+    private javax.swing.JTextField txtComentario;
     // End of variables declaration//GEN-END:variables
 }

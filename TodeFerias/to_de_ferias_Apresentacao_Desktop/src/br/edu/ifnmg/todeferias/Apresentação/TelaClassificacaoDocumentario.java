@@ -54,6 +54,8 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         bxClassificacao = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtComentario = new javax.swing.JTextField();
 
         jLabel1.setText("Nome");
 
@@ -75,6 +77,7 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
 
         lblSinopse.setText("Sinopse");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/star.png"))); // NOI18N
         jButton1.setText("Classificar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +85,7 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/iconClose.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,16 +100,18 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setText("Tela de Classificação de Documentários");
 
+        jLabel8.setText("Adicionar comentário");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar)
-                .addGap(57, 57, 57))
+                .addGap(69, 69, 69))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -134,12 +140,16 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 65, Short.MAX_VALUE)))
                 .addGap(10, 10, 10))
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtComentario))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,11 +179,15 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnCancelar))
-                .addGap(31, 31, 31))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -184,6 +198,7 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
             ContaDocumentarioDAO dao = new ContaDocumentarioDAO();
             //contaFilme.setClassificacao(bxClassificacao.getSelectedIndex()+1);
             entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setComentario(txtComentario.getText());
             entidade.setConta(usuario);
             
             
@@ -229,6 +244,7 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
         lblDuracao.setText(Integer.toString(entidade.getDocumentario().getDuracao()));
         lblSinopse.setText(entidade.getDocumentario().getSinopse());
         bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
+        txtComentario.setText(entidade.getComentario());
     }
     public ContaDocumentario getEntidade() {
         return entidade;
@@ -257,10 +273,12 @@ public class TelaClassificacaoDocumentario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblAutor;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblDuracao;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSinopse;
+    private javax.swing.JTextField txtComentario;
     // End of variables declaration//GEN-END:variables
 }

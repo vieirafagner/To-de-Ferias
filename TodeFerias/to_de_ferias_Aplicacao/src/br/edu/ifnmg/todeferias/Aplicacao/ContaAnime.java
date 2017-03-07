@@ -14,12 +14,14 @@ public class ContaAnime implements Entidade {
     private int id;
     private Conta conta;
     private int classificacao;
+    private String comentario;
     private Anime anime;
 
-    public ContaAnime(int id, Conta conta, int classificacao, Anime anime) {
+    public ContaAnime(int id, Conta conta, int classificacao, Anime anime,String comentario) {
         this.id = id;
         this.conta = conta;
         this.classificacao = classificacao;
+        this.comentario=comentario;
         this.anime = anime;
     }
     
@@ -61,6 +63,14 @@ public class ContaAnime implements Entidade {
 
     public void setAnime(Anime anime) {
         this.anime = anime;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
     
 }

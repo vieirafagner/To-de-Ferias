@@ -20,6 +20,7 @@ public class Documentario implements Entidade {
     private String data;
     private String autor;
     private String nome;
+    private String comentario;
 
     public Documentario() {
         this.id=0;
@@ -145,6 +146,14 @@ public class Documentario implements Entidade {
     @Override
     public String toString() {
         return "Documentario{" + "nome=" + nome + '}';
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
 }

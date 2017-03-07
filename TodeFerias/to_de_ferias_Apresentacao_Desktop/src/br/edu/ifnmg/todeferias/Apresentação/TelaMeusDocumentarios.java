@@ -55,12 +55,14 @@ public class TelaMeusDocumentarios extends javax.swing.JInternalFrame {
         modelo.addColumn("Id");
         modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
+        modelo.addColumn("comentario");
         
         for(ContaDocumentario cs : lista){
             Vector linha = new Vector();
             linha.add(cs.getId());
             linha.add(cs.getDocumentario().getNome());
             linha.add(cs.getClassificacao());
+            linha.add(cs.getComentario());
             modelo.addRow(linha);
         }
         
@@ -92,9 +94,17 @@ public class TelaMeusDocumentarios extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Classificação"
+                "Id", "Nome", "Classificação", "Comentário"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblBuscaMouseClicked(evt);
@@ -169,6 +179,7 @@ public class TelaMeusDocumentarios extends javax.swing.JInternalFrame {
         Classificar = new TelaClassificacaoDocumentario(usuario,true);
         
         entidade.getDocumentario().setClassificacao(entidade.getClassificacao());
+        entidade.getDocumentario().setComentario(entidade.getComentario());
         Classificar.setEntidade(entidade);
         
         //Classificar.setListagem(this);

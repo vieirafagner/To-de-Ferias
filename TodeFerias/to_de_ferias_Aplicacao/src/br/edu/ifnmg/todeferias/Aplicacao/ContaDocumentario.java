@@ -14,13 +14,15 @@ public class ContaDocumentario implements Entidade {
     private int id;
     private Conta conta;
     private int classificacao;
+    private String comentario;
     private Documentario documentario;
 
-    public ContaDocumentario(int id, Conta conta, int classificacao, Documentario documentario) {
+    public ContaDocumentario(int id, Conta conta, int classificacao, Documentario documentario,String comentario) {
         this.id = id;
         this.conta = conta;
         this.classificacao = classificacao;
         this.documentario = documentario;
+        this.comentario=comentario;
     }
     
     public ContaDocumentario(){
@@ -62,5 +64,13 @@ public class ContaDocumentario implements Entidade {
 
     public void setDocumentario(Documentario documentario) {
         this.documentario = documentario;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

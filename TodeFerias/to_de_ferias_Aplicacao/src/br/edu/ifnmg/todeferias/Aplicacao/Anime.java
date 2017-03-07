@@ -19,6 +19,7 @@ public class Anime implements Entidade {
     private String nome;
     private int qtd_temp;
     private int classificacao;
+    private String comentario;
     
     public Anime(){
         
@@ -66,7 +67,7 @@ public class Anime implements Entidade {
 
    
     
-    public Anime(int id, int duracao_ep, String sinopse, String nome, int qtd_temp, int classificacao) {
+    public Anime(int id, int duracao_ep, String sinopse, String nome, int qtd_temp, int classificacao,String comentario) {
         this.id = id;
         this.duracao_ep = duracao_ep;
         this.sinopse = sinopse;
@@ -124,5 +125,13 @@ public class Anime implements Entidade {
 
     public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }
