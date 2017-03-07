@@ -206,6 +206,7 @@ public class TelaClassificacaoSerie extends javax.swing.JInternalFrame {
             ContaSerieDAO dao = new ContaSerieDAO();
             //contaFilme.setClassificacao(bxClassificacao.getSelectedIndex()+1);
             entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setComentario(txtComentario.getText());
             entidade.setConta(usuario);
             
             
@@ -240,7 +241,7 @@ public class TelaClassificacaoSerie extends javax.swing.JInternalFrame {
         lblDuracao.setText( Integer.toString(entidade.getSerie().getDuracao_ep()));
         lblSinopse.setText(entidade.getSerie().getSinopse());
         bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
-         
+        txtComentario.setText(entidade.getComentario());
     }
     public ContaSerie getEntidade() {
         return entidade;

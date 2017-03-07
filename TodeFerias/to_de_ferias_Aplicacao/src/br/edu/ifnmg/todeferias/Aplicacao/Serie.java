@@ -17,6 +17,7 @@ public class Serie implements Entidade {
         private String nome;
         private int classificacao;
         private String sinopse;
+        private String comentario;
         private int qtd_temp;
             
         public Serie(){
@@ -133,5 +134,13 @@ public class Serie implements Entidade {
      */
     public void setQtd_temp(int qtd_temp) {
         this.qtd_temp = qtd_temp;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

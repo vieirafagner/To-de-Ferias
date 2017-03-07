@@ -86,9 +86,17 @@ public class TelaMeusLivros extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Classificação"
+                "Id", "Nome", "Classificação", "Comentario"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tblBusca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblBuscaMouseClicked(evt);

@@ -14,13 +14,15 @@ public class ContaSerie implements Entidade{
     private int id;
     private Conta conta;
     private int classificacao;
+    private String comentario;
     private Serie serie;
 
-    public ContaSerie(int id, Conta conta, int classificacao, Serie serie) {
+    public ContaSerie(int id, Conta conta, int classificacao, Serie serie,String comentario) {
         this.id = id;
         this.conta = conta;
         this.classificacao = classificacao;
         this.serie = serie;
+        this.comentario=comentario;
     }
     
     public ContaSerie(){
@@ -60,5 +62,13 @@ public class ContaSerie implements Entidade{
 
     public void setSerie(Serie serie) {
         this.serie = serie;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

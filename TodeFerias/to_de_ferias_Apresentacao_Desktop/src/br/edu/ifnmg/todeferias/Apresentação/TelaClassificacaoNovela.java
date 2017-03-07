@@ -180,6 +180,7 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
         ContaNovelaDAO dao = new ContaNovelaDAO();
     
         entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+        entidade.setComentario(txtComentario.getText());
          entidade.setConta(usuario);
             
             
@@ -220,7 +221,7 @@ public class TelaClassificacaoNovela extends javax.swing.JInternalFrame {
         lblDiretor.setText(entidade.getNovela().getDiretor());
         lblNumCapitulo.setText( Integer.toString(entidade.getNovela().getQtdCap()));
         bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
-         
+        txtComentario.setText(entidade.getComentario());
     }
     
     public ContaNovela getEntidade() {

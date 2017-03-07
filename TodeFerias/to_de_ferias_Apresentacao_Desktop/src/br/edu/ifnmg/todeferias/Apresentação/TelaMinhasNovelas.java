@@ -61,12 +61,14 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
         modelo.addColumn("Id");
         modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
+        modelo.addColumn("comentario");
         
         for(ContaNovela cn : lista){
             Vector linha = new Vector();
             linha.add(cn.getId());
             linha.add(cn.getNovela().getNome());
             linha.add(cn.getClassificacao());
+            linha.add(cn.getComentario());
             modelo.addRow(linha);
         }
         
@@ -96,11 +98,11 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Classificação"
+                "Id", "Nome", "Classificação", "Comentário"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -189,6 +191,7 @@ public class TelaMinhasNovelas extends javax.swing.JInternalFrame {
         Classificar = new TelaClassificacaoNovela(usuario,true);
         
         entidade.getNovela().setClassificacao(entidade.getClassificacao());
+        entidade.getNovela().setComentario(entidade.getComentario());
         Classificar.setEntidade(entidade);
         
         //Classificar.setListagem(this);

@@ -21,10 +21,10 @@ import java.util.logging.Logger;
 public class ContaSerieDAO extends DAOGenerico<ContaSerie> implements ContaSerieRepositorio{
     
         public ContaSerieDAO() {
-        setConsultaAbrir("select id,idConta,idSerie,classificacao FROM conta_serie ");
-        setConsultaInserir("INSERT INTO conta_serie(idConta,idSerie,classificacao) VALUES(?,?,?)");
-        setConsultaBusca("select id,idConta,idSerie,classificacao FROM conta_serie ");
-        setConsultaAlterar("UPDATE conta_serie SET idConta = ?, idSerie = ?,classificacao = ? WHERE id = ? ");
+        setConsultaAbrir("select id,idConta,idSerie,classificacao,comentario FROM conta_serie ");
+        setConsultaInserir("INSERT INTO conta_serie(idConta,idSerie,classificacao,comentario) VALUES(?,?,?,?)");
+        setConsultaBusca("select id,idConta,idSerie,classificacao,comentario FROM conta_serie ");
+        setConsultaAlterar("UPDATE conta_serie SET idConta = ?, idSerie = ?,classificacao = ?,comentario = ? WHERE id = ? ");
     }
 
     @Override
@@ -37,8 +37,9 @@ public class ContaSerieDAO extends DAOGenerico<ContaSerie> implements ContaSerie
             // teste
             //obj.getConta().getFilmes().get(0).setClassificacao(obj);
             sql.setInt(3, obj.getClassificacao());
+            sql.setString(4, obj.getComentario());
             
-            if(obj.getId() > 0) sql.setInt(4,obj.getId());
+            if(obj.getId() > 0) sql.setInt(5,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaSerieDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,7 +60,7 @@ public class ContaSerieDAO extends DAOGenerico<ContaSerie> implements ContaSerie
         try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,idConta,idSerie,classificacao FROM conta_serie "
+            PreparedStatement sql = conn.prepareStatement("select id,idConta,idSerie,classificacao,comentario FROM conta_serie "
                     + "where id = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -141,6 +142,7 @@ public class ContaSerieDAO extends DAOGenerico<ContaSerie> implements ContaSerie
             //select id,idConta,idFilme,classificacao
             tmp.setClassificacao(resultado.getInt(4));
             tmp.getSerie().setId(resultado.getInt(3));
+            tmp.setComentario(resultado.getString(5));
             tmp.setSerie(daoSerie.Abrir(tmp.getSerie().getId()));
                 
             

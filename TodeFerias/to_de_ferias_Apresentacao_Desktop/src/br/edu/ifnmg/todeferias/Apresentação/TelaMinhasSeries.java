@@ -52,12 +52,14 @@ public class TelaMinhasSeries extends javax.swing.JInternalFrame {
         modelo.addColumn("Id");
         modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
+        modelo.addColumn("comentario");
         
         for(ContaSerie cs : lista){
             Vector linha = new Vector();
             linha.add(cs.getId());
             linha.add(cs.getSerie().getNome());
             linha.add(cs.getClassificacao());
+            linha.add(cs.getComentario());
             modelo.addRow(linha);
         }
         
@@ -95,11 +97,11 @@ public class TelaMinhasSeries extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Classificação"
+                "Id", "Nome", "Classificação", "Comentário"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -187,6 +189,7 @@ public class TelaMinhasSeries extends javax.swing.JInternalFrame {
         Classificar = new TelaClassificacaoSerie(usuario,true);
         
         entidade.getSerie().setClassificacao(entidade.getClassificacao());
+        entidade.getSerie().setComentario(entidade.getComentario());
         Classificar.setEntidade(entidade);
         
         

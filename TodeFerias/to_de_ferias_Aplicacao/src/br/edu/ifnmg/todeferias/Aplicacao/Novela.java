@@ -16,6 +16,7 @@ public class Novela implements Entidade {
     private int qtdCap;
     private int classificacao;
     private String diretor;
+    private String comentario;
     private String nome;
     
     public Novela(){
@@ -144,5 +145,13 @@ public class Novela implements Entidade {
     @Override
     public String toString() {
         return "Novela{" + "nome=" + nome + '}';
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }
