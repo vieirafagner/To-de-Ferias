@@ -17,6 +17,7 @@ public class Livro implements Entidade {
     private String resumo;
     private String autor;
     private int qtd_pag;
+    private String comentario;
 
     public Livro(){
         this.id=0;
@@ -108,6 +109,14 @@ public class Livro implements Entidade {
 
     public void setQtd_pag(int qtd_pag) {
         this.qtd_pag = qtd_pag;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
 }

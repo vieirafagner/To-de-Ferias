@@ -13,13 +13,15 @@ public class ContaLivro implements Entidade{
     private int id;
     private Conta conta;
     private int classificacao;
+    private String comentario;
     private Livro livro;
     
-    public ContaLivro(int id, Conta conta, int classificacao, Livro livro) {
+    public ContaLivro(int id, Conta conta, int classificacao, Livro livro,String comentario) {
         this.id = id;
         this.conta = conta;
         this.classificacao = classificacao;
         this.livro = livro;
+        this.comentario=comentario;
     }
     
     public ContaLivro(){
@@ -61,6 +63,14 @@ public class ContaLivro implements Entidade{
 
     public void setLivro(Livro livro) {
         this.livro = livro;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
             
 }

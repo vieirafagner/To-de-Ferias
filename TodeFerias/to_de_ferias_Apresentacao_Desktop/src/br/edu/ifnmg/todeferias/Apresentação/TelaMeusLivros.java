@@ -49,12 +49,13 @@ public class TelaMeusLivros extends javax.swing.JInternalFrame {
         modelo.addColumn("Id");
         modelo.addColumn("Titulo");
         modelo.addColumn("classificacao");
-        
+        modelo.addColumn("comentario");
         for(ContaLivro ct : lista){
             Vector linha = new Vector();
             linha.add(ct.getId());
             linha.add(ct.getLivro().getTitulo());
             linha.add(ct.getClassificacao());
+            linha.add(ct.getComentario());
             modelo.addRow(linha);
         }
         
@@ -156,6 +157,7 @@ public class TelaMeusLivros extends javax.swing.JInternalFrame {
         Classificar = new TelaClassificacaoLivro(usuario,true);
         
         entidade.getLivro().setClassificacao(entidade.getClassificacao());
+        entidade.getLivro().setComentario(entidade.getComentario());
         Classificar.setEntidade(entidade);
         
         

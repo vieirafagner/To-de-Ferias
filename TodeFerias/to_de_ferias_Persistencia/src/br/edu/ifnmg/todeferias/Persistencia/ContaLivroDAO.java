@@ -20,10 +20,10 @@ import java.util.logging.Logger;
  */
 public class ContaLivroDAO extends DAOGenerico<ContaLivro> implements ContaLivroRepositorio{
     public ContaLivroDAO() {
-        setConsultaAbrir("select id,idConta,idLivro,classificacao FROM conta_livro ");
-        setConsultaInserir("INSERT INTO conta_livro(idConta,idLivro,classificacao) VALUES(?,?,?)");
-        setConsultaBusca("select id,idConta,idLivro,classificacao FROM conta_livro ");
-        setConsultaAlterar("UPDATE conta_livro SET idConta = ?, idLivro = ?,classificacao = ? WHERE id = ? ");        
+        setConsultaAbrir("select id,idConta,idLivro,classificacao,comentario FROM conta_livro ");
+        setConsultaInserir("INSERT INTO conta_livro(idConta,idLivro,classificacao,comentario) VALUES(?,?,?,?)");
+        setConsultaBusca("select id,idConta,idLivro,classificacao,comentario FROM conta_livro ");
+        setConsultaAlterar("UPDATE conta_livro SET idConta = ?, idLivro = ?,classificacao = ?,comentario = ? WHERE id = ? ");        
     }
 
     @Override
@@ -36,8 +36,9 @@ public class ContaLivroDAO extends DAOGenerico<ContaLivro> implements ContaLivro
             // teste
             //obj.getConta().getFilmes().get(0).setClassificacao(obj);
             sql.setInt(3, obj.getClassificacao());
+            sql.setString(4, obj.getComentario());
             
-            if(obj.getId() > 0) sql.setInt(4,obj.getId());
+            if(obj.getId() > 0) sql.setInt(5,obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ContaFilmeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,7 +57,7 @@ public class ContaLivroDAO extends DAOGenerico<ContaLivro> implements ContaLivro
        try {
             
             // Crio a consulta sql
-            PreparedStatement sql = conn.prepareStatement("select id,idConta,idLivro,classificacao FROM conta_livro "
+            PreparedStatement sql = conn.prepareStatement("select id,idConta,idLivro,classificacao,comentario FROM conta_livro "
                     + "where id = ?");
             
             // Passo os parâmentros para a consulta sql
@@ -137,6 +138,7 @@ public class ContaLivroDAO extends DAOGenerico<ContaLivro> implements ContaLivro
             //select id,idConta,idlivro,classificacao
             tmp.setClassificacao(resultado.getInt(4));
             tmp.getLivro().setId(resultado.getInt(3));
+            tmp.setComentario(resultado.getString(5));
             tmp.setLivro(daoLivro.Abrir(tmp.getLivro().getId()));// recebe o livro
                 
             
