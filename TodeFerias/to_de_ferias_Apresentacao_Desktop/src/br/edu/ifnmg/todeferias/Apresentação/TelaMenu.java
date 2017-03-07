@@ -459,7 +459,11 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void ItmListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItmListarUsuariosActionPerformed
-        new TelaListagemContas(this.usuario).setVisible(true);
+        //new TelaListagemContas(this.usuario).setVisible(true);
+        TelaListarContas tela = new TelaListarContas(usuario);
+        this.add(tela);
+        tela.setVisible(true);
+        lblMenu.setVisible(false);
        
         
     }//GEN-LAST:event_ItmListarUsuariosActionPerformed

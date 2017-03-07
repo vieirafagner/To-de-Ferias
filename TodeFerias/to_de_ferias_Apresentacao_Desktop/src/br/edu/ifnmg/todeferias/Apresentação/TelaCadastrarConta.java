@@ -27,78 +27,47 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
          dao = GerenciadorReferencias.getConta();
         this.usuario = principal.usuario;
         this.principal=principal;
-        /*if(usuario.getStatus()==1){
-            txtNome.setEnabled(false);
-            txtEmail.setEnabled(false);
-            txtSenha.setEnabled(false);
-            btnSalvar.setEnabled(false);
-            
-        }*/
+        
     }
     public TelaCadastrarConta(TelaMenu menu) {
         initComponents();
          dao = GerenciadorReferencias.getConta();
          this.usuario = menu.usuario;
-        //this.usuario = usuario;
-        //this.principal=principal;
         this.menu=menu;
-        /*if(usuario.getStatus()==1){
-            txtNome.setEnabled(false);
-            txtEmail.setEnabled(false);
-            txtSenha.setEnabled(false);
-            btnSalvar.setEnabled(false);
-            
-        }*/
     }
     
-    TelaListagemContas listagemContas;
-    public TelaCadastrarConta(Conta usuario,TelaListagemContas listagemContas) {
+    TelaListarContas listagemContas;
+    public TelaCadastrarConta(Conta usuario,TelaListarContas listagemContas) {
         initComponents();
          dao = GerenciadorReferencias.getConta();
          this.usuario = listagemContas.usuario;
-        //this.usuario = usuario;
-        //this.principal=principal;
         this.listagemContas=listagemContas;
-        /*if(usuario.getStatus()==1){
+        if(usuario.getId()==1){
             txtNome.setEnabled(false);
             txtEmail.setEnabled(false);
             txtSenha.setEnabled(false);
             btnSalvar.setEnabled(false);
             
-        }*/
+        }
     }
-    
-    
-    
-    
-    
-    
-
+      
     public TelaCadastrarConta(Conta usuario) {
         initComponents();
          dao = GerenciadorReferencias.getConta();
         this.usuario = usuario;
-        //this.principal=principal;
-        /*if(usuario.getStatus()==1){
+        if(usuario.getId()==1){
             txtNome.setEnabled(false);
             txtEmail.setEnabled(false);
             txtSenha.setEnabled(false);
             btnSalvar.setEnabled(false);
             
-        }*/
+        }
     }
     public TelaCadastrarConta() {
         initComponents();
          dao = GerenciadorReferencias.getConta();
         this.usuario = usuario;
         this.principal=principal;
-        /*if(usuario.getStatus()==1){
-            txtNome.setEnabled(false);
-            txtEmail.setEnabled(false);
-            txtSenha.setEnabled(false);
-            btnSalvar.setEnabled(false);
-            
-        }*/
     }
     
 
@@ -173,37 +142,28 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(btnSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExcluir)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel1))
-                                    .addGap(0, 140, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(83, 83, 83)
-                            .addComponent(jLabel4)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                    .addComponent(jLabel3)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel4))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(btnSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,13 +184,12 @@ public class TelaCadastrarConta extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                .addGap(9, 9, 9))
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
 
         getAccessibleContext().setAccessibleParent(this);

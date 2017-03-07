@@ -14,16 +14,18 @@ public class ContaFilme implements Entidade{
     private int id;
     private Conta conta;
     private int classificacao;
+    private String comentario;
     private Filme filme;
 
     public ContaFilme() {
         this.filme = new Filme();
     }
 
-    public ContaFilme(int id, Conta conta, int classificacao, Filme filme) {
+    public ContaFilme(int id, Conta conta, int classificacao, Filme filme,String comentario) {
         this.id = id;
         this.conta = conta;
         this.classificacao = classificacao;
+        this.comentario=comentario;
         this.filme = filme;
     }
     
@@ -64,6 +66,14 @@ public class ContaFilme implements Entidade{
 
     public void setFilme(Filme filme) {
         this.filme = filme;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
     
     

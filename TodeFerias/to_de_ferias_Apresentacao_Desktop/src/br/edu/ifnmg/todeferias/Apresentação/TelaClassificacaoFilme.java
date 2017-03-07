@@ -69,6 +69,8 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtComentario = new javax.swing.JTextField();
 
         jLabel1.setText("Nome");
 
@@ -94,6 +96,11 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
         jLabel6.setText("Classificação:");
 
         bxClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        bxClassificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bxClassificacaoActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Classificar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +118,8 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setText("Tela de Classificação de Filmes");
+
+        jLabel8.setText("Adicionar Comentário");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +165,12 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
                                     .addComponent(lblDiretor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(156, 156, 156)
-                        .addComponent(jLabel7)))
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -187,7 +201,11 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bxClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
@@ -202,6 +220,7 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
             ContaFilmeDAO dao = new ContaFilmeDAO();
             //contaFilme.setClassificacao(bxClassificacao.getSelectedIndex()+1);
             entidade.setClassificacao(bxClassificacao.getSelectedIndex()+1);
+            entidade.setComentario(txtComentario.getText());
             entidade.setConta(usuario);
             
             
@@ -238,6 +257,10 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose(); 
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void bxClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxClassificacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bxClassificacaoActionPerformed
     private void preencheCampos(){
  
             lblNome.setText( entidade.getFilme().getNome() );
@@ -246,6 +269,7 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
             lblGenero.setText(entidade.getFilme().getGenero());
             lblSinopse.setText(entidade.getFilme().getSinopse());    
             bxClassificacao.setSelectedIndex(entidade.getClassificacao()-1);
+            txtComentario.setText(entidade.getComentario());
         }
     public ContaFilme getEntidade() {
         return entidade;
@@ -274,10 +298,12 @@ public class TelaClassificacaoFilme extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblDiretor;
     private javax.swing.JLabel lblDuracao;
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSinopse;
+    private javax.swing.JTextField txtComentario;
     // End of variables declaration//GEN-END:variables
 }

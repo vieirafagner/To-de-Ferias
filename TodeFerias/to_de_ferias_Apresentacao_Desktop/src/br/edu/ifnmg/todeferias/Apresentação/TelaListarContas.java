@@ -10,23 +10,16 @@ import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
 import java.util.List;
 import java.util.Vector;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author fagner
- */
-public class TelaListagemContas extends javax.swing.JFrame {
+ 
+public class TelaListarContas extends javax.swing.JInternalFrame {
 
     ContaRepositorio dao ;
     Conta usuario ;
     TelaCadastrarConta editar;
     int id;
-    /**
-     * Creates new form TelaListagemContas
-     */
-    public TelaListagemContas(Conta usuario) {
+    public TelaListarContas(Conta usuario) {
         initComponents();
         dao = new ContaDAO();
         List<Conta> busca = dao.Buscar(null);
@@ -34,7 +27,6 @@ public class TelaListagemContas extends javax.swing.JFrame {
         
         preencheTabela(busca);
     }
-    
     private void preencheTabela(List<Conta> lista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
@@ -49,8 +41,8 @@ public class TelaListagemContas extends javax.swing.JFrame {
         
         tblBusca.setModel(modelo);
     }
-
-     public void buscar(String nome){
+    
+    public void buscar(String nome){
         Conta filtro = new Conta(0, null, null, nome,0);
         
         List<Conta> busca = dao.Buscar(filtro);
@@ -58,6 +50,8 @@ public class TelaListagemContas extends javax.swing.JFrame {
         preencheTabela(busca);
         
     }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +67,11 @@ public class TelaListagemContas extends javax.swing.JFrame {
         tblBusca = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        txtBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifnmg/todeferias/imagens/iconSearch.png"))); // NOI18N
         btnBuscar.setText("Buscar");
@@ -118,57 +116,56 @@ public class TelaListagemContas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBusca)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscar)
-                        .addGap(0, 12, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnCancelar)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnBuscar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCancelar))
         );
-
-        getAccessibleContext().setAccessibleParent(this);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
          buscar( txtBusca.getText() );
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tblBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscaMouseClicked
-        int selecionada = tblBusca.getSelectedRow();
+       int selecionada = tblBusca.getSelectedRow();
         
          id = Integer.parseInt( tblBusca.getModel().getValueAt(selecionada, 0).toString());
        
         editarConta(id);
-      
+        this.dispose();
     }//GEN-LAST:event_tblBuscaMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-       this.dispose();
+         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-     public void editarConta(int id){
+    public void editarConta(int id){
         Conta entidade;
      
         entidade = dao.Abrir(id);
@@ -179,9 +176,9 @@ public class TelaListagemContas extends javax.swing.JFrame {
         
         //editar.setListagem(this);
         
-        this.add(editar);
+        this.getParent().add(editar);
         editar.setVisible(true);
-        //this.setVisible(true);
+        this.setVisible(true);
         //this.dispose();
     }
 

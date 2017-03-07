@@ -18,6 +18,7 @@ public class Filme implements Entidade {
     private int classificacao;
     private String genero;
     private String sinopse;
+    private String comentario;
    
     public Filme(){
         this.id=0;
@@ -127,6 +128,14 @@ public class Filme implements Entidade {
      */
     public void setSinopse(String sinopse) {
         this.sinopse = sinopse;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     

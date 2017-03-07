@@ -57,12 +57,14 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
         modelo.addColumn("Id");
         modelo.addColumn("Nome");
         modelo.addColumn("classificacao");
+        modelo.addColumn("comentario");
         
         for(ContaFilme ct : lista){
             Vector linha = new Vector();
             linha.add(ct.getId());
             linha.add(ct.getFilme().getNome());
             linha.add(ct.getClassificacao());
+            linha.add(ct.getComentario());
             modelo.addRow(linha);
         }
         
@@ -90,11 +92,11 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id", "Nome", "Classificação"
+                "Id", "Nome", "Classificação", "Comentario"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -198,6 +200,7 @@ public class TelaMeusFilmes extends javax.swing.JInternalFrame {
         Classificar = new TelaClassificacaoFilme(usuario,true);
         
         entidade.getFilme().setClassificacao(entidade.getClassificacao());
+        entidade.getFilme().setComentario(entidade.getComentario());
         Classificar.setEntidade(entidade);
         
         
