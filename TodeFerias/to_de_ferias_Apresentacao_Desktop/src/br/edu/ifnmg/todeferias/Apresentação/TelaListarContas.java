@@ -8,6 +8,7 @@ package br.edu.ifnmg.todeferias.Apresentação;
 import br.edu.ifnmg.todeferias.Aplicacao.Conta;
 import br.edu.ifnmg.todeferias.Aplicacao.ContaRepositorio;
 import br.edu.ifnmg.todeferias.Persistencia.ContaDAO;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -19,10 +20,11 @@ public class TelaListarContas extends javax.swing.JInternalFrame {
     Conta usuario ;
     TelaCadastrarConta editar;
     int id;
+    List<Conta> busca;
     public TelaListarContas(Conta usuario) {
         initComponents();
         dao = new ContaDAO();
-        List<Conta> busca = dao.Buscar(null);
+        this.busca=dao.Buscar(null);
         this.usuario = usuario;
         
         preencheTabela(busca);
@@ -42,13 +44,16 @@ public class TelaListarContas extends javax.swing.JInternalFrame {
         tblBusca.setModel(modelo);
     }
     
+    
     public void buscar(String nome){
-        Conta filtro = new Conta(0, null, null, nome,0);
         
-        List<Conta> busca = dao.Buscar(filtro);
-        
-        preencheTabela(busca);
-        
+       List<Conta> filtro = new LinkedList<>();
+       for(Conta f : this.busca){
+           if(f.getNome().matches("(.*)"+nome+(".*"))){
+               filtro.add(f);
+           }
+       }
+        preencheTabela(filtro);
     }
 
 
